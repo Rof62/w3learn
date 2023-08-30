@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    color: var(--text-color);
+    margin: 0;
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--light-grey);
+    background-image: url('../img/background.pages.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+  }
+  
+  ul {
+    list-style: none;
+    padding-left: 0px;
+    margin: 0;
+    width: 60%;
+  }
+  
+  img {
+    max-width: 100%;
+  }

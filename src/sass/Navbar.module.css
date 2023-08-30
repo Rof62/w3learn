@@ -1,0 +1,8 @@
+.navbar {
+  background-color: var(--light-grey);
+  border: 5px solid linear-gradient(to right, #AF40FF, #5B42F3, #00DDEB);
+  border-image-slice: 1;
+  border-radius: 50px;
+  width: 80%;
+  margin: 0 auto;
+}/*# sourceMappingURL=Navbar.module.css.map */
