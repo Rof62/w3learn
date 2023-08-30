@@ -6,7 +6,7 @@ import styles from "../sass/Navbar.module.scss"
 export default function navbar() {
     return(
         <div className={`d-flex justify-content-around align-items-center  ${styles.navbar}`}>
-            <img src={logo} alt="" />
+            <img className={`${styles.logo}`} src={logo} alt="" />
             <ul className="d-flex align-items-center justify-content-between">
                 <li>BLOCKCHAIN</li>
                 <li>CRYPTO</li>

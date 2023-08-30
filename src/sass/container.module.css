@@ -1,12 +1,11 @@
-.navbar {
+.container {
   background-color: var(--light-grey);
   position: relative;
   border-radius: 50px;
   width: 80%;
-  height: 70px;
   margin: 10px auto;
 }
-.navbar:before {
+.container:before {
   content: "";
   position: absolute;
   inset: 0;
@@ -16,9 +15,16 @@
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+  animation: rotateColors 3s linear infinite;
 }
-
-.logo {
-  width: 50px;
-  height: 25px;
-}/*# sourceMappingURL=Navbar.module.css.map */
+@keyframes rotateColors {
+  0% {
+    background: linear-gradient(to right, #AF40FF, #5B42F3, #00DDEB);
+  }
+  50% {
+    background: linear-gradient(to right, #00DDEB, #AF40FF, #5B42F3);
+  }
+  100% {
+    background: linear-gradient(to right, #5B42F3, #00DDEB, #AF40FF);
+  }
+}/*# sourceMappingURL=container.module.css.map */
