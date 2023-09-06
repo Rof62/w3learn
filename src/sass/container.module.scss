@@ -1,32 +1,135 @@
+@use "../sass/mixin" as mixin;
+
 .container{
+     h2{
+        display: flex;
+        justify-content: center;
+         
+    }
+    p{
+        font-size: 18px;
+        // width: 50%;
+    }
+    span{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 70%;
+        border-radius: 50px;
+        color: #05062D;
+        font-style: oblique;
+        font-weight: 800; 
+        text-decoration-thickness: 2px; 
+        text-decoration-style: solid;
+         background:linear-gradient(to right, #AF40FF, #5B42F3, #00DDEB ); 
+          
+    }
+    gap: 20%;
+    padding: 2%;
     background-color: var(--light-grey);
     position: relative;
     border-radius: 50px;
+    box-shadow: 0 0 5px #AF40FF, 0 0 6px #5B42F3, 0 0 7px #00DDEB, 0 0 8px #5B42F3, 0 0 9px #AF40FF;
     width: 80%;
-    margin: 10px auto  ;
+    margin: 50px auto  ;
     &:before{
         content: "";
         position: absolute;
         inset: 0;
-        border-radius: 50px; 
+        border-radius: 50px;
         padding: 5px; 
-        background:linear-gradient(to right, #AF40FF, #5B42F3, #00DDEB ); 
+       
+        background-size: 200% 100%;
+        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         -webkit-mask: 
            linear-gradient(#fff 0 0) content-box, 
            linear-gradient(#fff 0 0);
         -webkit-mask-composite: xor;
                 mask-composite: exclude; 
-        animation: rotateColors 3s linear infinite; 
+        animation: rotateColors 6s linear infinite; 
     }  
     @keyframes rotateColors {
+        // 0% {
+        //     background: linear-gradient(to right, #AF40FF, #5B42F3, #00DDEB);
+        //   }
+        //   25% {
+        //     background: linear-gradient(to right, #00DDEB, #AF40FF, #5B42F3);
+        //   }
+        //   50% {
+        //     background: linear-gradient(to right, #5B42F3, #00DDEB, #AF40FF);
+        //   }
+        //   75% {
+        //     background: linear-gradient(to right, #AF40FF, #5B42F3, #00DDEB);
+        //   }
+        //   100% {
+        //     background: linear-gradient(to right, #00DDEB, #AF40FF, #5B42F3);
+        //   }
         0% {
-            background:linear-gradient(to right, #AF40FF, #5B42F3, #00DDEB );  
-        }
-        50% {
-            background:linear-gradient(to right, #00DDEB, #AF40FF , #5B42F3 );
-        }
-        100% {
-            background:linear-gradient(to right, #5B42F3, #00DDEB , #AF40FF );
-        }
+            background-image: conic-gradient(
+              from 0deg,
+              #00DDEB,
+              #AF40FF,
+              #5B42F3,
+              #00DDEB,
+              #AF40FF,
+              #5B42F3,
+              #00DDEB,
+              #AF40FF,
+              #5B42F3,
+              #00DDEB,
+              #AF40FF,
+              #5B42F3,
+              #00DDEB,
+            );
+            background-position: 0% 50%;
+            box-shadow: 0 0 30px #AF40FF, 0 0 40px #5B42F3, 0 0 50px #00DDEB, 0 0 60px #5B42F3, 0 0 70px #AF40FF;
+          }
+          100% {
+            background-image: conic-gradient(
+              from 360deg,
+              #00DDEB,
+              #AF40FF,
+              #5B42F3,
+              #00DDEB,
+              #AF40FF,
+              #5B42F3,
+              #00DDEB,
+              #AF40FF,
+              #5B42F3,
+              #00DDEB,
+              #AF40FF,
+              #5B42F3,
+              #00DDEB,
+            );
+            background-position: 100% 50%;
+            box-shadow: 0 0 30px #AF40FF, 0 0 40px #5B42F3, 0 0 50px #00DDEB, 0 0 60px #5B42F3, 0 0 70px #AF40FF;
+          }
+        
     }
 }
+
+@include mixin.md-lt {
+    
+    p{
+        font-size: 14px;
+    }
+   .container1Mobile{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+h2{
+    font-size: 20px;
+    margin-top: 10px;
+}
+p{
+    font-size: 16px;
+    width: 80%;
+}
+br{
+    display: none;
+}
+   } 
+}  
+
