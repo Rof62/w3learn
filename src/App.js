@@ -5,6 +5,8 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home';
 import Blockchain from './pages/Blockchain'
 import Crypto from './pages/Crypto'
+import Metaverse from'./pages/Metaverse'
+import NFT from './pages/NFT'
 import './sass/App.scss'
 
 
@@ -17,6 +19,8 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/blockchain" element={<Blockchain />} />
         <Route path="/crypto" element={<Crypto />} />
+        <Route path="/nft" element={<NFT />} />
+        <Route path="/metaverse" element={<Metaverse />} />
       </Routes>
     </Router> 
     </>

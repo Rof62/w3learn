@@ -1,6 +1,9 @@
 @use "../sass/mixin" as mixin;
 
 .navbar{
+    i{
+        cursor: pointer;
+    }
     background-color: var(--light-grey);
     position: relative;
     border-radius: 50px;

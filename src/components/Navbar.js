@@ -7,6 +7,9 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
     const [showMenu, setShowMenu] = useState(false)
 
+    const closeMenu = () => {
+        setShowMenu(false)
+    }
 
     return(
         <div className={`d-flex justify-content-around align-items-center  ${styles.navbar}`}>      
@@ -16,8 +19,8 @@ export default function Navbar() {
             <NavLink to="/home" ><img src={logo} alt="" className={`${styles.logo}`} /></NavLink>  
                 <li><NavLink to="/blockchain" className={`${styles.none}`}>BLOCKCHAIN</NavLink></li>
                 <li><NavLink to="/crypto" className={`${styles.none}`}>CRYPTO</NavLink></li>
-                <li>NFT</li>
-                <li>METAVERVE</li>
+                <li><NavLink to="/nft" className={`${styles.none}`}>NFT</NavLink></li>
+                <li><NavLink to="/metaverse" className={`${styles.none}`}>METAVERSE</NavLink></li>
                 <li>BLOG/ACTU</li>
             </ul>
             <button className=" btn btn-primary-reverse ">Se connecter</button>
@@ -25,14 +28,8 @@ export default function Navbar() {
          <i onClick={() => setShowMenu(true)} className={` fas fa-bars mr10 ${styles.burger}`}></i>
            
             { showMenu && (
-                <>
-                <i onClick={() => setShowMenu(false)} className={`fa-solid fa-xmark  mr10 ${styles.burger2}`}></i>
-                 
-                <MobileMenu  />
-                
-               
-               
-                
+                <> 
+                <MobileMenu showMenu={showMenu} closeMenu={closeMenu}/>
                 </>
             )}
         </>
