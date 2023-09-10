@@ -1,13 +1,14 @@
 // import { Routes, Route } from 'react-router-dom';
 import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import Blockchain from './pages/Blockchain'
-import Crypto from './pages/Crypto'
-import Metaverse from'./pages/Metaverse'
-import NFT from './pages/NFT'
-import './sass/App.scss'
+import Blockchain from './pages/Blockchain';
+import Crypto from './pages/Crypto';
+import Metaverse from'./pages/Metaverse';
+import Blog from "./pages/Blog";
+import NFT from './pages/NFT';
+import './sass/App.scss';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/crypto" element={<Crypto />} />
         <Route path="/nft" element={<NFT />} />
         <Route path="/metaverse" element={<Metaverse />} />
+        <Route path="/blog" element={<Blog />} />
       </Routes>
     </Router> 
     </>

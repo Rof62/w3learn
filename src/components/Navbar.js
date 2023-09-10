@@ -21,7 +21,7 @@ export default function Navbar() {
                 <li><NavLink to="/crypto" className={`${styles.none}`}>CRYPTO</NavLink></li>
                 <li><NavLink to="/nft" className={`${styles.none}`}>NFT</NavLink></li>
                 <li><NavLink to="/metaverse" className={`${styles.none}`}>METAVERSE</NavLink></li>
-                <li>BLOG/ACTU</li>
+                <li><NavLink to="/blog" className={`${styles.none}`}>BLOG</NavLink></li>
             </ul>
             <button className=" btn btn-primary-reverse ">Se connecter</button>
             <>

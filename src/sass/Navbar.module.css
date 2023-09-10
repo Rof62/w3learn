@@ -6,6 +6,9 @@
   height: 70px;
   margin: auto;
 }
+.navbar i {
+  cursor: pointer;
+}
 .navbar:before {
   content: "";
   position: absolute;

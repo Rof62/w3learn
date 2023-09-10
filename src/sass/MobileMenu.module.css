@@ -10,6 +10,8 @@
 .menuContainer i {
   position: absolute;
   z-index: 4;
+  top: 3%;
+  left: 95%;
 }
 .menuContainer li {
   display: block;
@@ -26,7 +28,6 @@
 }
 
 .burger {
-  cursor: pointer;
   display: none;
 }
 

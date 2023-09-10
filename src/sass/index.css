@@ -30,6 +30,7 @@ ul {
 
 li {
   text-decoration: none;
+  list-style: none;
 }
 
 img {
@@ -132,7 +133,11 @@ img {
 
 .card {
   border-radius: 20px;
-  background-color: white;
+  background-color: var(--light-grey);
+}
+
+.text-error {
+  color: var(--error);
 }
 
 .p5 {
