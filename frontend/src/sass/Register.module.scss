@@ -1,0 +1,37 @@
+@use "../sass/mixin" as mixin;
+
+.appContainer {
+    min-height: 80vh;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .feedback {
+    color: red;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .feedbackGood {
+    color: green;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .logo{
+    width: 50px;
+    height: 25px;
+  }
+  
+  input {
+    width: 500px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 10px;
+  }
+
+  @include mixin.md-lt{
+    .button{
+        display: block;
+    }
+  }

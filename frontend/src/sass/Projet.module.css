@@ -1,0 +1,48 @@
+.projet {
+  border-radius: 20px;
+  height: 530px;
+  cursor: pointer;
+}
+.projet p {
+  margin-left: 5px;
+}
+.projet h3 {
+  color: white;
+}
+.projet .imgContainer {
+  overflow: hidden;
+}
+.projet .imgContainer img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 100%;
+  height: 100%;
+  transition: 1s transform;
+}
+.projet .imgContainer img:hover {
+  transform: scale(1.1);
+}
+@media (max-width: 576px) {
+  .projet .imgContainer {
+    grid-template-columns: 1fr;
+    grid-auto-columns: 1fr;
+    height: 350px;
+  }
+}
+.projet .title {
+  border: 1px solid var(--gray-2);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.projet .text-error {
+  color: var(--error);
+}
+.projet .test {
+  color: aqua;
+}
+.projet .title :not(i) {
+  transition: 0.2s color;
+}
+.projet .title :not(i):hover {
+  color: var(--error);
+}/*# sourceMappingURL=Projet.module.css.map */

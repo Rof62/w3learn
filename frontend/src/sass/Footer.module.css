@@ -1,0 +1,30 @@
+.footer {
+  height: 200px;
+  background-color: var(--light-grey);
+  position: relative;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  margin: auto;
+}
+.footer:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  padding: 5px;
+  background: linear-gradient(to right, #AF40FF, #5B42F3, #00DDEB);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.logo {
+  width: 75px;
+  height: 50px;
+  position: absolute;
+  z-index: 1;
+  left: 5%;
+  top: 12%;
+}/*# sourceMappingURL=Footer.module.css.map */

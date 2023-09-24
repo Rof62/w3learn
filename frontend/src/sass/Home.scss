@@ -1,0 +1,126 @@
+@use "../sass/mixin" as mixin;
+
+h1{
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    // text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    text-shadow: 0 0 10px  #00DDEB ,  0 0 20px #00DDEB, 0 0 30px #00DDEB  ;
+    
+}
+h2{
+    font-size: 28px;
+    font-weight: bold;
+    // text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+    text-shadow: 0 0 10px  #00DDEB ,  0 0 20px #00DDEB, 0 0 30px #00DDEB  ;
+}
+.container2{
+//    width: 100vh;
+    p{
+        width: 80%;
+        font-size: 18px;
+    }
+   
+}
+.container3{
+    p{
+        width: 50%;
+    }
+    li{
+        list-style: none;
+        text-decoration: none;
+    }
+} 
+.resume{
+    p{
+        width: 100%;
+        
+        
+    }
+}
+.container1Mobile{
+    p{
+        width: 50%;
+    }
+}
+ .styleNone{
+    li{
+        list-style: none;
+        text-decoration: none;
+        position: absolute;
+        z-index: 1;
+        // cursor: pointer;
+        
+        
+    }
+    a{
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    // transition: 0.2s opacity;
+    &:hover {
+    //   transition: 0.2s opacity;
+      text-shadow: 0 0 10px  #00DDEB ,  0 0 20px #00DDEB, 0 0 30px #00DDEB  ;
+     
+    //   opacity: 0.8;
+      
+    }
+    }
+ }
+
+
+     
+@include mixin.md-lt {
+    h1{
+        font-size: 25px;
+    }
+    h2{
+        font-size: 20px;
+        margin-top: 10px;
+    }
+    span{
+        font-size: 14px;
+        
+        width: 70%;
+    }
+     .size{
+        p{
+            font-size: 14px;
+        }
+     }
+    
+    .container2{
+       gap: 20px;
+       text-align: center;
+        span{
+            font-size: 14px;
+            
+            width: 70%;
+        }
+         p{
+             width: 90%;
+             font-size: 14px;
+         }
+        
+     } 
+    
+   .container1Mobile{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+h2{
+    font-size: 20px;
+    margin-top: 10px;
+}
+p{
+    font-size: 14px;
+    width: 80%;
+}
+br{
+    display: none;
+}
+   } 
+}    
