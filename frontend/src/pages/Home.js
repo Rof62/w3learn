@@ -1,6 +1,11 @@
 import anime1 from "../img/anime.home1.gif";
 import anime2 from "../img/anime.home2.gif";
 import anime3 from "../img/anime.home3.gif";
+import anime4 from "../img/anime.web.gif";
+import anime5 from "../img/anime.web2.gif";
+import anime6 from "../img/anime.web3.gif";
+import anime7 from "../img/anime.web4.gif";
+
 
 import styles from "../sass/container.module.scss"
 
@@ -51,11 +56,11 @@ export default function Home() {
                         de solutions innovantes.
                         <br /><br />    
                     </p>
-                    <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
+                    <img style={{ width: "150px", height: "150px"}} src={anime5} alt="GIF animé" />
                     </div>
                 </div>
                 <div className="d-flex align-items-center justify-content-around container2">
-                <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
+                <img style={{ width: "150px", height: "150px"}} src={anime4} alt="GIF animé" />
                     <p>
                     <span> Identité numérique souveraine :</span>
                         <br /><br />
@@ -84,7 +89,7 @@ export default function Home() {
                 </div>
                 <div className=" d-flex flex-column container3 container2 ">
                     <div className="d-flex justify-content-around align-items-center ">
-                <img style={{ width: "150px", height: "150px"}} src={anime3} alt="GIF animé" />
+                <img style={{ width: "150px", height: "150px"}} src={anime6} alt="GIF animé" />
                     <p>
                         <span>  Jeux et propriété <br /> d'actifs numériques :</span>
                             <br /><br />
@@ -102,7 +107,7 @@ export default function Home() {
                                     en respectant la vie privée des utilisateurs et en leur permettant de contrôler leurs données. Ces réseaux mettent 
                                     l'accent sur la sécurité et l'absence de censure, offrant ainsi une expérience en ligne plus libre et démocratique.
                         </p>
-                        <img style={{ width: "150px", height: "150px"}} src={anime3} alt="GIF animé" />
+                        <img style={{ width: "150px", height: "150px"}} src={anime7} alt="GIF animé" />
                     </div>  
                 </div>
             </div>

@@ -1,33 +1,112 @@
 import { useState } from "react";
+// import ImageUploadForm from '../components/ImageUploadForm';
+import ProfileImage from "../components/ProfileImage";
 
-export default function ProfileGestion({ user, updateUser, deleteUser} ) {
+export default function ProfileGestion({ user, updateUser, updateUser2} ) {
 
     console.log(user);
+    
+
+    const handleImageUpload = async (idUsers, imageFile) => {
+      const formData = new FormData();
+      formData.append('profileImage', imageFile);
+      formData.append('idUsers', idUsers);
+  
+      try {
+        const response = await fetch('http://localhost:8003/api/profileImage/uploadImage', {
+          method: 'POST',
+          body: formData,
+        });
+  
+        if (response.ok) {
+          console.log('Image téléchargée avec succès.');
+          // Mettez à jour l'utilisateur avec les nouvelles données, si nécessaire
+        } else {
+          console.error('Échec du téléchargement de l\'image.');
+        }
+      } catch (error) {
+        console.error('Erreur lors du téléchargement de l\'image :', error);
+      }
+    };
 
     const [username, setUsername] = useState(user.username);
     const [email, setEmail] = useState(user.email);
     const [password, setPassword] = useState(user.password);
 
-    async function modifyName(newUserName) {
-      console.log(newUserName);
+    const modifyName = async (newUsername) => {
       try {
-        const response = await fetch("http://localhost:8003/updateUsername", {
+        const response = await fetch("http://localhost:8003/api/gestionProfile/updateUsername", {
           method: "PATCH",
-          body: JSON.stringify(newUserName),
+          body: JSON.stringify({ idUsers: user.idUsers, username: newUsername }),
           headers: { "Content-Type": "application/json" },
         });
         if (response.ok) {
-          const backUser = await response.json();
-          updateUser(backUser);
+          const updatedUser = await response.json();
+          // updateUser(updatedUser);
         }
       } catch (error) {
         console.error(error);
       }
     }
 
+    async function modifyEmail(newEmail) {
+      try {
+        const response = await fetch("http://localhost:8003/api/gestionProfile/updateEmail", {
+          method: "PATCH",
+          body: JSON.stringify({ idUsers: user.idUsers, email: newEmail }),
+          headers: { "Content-Type": "application/json" },
+        });
+        if (response.ok) {
+          const updatedUser = await response.json();
+          // updateUser(updatedUser.user);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    // async function modifyPassword(newPassword) {
+    //   try {
+    //     const response = await fetch("http://localhost:8003/updatePassword", {
+    //       method: "PATCH",
+    //       body: JSON.stringify({ idUsers: user.idUsers, password: newPassword }),
+    //       headers: { "Content-Type": "application/json" },
+    //     });
+    //     if (response.ok) {
+    //       const updatedUser = await response.json();
+    //       // updateUser2(updatedUser.user);
+    //     }
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // }
+  
+    async function modifyPassword(newPassword) {
+      try {
+        const response = await fetch("http://localhost:8003/api/gestionProfile/updatePassword", {
+          method: "PATCH",
+          body: JSON.stringify({ idUsers: user.idUsers, password: newPassword }),
+          headers: { "Content-Type": "application/json" },
+        });
+        if (response.ok) {
+          const result = await response.json();
+          if (result.message === "Mot de passe mis à jour avec succès") {
+            // Mise à jour réussie
+            console.log("Mot de passe mis à jour avec succès !");
+            // Vous pouvez mettre à jour l'état local de l'utilisateur ici si nécessaire
+          } else {
+            console.error("La mise à jour du mot de passe a échoué :", result.message);
+          }
+        } else {
+          console.error("Échec de la mise à jour du mot de passe.");
+        }
+      } catch (error) {
+        console.error("Erreur lors de la mise à jour du mot de passe :", error);
+      }
+    }
+
     async function handleDeleteUser(deletedUser) {
       try {
-        const response = await fetch("http://localhost:8001/deleteUser", {
+        const response = await fetch("http://localhost:8003/api/gestionProfile/deleteUser", {
           method: "DELETE",
           body: JSON.stringify(deletedUser),
           headers: {
@@ -35,7 +114,7 @@ export default function ProfileGestion({ user, updateUser, deleteUser} ) {
           },
         });
         if (response.ok) {
-          deleteUser(deletedUser);
+          
         }
       } catch (error) {
         console.error(error);
@@ -66,13 +145,13 @@ export default function ProfileGestion({ user, updateUser, deleteUser} ) {
   
     const handleClick2 = () => {
       if (email.length) {
-        modifyName({ ...user, email: email });
+        modifyEmail({ ...user, email: email });
       }
     };
   
     const handleKeyDown2 = (e) => {
-      if (e.code === "Enter" && username.length) {
-        modifyName({ ...user, email: email });
+      if (e.code === "Enter" && email.length) {
+        modifyEmail({ ...user, email: email });
       } 
     };
 
@@ -83,33 +162,37 @@ export default function ProfileGestion({ user, updateUser, deleteUser} ) {
   
     const handleClick3 = () => {
       if (password.length) {
-        modifyName({ ...user, password: password });
+        modifyPassword({ ...user, password: password });
       }
     };
   
     const handleKeyDown3 = (e) => {
-      if (e.code === "Enter" && username.length) {
-        modifyName({ ...user, password: password });
+      if (e.code === "Enter" && password.length) {
+        modifyPassword({ ...user, password: password });
       } 
     };
-
+    console.log(user);
     return(
         <div className="d-flex align-items-center flex-column  mb20 mt20">
             <h1>Gestion de profile</h1>
             <div className="cards">
-              <div className="d-flex justify-content-center  mt20">
-                <h3>Bienvenue {user.username}</h3>
+              <div className="d-flex flex-column justify-content-center align-items-center">
+                <h3>Bienvenue {user.username} </h3>
+                <>
+                <ProfileImage user={user}/>
+                </>
+                
               </div>
               <div className="gestion2">
               <div className="d-flex justify-content-center align-items-center gestion">
                 <p className="">Votre password :</p>
                 <input
-                    type="name"
+                    type="password"
                     onChange={handleChange3}
                     onKeyDown={handleKeyDown3}
-                    value={username}
-                    className=""
-                    placeholder="modifier votre pseudo"
+                    value={password}
+                    className="p10"
+                    
                 />
                 
                 <button onClick={handleClick3} className="btn btn-primary">
@@ -123,8 +206,8 @@ export default function ProfileGestion({ user, updateUser, deleteUser} ) {
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
                     value={username}
-                    className=""
-                    placeholder="modifier votre pseudo"
+                    className="p10"
+                    
                 />
                 
                 <button onClick={handleClick} className="btn btn-primary">
@@ -134,12 +217,12 @@ export default function ProfileGestion({ user, updateUser, deleteUser} ) {
               <div className="d-flex justify-content-center align-items-center gestion">
                 <p className="">Votre email :</p>
                 <input
-                    type="name"
+                    type="email"
                     onChange={handleChange2}
                     onKeyDown={handleKeyDown2}
-                    value={username}
-                    className=""
-                    placeholder="modifier votre pseudo"
+                    value={email}
+                    className="p10"
+                    
                 />
                 
                 <button onClick={handleClick2} className="btn btn-primary">

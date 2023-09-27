@@ -2,32 +2,39 @@
   background-color: var(--light-grey);
   display: grid;
   place-content: center;
-  grid-template-columns: repeat(3, 350px);
-  grid-auto-columns: repeat(3, 350px);
+  grid-template-columns: repeat(3, 30%);
+  grid-auto-columns: repeat(3, 30% px);
   gap: 20px;
 }
 @media (max-width: 1200px) {
   .grid {
-    grid-template-columns: repeat(2, 350px);
-    grid-auto-columns: repeat(2, 350px);
+    grid-template-columns: repeat(2, 35%);
+    grid-auto-columns: repeat(2, 35%);
   }
 }
 @media (max-width: 992px) {
   .grid {
-    grid-template-columns: 350px;
-    grid-auto-columns: 350px;
+    grid-template-columns: repeat(2, 35%);
+    grid-auto-columns: repeat(2, 35%);
   }
 }
 @media (max-width: 576px) {
   .grid {
-    grid-template-columns: 1fr;
-    grid-auto-columns: 1fr;
+    grid-template-columns: 65%;
+    grid-auto-columns: 25%;
   }
 }
-
-.item {
-  height: 500px;
-  border: 1px solid var(--primary);
+@media (min-width: 577px) and (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 45%);
+    grid-auto-columns: repeat(2, 45%);
+  }
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(2, 35%);
+    grid-auto-columns: repeat(2, 45%);
+  }
 }
 
 .contentCard {
@@ -38,8 +45,40 @@
   padding: 10px 15px;
   border: 2px solid var(--gray-2);
   border-radius: 20px;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 30px;
 }
 .search input {
   outline: 0;
   border: 0;
+}
+
+.card {
+  border-radius: 20px;
+  background-color: var(--light-grey);
+  width: 80%;
+  margin: 50px auto;
+}
+
+.li {
+  color: white;
+  font-size: 28px;
+  font-weight: 800;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s opacity;
+}
+.li:hover {
+  transition: 0.2s opacity;
+  opacity: 0.8;
+  color: var(--gray-2);
+}
+
+@media (max-width: 992px) {
+  .card {
+    width: 80%;
+    margin: 0 auto;
+  }
 }/*# sourceMappingURL=Blog.module.css.map */

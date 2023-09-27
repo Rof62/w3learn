@@ -16,8 +16,9 @@ export default function MobileMenu( {showMenu, closeMenu}) {
             <li><NavLink to="/crypto" className={`${styles.none}`} onClick={handleNavLinkClick}>CRYPTO</NavLink></li>
             <li><NavLink to="/nft" className={`${styles.none}`} onClick={handleNavLinkClick}>NFT</NavLink></li>        
             <li><NavLink to="/metaverse" className={`${styles.none}`} onClick={handleNavLinkClick}>METAVERSE</NavLink></li>        
-            <li>BLOG/ACTU</li>
-            <li>Connexion</li>
+            <li><NavLink to="/blog" className={`${styles.none}`} onClick={handleNavLinkClick}>Blog</NavLink></li>
+            <li><NavLink to="/connexion" className={`${styles.none}`} onClick={handleNavLinkClick}>Connexion</NavLink></li>
+            <li><NavLink to="/inscription" className={`${styles.none}`} onClick={handleNavLinkClick}>Inscription</NavLink></li>
         </ul>
         </div>
     )

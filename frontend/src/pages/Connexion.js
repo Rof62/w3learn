@@ -1,112 +1,111 @@
-import { useState } from "react";
 import styles from "../sass/Register.module.scss";
 import logo from "../img/logo.png"
 import { NavLink,  useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 
-export default function Connexion({ getIdUser, toggleRegister, setUserObject, userObject}) {
-  
-    const navigate = useNavigate()
+export default function Login({ getUser }) {
 
-    const [user, setUser] = useState({
-        email: "",
-        password: "",
-      });
+  const [feedback, setFeedBack] = useState("");
+  const [feedbackGood, setFeedBackGood] = useState("");
 
-    const [feedback, setFeedback] = useState("");
-    const [feedbackGood, setFeedbackGood] = useState("");
+  const navigate = useNavigate()
 
-    function handleInputEmail(e) {
-        const value = e.target.value;
-        setUser({
-          ...user,
-          email: value,
-        });
-      }
+  const yupSchema = yup.object({
     
-      function handleInputPassword(e) {
-        const value = e.target.value;
-        setUser({
-          ...user,
-          password: value,
-        });
-      }
+    email: yup
+      .string()
+      .required("Le champ est obligatoire")
+      .email("Vous devez saisir un email valide"),
+    password: yup
+      .string()
+      .required("Le champ est obligatoire")
+      .min(5, "Mot de passe trop court")
+      .max(10, "Mot de passe trop long"),
+  });
 
-      async function handleClick(e) {
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        setFeedback("");
-        e.preventDefault();
-        console.log(user);
-        if (!user.email.length || !user.password.length) {
-          setFeedback("Tous les champs doivent être remplis");
-        } else if (!emailRegex.test(user.email)) {
-          setFeedback("Email non valide");
-        } else {
-          try {
-            const response = await fetch("http://localhost:8003/login", {
-              method: "POST",
-              body: JSON.stringify(user),
-              headers: { "Content-Type": "application/json" },
-            });
-            if (response.ok) {
-              const userBack = await response.json();
-              console.log(userBack);
-              
-              if (userBack.message) {
-                setFeedback("Email et/ou mot de passe incorrects");
-              } else {
-                setFeedbackGood("Connexion réussie ! Vous allez être rediriger");
-                getIdUser(userBack);
-                setTimeout(() => {
-                  toggleRegister()
-                  navigate("/profileGestion")
-                }, 3000);
-                
-                setUser({
-                  email: "",
-                  password: "",
-                });
-              }
-            }
-          } catch (error) {
-            console.error(error);
-          }
-        }
-      }
+  const defaultValues = {
+    password: "",
+    email: "",
+  };
 
-    return(
-        <div
-      className={`d-flex flex-column justify-content-center align-items-center mb20 ${styles.appContainer}`}
-    >
-      <form className="d-flex align-items-center flex-column card p20 mb20">
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitted },
+  } = useForm({
+    defaultValues,
+    mode: "onChange",
+    resolver: yupResolver(yupSchema),
+  });
+
+  async function submit(values) {
+    setFeedBack("");
+    console.log(values);
+    const response = await fetch("http://localhost:8003/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+    if (response.ok) {
+      const newUser = await response.json();
+      console.log("newUser", newUser);
+      if (newUser.message) {
+        setFeedBack(newUser.message)
+      } 
+      else {
+        setFeedBackGood("Connexion réussi ! vous allez être rediriger")
+        reset(defaultValues);
+        console.log("User recuperer", newUser);
+        console.log("ID de l'utilisateur connecté :", newUser.idUsers);
+        console.log("profile_image recuperer :", newUser.profile_image );
+        reset(defaultValues);
+        setTimeout(() => {
+          // toggleRegister()
+          getUser(newUser)
+          navigate("/profileGestion")
+        }, 3000)
+      };
+    }};
+
+  return (
+    <div className={`flex-fill d-flex flex-column justify-content-center align-items-center ${styles.appContainer}`}>
+      <form onSubmit={handleSubmit(submit)} className="d-flex align-items-center flex-column card p20 mb20">
       <NavLink to="/" ><img src={logo} alt="" className={`${styles.logo}`} /></NavLink> 
-        <input
-          className="p10"
-          type="email"
-          value={user.email}
-          placeholder="Email"
-          id="email"
-          onInput={handleInputEmail}
-        />
-        <input
-          className="p10"
-          type="password"
-          value={user.password}
-          placeholder="Mot de passe"
-          id="password"
-          onInput={handleInputPassword}
-        />
+        <div className="d-flex flex-column mb10">
+          <label  htmlFor="email" className="mb10 ml20">
+            Email
+          </label>
+          <input className="p10" placeholder="Votre email" type="email" id="email" {...register("email")} />
+          {errors?.email && (
+            <p className={`${styles.feedback}`}>{errors.email.message}</p>
+          )}
+        </div>
+        <div className="d-flex flex-column mb10">
+          <label htmlFor="password" className="mb10 ml20">
+            Password
+          </label>
+          <input className="p10" placeholder="Mot de passe" type="password" id="password" {...register("password")} />
+          {errors?.password && (
+            <p className={`${styles.feedback}`}>{errors.password.message}</p>
+          )}
+        </div>
         {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}
         {feedbackGood && (
           <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
         )}
-        <div className="d-flex justify-content-center align-items-center mt20">
-          <button onClick={handleClick}  className={`btn btn-primary ${styles.button}`}>
-            Valider
-          </button>
-        </div>
+        <button className={`btn btn-primary ${styles.button}`}  disabled={isSubmitted}>
+          Submit
+        </button>
       </form>
     </div>
   );
-    
 }
+
+

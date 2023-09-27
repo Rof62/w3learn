@@ -2,8 +2,9 @@
 
 .appContainer {
     min-height: 80vh;
-    width: 80%;
-    margin: 0 auto;
+    // width: 80vw;
+    // margin: 0 auto;
+    // height: 100vh;
   }
   
   .feedback {
@@ -21,17 +22,26 @@
   .logo{
     width: 50px;
     height: 25px;
+    margin-bottom: 20px;
   }
   
   input {
-    width: 500px;
+    width: 35vw;
     height: 40px;
     border-radius: 20px;
     margin: 10px;
+  }
+
+  .card {
+    border-radius: 20px;
+    background-color: var(--light-grey);
+    // margin-bottom: 100px;
+    width: 50%;
   }
 
   @include mixin.md-lt{
     .button{
         display: block;
     }
+   
   }

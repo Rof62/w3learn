@@ -1,5 +1,5 @@
 .footer{
-    height: 200px;
+   //  height: 200px;
     background-color: var(--light-grey);
     position: relative;
     border-top-left-radius: 50px;
@@ -32,4 +32,12 @@
        left: 5%;
        top: 12%;
     
+}
+
+.mention{
+   padding: 2%;
+   
+   p{
+      font-size: 16px;
+   }
 }

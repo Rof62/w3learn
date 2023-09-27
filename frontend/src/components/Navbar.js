@@ -5,7 +5,7 @@ import MobileMenu from "./MobileMenu";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Navbar({ logged, deconnexion, user}) {
+export default function Navbar({ deconnexion, user}) {
     const [showMenu, setShowMenu] = useState(false)
 
     const closeMenu = () => {
@@ -25,7 +25,7 @@ export default function Navbar({ logged, deconnexion, user}) {
                 <li><NavLink to="/blog" className={`${styles.none}`}>BLOG</NavLink></li>
             </ul>
             <div>
-                { logged ? (
+                { user ? (
                     <>
                     <NavLink to="/profileGestion" ><img src={logo2} alt="" className={`${styles.logo2}`} /></NavLink> 
                     <button onClick={deconnexion} className=" btn btn-primary-reverse m5"><NavLink to="/" className={`${styles.button}`}>Deconnexion</NavLink></button>

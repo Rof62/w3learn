@@ -1,6 +1,6 @@
 // import { Routes, Route } from 'react-router-dom';
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -21,36 +21,59 @@ function App() {
   const [logged, setLogged] = useState(false);
   const [user, setUser] = useState("");
   const [userlist, setUserlist] = useState([]);
-  const [userObject, setUserObject] = useState()
   
+  
+  useEffect(() => {
+    // Ici, vous pouvez effectuer une requête au serveur pour récupérer la liste des utilisateurs
+    // Par exemple, en utilisant fetch() ou axios()
+  
+    // Exemple de récupération de données fictives (à remplacer par votre code réel)
+    const fetchUserList = async () => {
+      try {
+        const response = await fetch("http://localhost:8003/api/users/getUserList");
+        if (response.ok) {
+          const users = await response.json();
+          setUserlist(users); // Mettez à jour userlist avec les données récupérées
+        } else {
+          console.error("Échec de la récupération des données des utilisateurs.");
+        }
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données des utilisateurs :", error);
+      }
+    };
+  
+    // Appelez la fonction pour récupérer la liste des utilisateurs
+    fetchUserList();
+  }, [user]);
 
-  console.log("test2" + userObject);
-
-  function updateUser(newUsername) {
-    setUserlist(
-      userlist.map((user) => (user.id === newUsername.id ? newUsername : user))
-    );
-  }
+ 
+  
+console.log(user);
+  // function updateUser(newUsername, newEmail, newPassword) {
+  //   setUserlist(
+  //     userlist.map((user) => (user.idUsers === newUsername.idUsers ? newUsername : user)) ||  
+  //     userlist.map((user) => (user.idUsers === newEmail.idUsers ? newEmail : user)) 
+  //     // userlist.map((user) => (user.idUsers === newPassword.idUsers ? newPassword : user))  
+  //   ); 
+  // }
+  // function updateUser2( newPassword) {
+  //   setUserlist(
+  //     userlist.map((user) => (user.idUsers === newPassword.idUsers ? newPassword : user))   
+        
+  //   ); 
+  // }
+  console.log(userlist) ;
 
   function deleteUser(deletedUser) {
     setUserlist(userlist.filter((user) => user.id !== deletedUser.id));
   }
-
- 
-
-  function toggleRegister() { 
-    setLogged(true);
-    
-  }
-
- 
 
   function deconnexion() {
     setLogged(false)
     setUser(null)
   }
 
-  function getIdUser(userLogged) {
+  function getUser(userLogged) {
     setUser(userLogged);
   }
 
@@ -59,7 +82,7 @@ function App() {
   return (
     <>
     <Router >
-      <Navbar  logged={logged} deconnexion={deconnexion} toggleRegister={toggleRegister} user={user}/>
+      <Navbar   deconnexion={deconnexion}  user={user}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blockchain" element={<Blockchain />} />
@@ -68,8 +91,8 @@ function App() {
         <Route path="/metaverse" element={<Metaverse />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/inscription" element={<Inscription  />} />         
-        <Route path="/connexion" element={<Connexion getIdUser={getIdUser} toggleRegister={toggleRegister} setUserObject={setUserObject} userObject={userObject}/>} />         
-        <Route path="/profileGestion" element={<ProfileGestion updateUser={updateUser} deleteUser={deleteUser}  user={user}/>} />  
+        <Route path="/connexion" element={<Connexion getUser={getUser}  />} />         
+        <Route path="/profileGestion" element={<ProfileGestion  user={user} userlist={userlist}/>} />  
       </Routes>
       <Footer />
     </Router> 

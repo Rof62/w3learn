@@ -1,6 +1,7 @@
 @use "./mixin" as mixin;
 
 .projet{
+    // margin-top: 20px;
     p{
         margin-left: 5px;
     }
@@ -8,7 +9,7 @@
         color: white;
     }
     border-radius: 20px;
-    height: 530px;
+    height: 460px;
     cursor: pointer;
     .imgContainer{
         overflow: hidden;
@@ -25,17 +26,39 @@
             }
         }
         @include mixin.xs {
-            grid-template-columns: 1fr;
-            grid-auto-columns: 1fr;
-            height: 350px;
+            // grid-template-columns: 40%;
+            // grid-auto-columns: 40%;
+            height: 250px;
+            
+        }
+        @include mixin.md-lt{
+            height: 200px;
+        }
+        @include mixin.sm{
+            height: 250px;
         }
     }
+   
+    
     .title{
         // height: 50px;
         border : 1px solid var(--gray-2);
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
-        
+        p{
+            font-size: 14px;
+        }
+        h3{
+            font-size: 16px;
+        }
+        @include mixin.xs{
+                p{
+                    font-size: 10px;
+                }
+                h3{
+                    font-size: 14px;
+                }
+        }
     }
     .text-error{
         color: var(--error);

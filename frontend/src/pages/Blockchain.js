@@ -1,6 +1,10 @@
 import styles from "../sass/container.module.scss"
 import anime1 from "../img/anime.blockchain1.gif"
 import anime2 from "../img/anime.blockchain2.gif"
+import anime3 from "../img/anime.blockchain3.gif"
+import anime4 from "../img/anime.blockchain4.gif"
+import anime5 from "../img/anime.blockchain5.gif"
+
 
 export default function blockchain() {
     return(
@@ -25,7 +29,7 @@ export default function blockchain() {
                     <h2>Principes de Base de la Technologie</h2>
                     <div className="container2">
                         <div className="d-flex justify-content-around align-items-center">
-                        <img style={{ width: "150px", height: "150px"}} src={anime1} alt="GIF animé" />
+                        <img style={{ width: "150px", height: "150px"}} src={anime3} alt="GIF animé" />
                             <p>
                                 <span>La blockchain tire son nom <br /> de sa structure fondamentale :</span>
                                 <br /><br />
@@ -47,13 +51,13 @@ export default function blockchain() {
                                 des blocs à la chaîne. Ce processus garantit que tous les participants conviennent de l'ordre et
                                 de la validité des transactions.
                             </p>
-                            <img style={{ width: "150px", height: "150px"}} src={anime1} alt="GIF animé" />
+                            <img style={{ width: "150px", height: "150px"}} src={anime4} alt="GIF animé" />
                         </div>
                     </div>
                 </div>
                 <div className={`${styles.container}`}>
                     <h2>Applications et Avantages de la Technologie</h2>
-                    <div className="size  ">
+                    <div className="size d-flex justify-content-around align-items-center container2 ">
                         <p> 
                             <span>Le potentiel :</span>
                             <br /><br />
@@ -65,10 +69,11 @@ export default function blockchain() {
                             Les systèmes de vote électronique basés sur la blockchain peuvent améliorer la sécurité et
                             la fiabilité des élections en évitant la fraude.
                         </p>
+                        <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
                         </div>
                         <br />
                         <div className=" d-flex justify-content-around align-items-center container2">
-                        <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
+                        <img style={{ width: "150px", height: "150px"}} src={anime5} alt="GIF animé" />
                         <p> 
                             <span>Les avantages :</span>
                             <br /><br />

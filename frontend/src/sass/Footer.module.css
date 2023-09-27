@@ -1,5 +1,4 @@
 .footer {
-  height: 200px;
   background-color: var(--light-grey);
   position: relative;
   border-top-left-radius: 50px;
@@ -27,4 +26,11 @@
   z-index: 1;
   left: 5%;
   top: 12%;
+}
+
+.mention {
+  padding: 2%;
+}
+.mention p {
+  font-size: 16px;
 }/*# sourceMappingURL=Footer.module.css.map */
