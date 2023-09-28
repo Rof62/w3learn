@@ -5,6 +5,9 @@
   border-top-right-radius: 50px;
   margin: auto;
 }
+.footer p {
+  margin-top: 200px;
+}
 .footer:before {
   content: "";
   position: absolute;
@@ -33,4 +36,158 @@
 }
 .mention p {
   font-size: 16px;
+}
+
+.li {
+  color: white;
+  font-size: 18px;
+  font-weight: 200;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s opacity;
+}
+.li:hover {
+  transition: 0.2s opacity;
+  opacity: 0.8;
+  color: var(--gray-2);
+}
+
+.ul li {
+  position: absolute;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+.ul li:nth-child(1) {
+  top: 15%;
+  left: 82%;
+  font-weight: 600;
+  font-size: 20px;
+}
+.ul li:nth-child(3) {
+  top: 30%;
+  left: 82%;
+}
+.ul li:nth-child(4) {
+  top: 40%;
+  left: 82%;
+}
+.ul li:nth-child(5) {
+  top: 50%;
+  left: 82%;
+}
+.ul li:nth-child(6) {
+  top: 60%;
+  left: 82%;
+}
+
+@media (max-width: 1400px) {
+  .ul li:nth-child(1) {
+    top: 15%;
+    left: 78%;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  .ul li:nth-child(3) {
+    top: 30%;
+    left: 78%;
+  }
+  .ul li:nth-child(4) {
+    top: 40%;
+    left: 78%;
+  }
+  .ul li:nth-child(5) {
+    top: 50%;
+    left: 78%;
+  }
+  .ul li:nth-child(6) {
+    top: 60%;
+    left: 78%;
+  }
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+  .ul li:nth-child(1) {
+    top: 15%;
+    left: 73%;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .ul li:nth-child(3) {
+    top: 30%;
+    left: 73%;
+  }
+  .ul li:nth-child(4) {
+    top: 40%;
+    left: 73%;
+  }
+  .ul li:nth-child(5) {
+    top: 50%;
+    left: 73%;
+  }
+  .ul li:nth-child(6) {
+    top: 60%;
+    left: 73%;
+  }
+}
+@media (max-width: 997px) {
+  .li {
+    font-size: 14px;
+    font-weight: 100;
+  }
+  .ul li {
+    font-size: 14px;
+  }
+  .ul li:nth-child(1) {
+    top: 15%;
+    left: 70%;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .ul li:nth-child(3) {
+    top: 30%;
+    left: 70%;
+  }
+  .ul li:nth-child(4) {
+    top: 40%;
+    left: 70%;
+  }
+  .ul li:nth-child(5) {
+    top: 50%;
+    left: 70%;
+  }
+  .ul li:nth-child(6) {
+    top: 60%;
+    left: 70%;
+  }
+}
+@media (min-width: 577px) and (max-width: 768px) {
+  .li {
+    font-size: 14px;
+    font-weight: 100;
+  }
+  .ul li {
+    font-size: 14px;
+  }
+  .ul li:nth-child(1) {
+    top: 15%;
+    left: 65%;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .ul li:nth-child(3) {
+    top: 30%;
+    left: 65%;
+  }
+  .ul li:nth-child(4) {
+    top: 40%;
+    left: 65%;
+  }
+  .ul li:nth-child(5) {
+    top: 50%;
+    left: 65%;
+  }
+  .ul li:nth-child(6) {
+    top: 60%;
+    left: 65%;
+  }
 }/*# sourceMappingURL=Footer.module.css.map */

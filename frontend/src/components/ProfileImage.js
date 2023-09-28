@@ -27,6 +27,7 @@ function ProfileImage({user}) {
     // Nettoyer l'URL de l'image lorsque le composant est démonté
     return () => {
       if (profileImage) {
+        console.log(profileImage);
         URL.revokeObjectURL(profileImage);
       }
     };

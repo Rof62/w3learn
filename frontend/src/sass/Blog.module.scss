@@ -6,15 +6,15 @@
     display: grid;
     place-content: center;
     grid-template-columns: repeat(3, 30%);
-    grid-auto-columns: repeat(3, 30%px);
+    grid-auto-columns: repeat(3, 30%);
     gap:20px ;
     @include mixin.lg-lt {
         grid-template-columns: repeat(2, 35%);
         grid-auto-columns: repeat(2, 35%);
     }
-    @include mixin.md-lt {
-        grid-template-columns: repeat(2, 35%);
-        grid-auto-columns: repeat(2, 35%);
+    @include mixin.md {
+        grid-template-columns: repeat(2, 45%);
+        grid-auto-columns: repeat(2, 45%);
        
     }
     @include mixin.xs {
@@ -28,7 +28,7 @@
     }
     @include mixin.lg{
         grid-template-columns: repeat(2, 35%);
-        grid-auto-columns: repeat(2, 45%);
+        grid-auto-columns: repeat(2, 35%);
     }
 }
 .item{
@@ -71,7 +71,7 @@
     &:hover {
       transition: 0.2s opacity;
       opacity: 0.8;
-      color: var(--gray-2);
+      
     }
 }
 

@@ -12,7 +12,11 @@ import NFT from './pages/NFT';
 import Inscription from "./pages/Inscription";
 import Connexion from "./pages/Connexion";
 import Footer from "./components/Footer";
-import ProfileGestion from "./pages/ProfileGestion"
+import ProfileGestion from "./pages/ProfileGestion";
+import Termes from "./pages/Conditions d'utilisations/Termes";
+import Confidentialite from "./pages/Conditions d'utilisations/Confidentialite";
+import Cookies from "./pages/Conditions d'utilisations/Cookies";
+import Dementi from "./pages/Conditions d'utilisations/Dementi";
 import './sass/App.scss';
 
 
@@ -24,10 +28,7 @@ function App() {
   
   
   useEffect(() => {
-    // Ici, vous pouvez effectuer une requête au serveur pour récupérer la liste des utilisateurs
-    // Par exemple, en utilisant fetch() ou axios()
-  
-    // Exemple de récupération de données fictives (à remplacer par votre code réel)
+    
     const fetchUserList = async () => {
       try {
         const response = await fetch("http://localhost:8003/api/users/getUserList");
@@ -93,6 +94,10 @@ console.log(user);
         <Route path="/inscription" element={<Inscription  />} />         
         <Route path="/connexion" element={<Connexion getUser={getUser}  />} />         
         <Route path="/profileGestion" element={<ProfileGestion  user={user} userlist={userlist}/>} />  
+        <Route path="/termes" element={<Termes />} />  
+        <Route path="/confidentialite" element={<Confidentialite />} />  
+        <Route path="/cookies" element={<Cookies />} />  
+        <Route path="/dementi" element={<Dementi />} />  
       </Routes>
       <Footer />
     </Router> 

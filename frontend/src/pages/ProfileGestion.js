@@ -1,8 +1,9 @@
 import { useState } from "react";
 // import ImageUploadForm from '../components/ImageUploadForm';
 import ProfileImage from "../components/ProfileImage";
+import AddProjet from "../components/AddProjet";
 
-export default function ProfileGestion({ user, updateUser, updateUser2} ) {
+export default function ProfileGestion({ user }) {
 
     console.log(user);
     
@@ -34,15 +35,19 @@ export default function ProfileGestion({ user, updateUser, updateUser2} ) {
     const [password, setPassword] = useState(user.password);
 
     const modifyName = async (newUsername) => {
+      console.log({newUsername});
       try {
+      console.log("TEST STOP PROPAGATION");
+
         const response = await fetch("http://localhost:8003/api/gestionProfile/updateUsername", {
           method: "PATCH",
-          body: JSON.stringify({ idUsers: user.idUsers, username: newUsername }),
+          body: JSON.stringify( newUsername ),
           headers: { "Content-Type": "application/json" },
         });
         if (response.ok) {
-          const updatedUser = await response.json();
-          // updateUser(updatedUser);
+          const newUser = await response.json()
+          console.log("username", newUser);
+          setUsername(newUser.username)
         }
       } catch (error) {
         console.error(error);
@@ -53,33 +58,19 @@ export default function ProfileGestion({ user, updateUser, updateUser2} ) {
       try {
         const response = await fetch("http://localhost:8003/api/gestionProfile/updateEmail", {
           method: "PATCH",
-          body: JSON.stringify({ idUsers: user.idUsers, email: newEmail }),
+          body: JSON.stringify(newEmail),
           headers: { "Content-Type": "application/json" },
         });
         if (response.ok) {
-          const updatedUser = await response.json();
-          // updateUser(updatedUser.user);
+          const newUser = await response.json()
+          console.log("email", newUser);
+          setEmail(newUser.email)
         }
       } catch (error) {
         console.error(error);
       }
     }
-    // async function modifyPassword(newPassword) {
-    //   try {
-    //     const response = await fetch("http://localhost:8003/updatePassword", {
-    //       method: "PATCH",
-    //       body: JSON.stringify({ idUsers: user.idUsers, password: newPassword }),
-    //       headers: { "Content-Type": "application/json" },
-    //     });
-    //     if (response.ok) {
-    //       const updatedUser = await response.json();
-    //       // updateUser2(updatedUser.user);
-    //     }
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // }
-  
+ 
     async function modifyPassword(newPassword) {
       try {
         const response = await fetch("http://localhost:8003/api/gestionProfile/updatePassword", {
@@ -93,6 +84,7 @@ export default function ProfileGestion({ user, updateUser, updateUser2} ) {
             // Mise à jour réussie
             console.log("Mot de passe mis à jour avec succès !");
             // Vous pouvez mettre à jour l'état local de l'utilisateur ici si nécessaire
+            setPassword(user.password)
           } else {
             console.error("La mise à jour du mot de passe a échoué :", result.message);
           }
@@ -176,16 +168,16 @@ export default function ProfileGestion({ user, updateUser, updateUser2} ) {
         <div className="d-flex align-items-center flex-column  mb20 mt20">
             <h1>Gestion de profile</h1>
             <div className="cards">
-              <div className="d-flex flex-column justify-content-center align-items-center">
+              <div className="d-flex flex-column justify-content-center align-items-center mt20">
                 <h3>Bienvenue {user.username} </h3>
                 <>
-                <ProfileImage user={user}/>
+                <ProfileImage className="mt20" user={user}/>
                 </>
                 
               </div>
-              <div className="gestion2">
-              <div className="d-flex justify-content-center align-items-center gestion">
-                <p className="">Votre password :</p>
+              <div className="gestion2 ">
+              <div className="d-flex justify-content-between align-items-center gestion">
+                <p className="ml20">Votre password :</p>
                 <input
                     type="password"
                     onChange={handleChange3}
@@ -195,27 +187,27 @@ export default function ProfileGestion({ user, updateUser, updateUser2} ) {
                     
                 />
                 
-                <button onClick={handleClick3} className="btn btn-primary">
+                <button onClick={handleClick3} className="btn btn-primary mr20">
                     Modifier
                 </button>
               </div> 
-              <div className="d-flex justify-content-center align-items-center gestion">
-                <p className="">Votre pseudo :</p>
+              <div className="d-flex justify-content-between align-items-center gestion">
+                <p className="ml20">Votre pseudo :</p>
                 <input
                     type="name"
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
-                    value={username}
+                    // value={username}
                     className="p10"
                     
                 />
                 
-                <button onClick={handleClick} className="btn btn-primary">
+                <button onClick={handleClick} className="btn btn-primary mr20">
                     Modifier
                 </button>
               </div> 
-              <div className="d-flex justify-content-center align-items-center gestion">
-                <p className="">Votre email :</p>
+              <div className="d-flex justify-content-between align-items-center gestion">
+                <p className="ml20">Votre email :</p>
                 <input
                     type="email"
                     onChange={handleChange2}
@@ -225,13 +217,16 @@ export default function ProfileGestion({ user, updateUser, updateUser2} ) {
                     
                 />
                 
-                <button onClick={handleClick2} className="btn btn-primary">
+                <button onClick={handleClick2} className="btn btn-primary mr20">
                     Modifier
                 </button>
                 </div>
               </div> 
-              
+              <>
+            <AddProjet />
+            </> 
             </div>
+            
         </div>
     )
 }

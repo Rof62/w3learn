@@ -3,22 +3,22 @@
   display: grid;
   place-content: center;
   grid-template-columns: repeat(3, 30%);
-  grid-auto-columns: repeat(3, 30% px);
+  grid-auto-columns: repeat(3, 30%);
   gap: 20px;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .grid {
     grid-template-columns: repeat(2, 35%);
     grid-auto-columns: repeat(2, 35%);
   }
 }
-@media (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 992px) {
   .grid {
-    grid-template-columns: repeat(2, 35%);
-    grid-auto-columns: repeat(2, 35%);
+    grid-template-columns: repeat(2, 45%);
+    grid-auto-columns: repeat(2, 45%);
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 647px) {
   .grid {
     grid-template-columns: 65%;
     grid-auto-columns: 25%;
@@ -33,7 +33,7 @@
 @media (min-width: 993px) and (max-width: 1200px) {
   .grid {
     grid-template-columns: repeat(2, 35%);
-    grid-auto-columns: repeat(2, 45%);
+    grid-auto-columns: repeat(2, 35%);
   }
 }
 
@@ -73,10 +73,9 @@
 .li:hover {
   transition: 0.2s opacity;
   opacity: 0.8;
-  color: var(--gray-2);
 }
 
-@media (max-width: 992px) {
+@media (max-width: 997px) {
   .card {
     width: 80%;
     margin: 0 auto;

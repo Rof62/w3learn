@@ -49,7 +49,7 @@ h2 {
   text-shadow: 0 0 10px #00DDEB, 0 0 20px #00DDEB, 0 0 30px #00DDEB;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 997px) {
   h1 {
     font-size: 25px;
   }

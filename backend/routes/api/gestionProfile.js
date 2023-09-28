@@ -1,12 +1,15 @@
 const router = require("express").Router();
 
+
 const connection = require("../../database");
 
 router.patch("/updateUsername", (req, res) => {
+  console.log("username", req.body);
+
     const { username, idUsers } = req.body;
   
     // Utilisation de paramètres de requête
-    const updateSql = `UPDATE users SET username = ? WHERE idUsers =${idUsers}`;
+    const updateSql = `UPDATE users SET username = ? WHERE idUsers =?`;
   
     connection.query(updateSql, [username, idUsers], (err, result) => {
       if (err) {
@@ -30,10 +33,11 @@ router.patch("/updateUsername", (req, res) => {
   });
   
   router.patch("/updateEmail", (req, res) => {
+    console.log("email", req.body);
     const { email, idUsers } = req.body;
   
     // Utilisation de paramètres de requête
-    const updateSql = `UPDATE users SET email = ? WHERE idUsers =${idUsers}`;
+    const updateSql = `UPDATE users SET email = ? WHERE idUsers =?`;
   
     connection.query(updateSql, [email, idUsers], (err, result) => {
       if (err) {

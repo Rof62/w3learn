@@ -11,14 +11,20 @@ export default function Footer() {
                     <NavLink to="/home" ><img src={logo} alt="" className={`${styles.logo}`} /></NavLink> 
                 </div>
                 <div>
-                    <h4>Mention légal</h4>
-                    <p>Terme et Conditions</p>
-                    <p>Politique de confidentialité</p>
-                    <p>Politique en matière de cookies</p>
-                    <p>Démenti</p>
+                    
+                    <div className={`${styles.ul}`}>
+                    <ul >
+                    <li>Mention légal</li>
+                    <br />
+                    <li><NavLink className={`${styles.li}`} to="/termes" >Termes et Conditions</NavLink></li>
+                    <li><NavLink className={`${styles.li}`} to="/confidentialite" >Politique de confidentialité</NavLink></li>
+                    <li><NavLink className={`${styles.li}`} to="/cookies" >Politique en matière de cookies</NavLink></li>
+                    <li><NavLink className={`${styles.li}`} to="/dementi" >Démenti</NavLink></li>
+                    </ul>
+                    </div>
                 </div>
             </div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center ">
                 <p>© 2023 We Learn.  Tous droits réservés.</p>
             </div>
 

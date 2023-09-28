@@ -14,17 +14,20 @@
   left: 95%;
 }
 .menuContainer li {
+  text-align: center;
+  width: 20%;
   display: block;
   padding: 10px 15px;
   margin: 30px;
   cursor: pointer;
   border-radius: 20px;
-  transition: background-color 0.2s color 0.2s;
-}
-.menuContainer li:hover {
+  transition: 0.2s opacity;
   background: white;
   color: var(--primary);
   border: 2px solid var(--primary);
+}
+.menuContainer li:hover {
+  transition: 0.2s opacity;
 }
 
 .burger {
