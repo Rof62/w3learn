@@ -17,17 +17,11 @@
 }
 .container span {
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  width: 70%;
   border-radius: 50px;
-  color: #05062D;
+  color: white;
   font-style: oblique;
   font-weight: 800;
-  text-decoration-thickness: 2px;
-  text-decoration-style: solid;
-  background: linear-gradient(to right, #AF40FF, #5B42F3, #00DDEB);
 }
 .container:before {
   content: "";
@@ -56,6 +50,11 @@
 }
 
 @media (max-width: 997px) {
+  .container span {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
   p {
     font-size: 14px;
   }
@@ -66,14 +65,10 @@
     gap: 20px;
   }
   .container1Mobile h2 {
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 10px;
   }
   .container1Mobile p {
     font-size: 16px;
-    width: 80%;
-  }
-  .container1Mobile br {
-    display: none;
   }
 }/*# sourceMappingURL=container.module.css.map */

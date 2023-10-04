@@ -16,7 +16,7 @@ export default function Home() {
             <h1>WEB 3</h1>
                 <div className={`${styles.container}`}>
                     
-                        <div className="d-flex justify-content-around align-items-center container1Mobile">
+                        <div className="d-flex justify-content-around align-items-center container1Mobile container2Mobile mb20">
                         <h2> Qu'est-ce que <br /><br /> le Web 3.0 ?</h2>
                             <p>Le Web 3.0, également appelé "Web sémantique", est la prochaine évolution du World Wide
                                Web qui vise à transformer l'expérience en ligne en utilisant des technologies avancées 
@@ -32,10 +32,21 @@ export default function Home() {
         <div className={`${styles.container}`}>
             <h2>Les caractéristiques clés</h2>
             <br /><br />
-            <div >
-                <div className="d-flex">
-                    <div className="d-flex flex-column container2 align-items-center ">
-                    <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
+            <div  className="">
+            <div className="d-flex align-items-center justify-content-around container3 container1Mobile">
+                <img style={{ width: "150px", height: "150px"}} src={anime4} alt="GIF animé" />
+                    <p>
+                    <span className=""> Identité numérique souveraine :</span>
+                        <br /><br />
+                        Avec le Web 3.0, les utilisateurs ont un contrôle total sur leurs données personnelles. Ils peuvent créer leur
+                        identité numérique souveraine, stockée de manière sécurisée sur la blockchain, et décider avec qui ils souhaitent
+                        partager certaines informations. Cela améliore considérablement la confidentialité et la sécurité en ligne.
+                    </p>     
+                </div>
+                <div className="d-flex margin-top container1Mobile ">
+                    <div className="custom"></div>
+                    <div className="d-flex flex-column container2 align-items-center text-align ">
+                    
                     <p>
                        <span> Blockchain et <br /> contrats intelligents :</span>
                         <br /><br />
@@ -45,8 +56,10 @@ export default function Home() {
                         de données fiables et sécurisés entre les utilisateurs.
                         <br /><br />   
                     </p>
+                    <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" className="d-flex align-item-center justify-content-center"/>
                     </div>
-                    <div className="d-flex flex-column container2 align-items-center">
+                    <div className="custom"></div>
+                    <div className="d-flex flex-column container2 align-items-center text-align mt20 mb10">
                     <p>
                         <span>Interopérabilité :</span>
                         <br /><br />
@@ -59,25 +72,16 @@ export default function Home() {
                     <img style={{ width: "150px", height: "150px"}} src={anime5} alt="GIF animé" />
                     </div>
                 </div>
-                <div className="d-flex align-items-center justify-content-around container2">
-                <img style={{ width: "150px", height: "150px"}} src={anime4} alt="GIF animé" />
-                    <p>
-                    <span> Identité numérique souveraine :</span>
-                        <br /><br />
-                        Avec le Web 3.0, les utilisateurs ont un contrôle total sur leurs données personnelles. Ils peuvent créer leur
-                        identité numérique souveraine, stockée de manière sécurisée sur la blockchain, et décider avec qui ils souhaitent
-                        partager certaines informations. Cela améliore considérablement la confidentialité et la sécurité en ligne.
-                    </p>     
-                </div>
+                
             </div>
         </div>
         <div className={`${styles.container}`}>
             <h2>Les cas d'utilisations</h2>
             <br /><br />
-            <div className=" "> 
-                <div className="d-flex container2 align-items-center">
+            <div className=""> 
+                <div className="d-flex justify-content-around align-items-center container3 container1Mobile mb20">
                     <p>
-                        <span>  Finance décentralisée (DeFi) :</span>
+                        <span>  Finance décentralisée ( DEFI ) :</span>
                             <br /><br />
                                 Le Web 3.0 a donné naissance à la DeFi, un écosystème financier décentralisé qui offre des services financiers
                                 traditionnels sans l'intervention d'intermédiaires. Les utilisateurs peuvent participer à des prêts, des emprunts, 
@@ -87,8 +91,9 @@ export default function Home() {
                     </p>
                     <img style={{ width: "150px", height: "150px"}} src={anime3} alt="GIF animé" />
                 </div>
-                <div className=" d-flex flex-column container3 container2 ">
-                    <div className="d-flex justify-content-around align-items-center ">
+                <div className=" d-flex flex-column  mb20 ">
+                <div className="custom "></div>
+                    <div className="d-flex justify-content-around align-items-center container3 container3Mobile ">
                 <img style={{ width: "150px", height: "150px"}} src={anime6} alt="GIF animé" />
                     <p>
                         <span>  Jeux et propriété <br /> d'actifs numériques :</span>
@@ -97,9 +102,10 @@ export default function Home() {
                                 numériques grâce aux NFT (jetons non fongibles). Ces NFT permettent aux joueurs de posséder et d'échanger des objets
                                 de jeu uniques, créant ainsi un marché d'actifs numériques prospère.
                     </p>
-                    </div>           
-                            <br /><br />
-                    <div className="d-flex justify-content-around align-items-center">      
+                    </div> 
+                    <br />          
+                    <div className="custom"></div>
+                    <div className="d-flex justify-content-around align-items-center container3 container1Mobile">      
                         <p>
                             <span>  Réseaux sociaux décentralisés :</span>
                                 <br /><br />
@@ -111,8 +117,9 @@ export default function Home() {
                     </div>  
                 </div>
             </div>
-            <div className=" d-flex resume size">
-                <p>
+            <div className="custom "></div>
+            <div className=" d-flex resume size container3 mb20">
+                <p className="">
                 En résumé, le Web 3.0 représente une nouvelle ère d'Internet qui met    l'accent sur la décentralisation, la sécurité 
                 des données et l'autonomie des utilisateurs. Avec l'utilisation de la blockchain, des contrats intelligents et d'autres
                 technologies émergentes, le Web 3.0 offre un potentiel énorme pour transformer de nombreux secteurs et façons 

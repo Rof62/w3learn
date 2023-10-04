@@ -17,19 +17,19 @@
         grid-auto-columns: repeat(2, 45%);
        
     }
-    @include mixin.xs {
-        grid-template-columns:  65%;
-        grid-auto-columns:  25%;
-        
-    }
-    @include mixin.sm{
+    @include mixin.sm-lt{
         grid-template-columns: repeat(2, 45%);
         grid-auto-columns: repeat(2, 45%);
     }
-    @include mixin.lg{
-        grid-template-columns: repeat(2, 35%);
-        grid-auto-columns: repeat(2, 35%);
+    @include mixin.xs {
+        grid-template-columns:  80%;
+        grid-auto-columns:  100%;
+        
     }
+    // @include mixin.lg{
+    //     grid-template-columns: repeat(2, 35%);
+    //     grid-auto-columns: repeat(2, 35%);
+    // }
 }
 .item{
     // height: 500px;
@@ -79,5 +79,11 @@
 .card{
     width: 80%;
     margin: 0 auto;
+}
+.search{
+    height: 50px;
+    input{
+        height: 20px;
+    }
 }
 }

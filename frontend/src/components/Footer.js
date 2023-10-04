@@ -8,7 +8,7 @@ export default function Footer() {
         <div className={`${styles.footer}`}>
             <div className={`d-flex justify-content-between ${styles.mention}`}>
                 <div>
-                    <NavLink to="/home" ><img src={logo} alt="" className={`${styles.logo}`} /></NavLink> 
+                    <NavLink to="/" ><img src={logo} alt="" className={`${styles.logo}`} /></NavLink> 
                 </div>
                 <div>
                     

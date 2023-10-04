@@ -1,10 +1,18 @@
 import styles from "../sass/Register.module.scss";
-import {  useForm } from "react-hook-form";
+import React, { useState } from 'react';
+import {  useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 
-export default function AddProjet() {
-    
+
+export default function AddProjet({user}) {
+
+  const [feedback, setFeedBack] = useState("");
+  const [feedbackGood, setFeedBackGood] = useState("");
+
+  const navigate = useNavigate()
+  
     const yupSchema = yup.object({
         name: yup
           .string()
@@ -24,6 +32,8 @@ export default function AddProjet() {
           .required("Le champ est obligatoire"),
         
       });
+
+      
 
   
 
@@ -50,62 +60,106 @@ const defaultValues = {
   });
 
   async function submit(values) {
-    // setFeedBack("");
-    // console.log(values);
-    // const response = await fetch("http://localhost:8003/api/users/addUser", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(values),
-    // });
-    // if (response.ok) {
-    //   const newUser = await response.json();
-    //   console.log("newUser", newUser);
-    //   if (newUser.message) {
-    //     setFeedBack(newUser.message)
-    //   } else {
-    //     setFeedBackGood(newUser.messageGood)
-    //     reset(defaultValues);
-    //     setTimeout(() => {
-          
-    //       navigate("/connexion")
-    //     }, 3000)
-    //   }
-    // } 
+    setFeedBack("");
+    try {
+
+      if (!values.name || !values.year || !values.description || !values.link || !values.image) {
+        setFeedBack("Veuillez remplir tous les champs.");
+        return;
+      }
+
+      const imageBlob = await convertImageToBlob(values.image[0]);
+
+      const formData = new FormData();
+      formData.append("name", values.name);
+      formData.append("year", values.year);
+      formData.append("description", values.description);
+      formData.append("link", values.link);
+      formData.append("image", imageBlob);
+      formData.append("idUsers", user.idUsers);
+      
+
+      const response = await fetch("http://localhost:8003/api/profileImage/addProjet", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        if (result.message) {  
+          setFeedBackGood(result.messageGood);
+          setTimeout(() => { 
+            reset(defaultValues);
+            navigate("/ProfileGestion")
+          }, 1500)
+        } 
+      } else {
+        setFeedBack("Une erreur s'est produite lors de l'envoi du formulaire.");
+      }
+    } catch (error) {
+      console.error("Erreur lors de l'envoi du formulaire :", error);
+      setFeedBack("Une erreur s'est produite lors de l'envoi du formulaire.");
+    }
   }
 
+  // Fonction pour convertir l'image en Blob
+  const convertImageToBlob = (imageFile) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        resolve(event.target.result);
+      };
+      reader.onerror = (error) => {
+        reject(error);
+      };
+      reader.readAsDataURL(imageFile);
+    });
+  };
+
+
   return(
-    <div className="">
-        <div className="d-flex justify-content-center mt20">
-            <h2>Ajouter un projet pour contribuer au Blog</h2>
-        </div>
-        <form onSubmit={handleSubmit(submit)} className={`d-flex align-items-center flex-column  p20 mb20`}>
+    <div className={`d-flex flex-column justify-content-center align-items-center ${styles.appContainer}`}>
+        
+        <form onSubmit={handleSubmit(submit)}  className={`d-flex align-items-center flex-column  p20 mb20`}>
         <div className="d-flex flex-column mb10">
           <label htmlFor="name" className="mb10 ml20">
             Nom du projet
           </label>
           <input placeholder="Nom du projet" className="p10" type="text" id="name" {...register("name")} />
-          {errors?.username && (
-            <p className={`${styles.feedback}`}>{errors.username.message}</p>
+          {errors?.name && (
+            <p className={`${styles.feedback}`}>{errors.name.message}</p>
           )}
         </div>
-        <div className="d-flex flex-column mb10">
-          <label htmlFor="year" className="mb10 ml20">
+        <div className={`d-flex flex-column mb10 `}>
+          <label htmlFor="year" className="mb10 ml10 ">
             Année de création du projet
-          </label>
-          <input placeholder="Année du projet" className="p10" type="number" id="year" {...register("year")} />
-          {errors?.username && (
-            <p className={`${styles.feedback}`}>{errors.username.message}</p>
+          </label >
+          <div >
+          <Controller
+            name="year"
+            control={control}
+            render={({ field }) => (
+            <input
+              placeholder="Année du projet"
+              className="p10"
+              type="number"
+              id="year"
+              {...field}
+            />
+              )}
+          />
+          </div>
+          {errors?.year && (
+            <p className={`${styles.feedback}`}>{errors.year.message}</p>
           )}
         </div>
-        <div className="d-flex flex-column mb10">
-          <label htmlFor="description" className="mb10 ml20">
+        <div className={`d-flex flex-column mb10 ${styles.width} `}>
+          <label htmlFor="description" className="mb10 ml10">
             Description du projet
           </label>
-          <input placeholder="Description" className="p10" type="text" id="description" {...register("description")} />
-          {errors?.username && (
-            <p className={`${styles.feedback}`}>{errors.username.message}</p>
+          <textarea placeholder="Description" className="p10" type="textarea" id="description" rows="10"  {...register("description")} />
+          {errors?.description && (
+            <p className={`${styles.feedback}`}>{errors.description.message}</p>
           )}
         </div>
         <div className="d-flex flex-column mb10">
@@ -113,11 +167,22 @@ const defaultValues = {
             Lien du projet
           </label>
           <input placeholder="Link" className="p10" type="text" id="link" {...register("link")} />
-          {errors?.username && (
-            <p className={`${styles.feedback}`}>{errors.username.message}</p>
+          {errors?.link && (
+            <p className={`${styles.feedback}`}>{errors.link.message}</p>
           )}
         </div>
-        
+
+        <div className="d-flex flex-column mb10">
+          <p className="ml20">Télécharger une image du projet</p>
+            <input type="file" className="p10" name="image" accept="image/*" id="image"  {...register("image")} />
+          {errors?.image && (
+            <p className={`${styles.feedback}`}>{errors.image.message}</p>
+          )}
+        </div>
+        {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}
+        {feedbackGood && (
+          <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
+        )}
         <button className={`btn btn-primary ${styles.button}`} disabled={isSubmitted}>
           Submit
         </button>

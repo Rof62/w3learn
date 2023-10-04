@@ -25,6 +25,12 @@ function App() {
   const [logged, setLogged] = useState(false);
   const [user, setUser] = useState("");
   const [userlist, setUserlist] = useState([]);
+
+  // function updateUser(newUsername) {
+  //   setUserlist(
+  //     userlist.map((user) => (user.idUsers === newUsername.idUsers ? newUsername : user))
+  //   );
+  // }
   
   
   useEffect(() => {
@@ -49,7 +55,7 @@ function App() {
 
  
   
-console.log(user);
+console.log({user});
   // function updateUser(newUsername, newEmail, newPassword) {
   //   setUserlist(
   //     userlist.map((user) => (user.idUsers === newUsername.idUsers ? newUsername : user)) ||  
@@ -78,7 +84,7 @@ console.log(user);
     setUser(userLogged);
   }
 
-  console.log(user);
+  
 
   return (
     <>
@@ -93,7 +99,7 @@ console.log(user);
         <Route path="/blog" element={<Blog />} />
         <Route path="/inscription" element={<Inscription  />} />         
         <Route path="/connexion" element={<Connexion getUser={getUser}  />} />         
-        <Route path="/profileGestion" element={<ProfileGestion  user={user} userlist={userlist}/>} />  
+        <Route path="/profileGestion" element={<ProfileGestion  user={user} userlist={userlist} setUser={setUser}/>} />  
         <Route path="/termes" element={<Termes />} />  
         <Route path="/confidentialite" element={<Confidentialite />} />  
         <Route path="/cookies" element={<Cookies />} />  

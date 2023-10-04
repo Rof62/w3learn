@@ -2,52 +2,32 @@ import { useState } from "react";
 // import ImageUploadForm from '../components/ImageUploadForm';
 import ProfileImage from "../components/ProfileImage";
 import AddProjet from "../components/AddProjet";
+import image1 from "../img/utopia1.png";
 
-export default function ProfileGestion({ user }) {
+export default function ProfileGestion({ user, setUser}) {
 
     console.log(user);
     
 
-    const handleImageUpload = async (idUsers, imageFile) => {
-      const formData = new FormData();
-      formData.append('profileImage', imageFile);
-      formData.append('idUsers', idUsers);
-  
-      try {
-        const response = await fetch('http://localhost:8003/api/profileImage/uploadImage', {
-          method: 'POST',
-          body: formData,
-        });
-  
-        if (response.ok) {
-          console.log('Image téléchargée avec succès.');
-          // Mettez à jour l'utilisateur avec les nouvelles données, si nécessaire
-        } else {
-          console.error('Échec du téléchargement de l\'image.');
-        }
-      } catch (error) {
-        console.error('Erreur lors du téléchargement de l\'image :', error);
-      }
-    };
+    const [ isEditUsername, setIsEditUsername ] = useState(false);
+    const [ isEditEmail, setIsEditEmail ] = useState(false);
+    const [ candidat, setCandidat ] = useState(user);
+    
 
-    const [username, setUsername] = useState(user.username);
-    const [email, setEmail] = useState(user.email);
-    const [password, setPassword] = useState(user.password);
-
-    const modifyName = async (newUsername) => {
+    const modifyUsername = async (newUsername) => {
       console.log({newUsername});
       try {
       console.log("TEST STOP PROPAGATION");
 
         const response = await fetch("http://localhost:8003/api/gestionProfile/updateUsername", {
           method: "PATCH",
-          body: JSON.stringify( newUsername ),
+          body: JSON.stringify( {username: newUsername, idUsers: user.idUsers}),
           headers: { "Content-Type": "application/json" },
         });
         if (response.ok) {
           const newUser = await response.json()
           console.log("username", newUser);
-          setUsername(newUser.username)
+          setUser(newUser.user)
         }
       } catch (error) {
         console.error(error);
@@ -58,175 +38,152 @@ export default function ProfileGestion({ user }) {
       try {
         const response = await fetch("http://localhost:8003/api/gestionProfile/updateEmail", {
           method: "PATCH",
-          body: JSON.stringify(newEmail),
+          body: JSON.stringify({email: newEmail, idUsers: user.idUsers}),
           headers: { "Content-Type": "application/json" },
         });
         if (response.ok) {
           const newUser = await response.json()
           console.log("email", newUser);
-          setEmail(newUser.email)
+          setUser(newUser.user)
         }
       } catch (error) {
         console.error(error);
       }
     }
  
-    async function modifyPassword(newPassword) {
-      try {
-        const response = await fetch("http://localhost:8003/api/gestionProfile/updatePassword", {
-          method: "PATCH",
-          body: JSON.stringify({ idUsers: user.idUsers, password: newPassword }),
-          headers: { "Content-Type": "application/json" },
-        });
-        if (response.ok) {
-          const result = await response.json();
-          if (result.message === "Mot de passe mis à jour avec succès") {
-            // Mise à jour réussie
-            console.log("Mot de passe mis à jour avec succès !");
-            // Vous pouvez mettre à jour l'état local de l'utilisateur ici si nécessaire
-            setPassword(user.password)
-          } else {
-            console.error("La mise à jour du mot de passe a échoué :", result.message);
-          }
-        } else {
-          console.error("Échec de la mise à jour du mot de passe.");
-        }
-      } catch (error) {
-        console.error("Erreur lors de la mise à jour du mot de passe :", error);
-      }
-    }
-
-    async function handleDeleteUser(deletedUser) {
-      try {
-        const response = await fetch("http://localhost:8003/api/gestionProfile/deleteUser", {
-          method: "DELETE",
-          body: JSON.stringify(deletedUser),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        if (response.ok) {
-          
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
+    // async function modifyPassword(newPassword) {
+    //   try {
+    //     const response = await fetch("http://localhost:8003/api/gestionProfile/updatePassword", {
+    //       method: "PATCH",
+    //       body: JSON.stringify({ idUsers: user.idUsers, password: newPassword }),
+    //       headers: { "Content-Type": "application/json" },
+    //     });
+    //     if (response.ok) {
+    //       const result = await response.json();
+    //       if (result.message === "Mot de passe mis à jour avec succès") {
+    //         // Mise à jour réussie
+    //         console.log("Mot de passe mis à jour avec succès !");
+    //         // Vous pouvez mettre à jour l'état local de l'utilisateur ici si nécessaire
+    //         setPassword(user.password)
+    //       } else {
+    //         console.error("La mise à jour du mot de passe a échoué :", result.message);
+    //       }
+    //     } else {
+    //       console.error("Échec de la mise à jour du mot de passe.");
+    //     }
+    //   } catch (error) {
+    //     console.error("Erreur lors de la mise à jour du mot de passe :", error);
+    //   }
+    // }
   
-    function handleChange(e) {
-      const value = e.target.value;
-      setUsername(value);
-    }
+    const editingUsername = () => {
+      setIsEditUsername(true);
+    };
+  
+    const cancelEditingUsername = () => {
+      setIsEditUsername(false);
+      setCandidat({
+        ...candidat,
+        username: user.username
+      });
+    };
+  
+    const updateUsername = (e) => {
+      setCandidat({
+        ...candidat,
+        username: e.target.value
+      });
+    };
+  
+    const saveNewUsername = () => {
+      setUser(candidat);
+      modifyUsername(candidat.username)
+      setIsEditUsername(false);
+    };
+  
+    const editingEmail = () => {
+      setIsEditEmail(true);
+    };
+  
+    const cancelEditingEmail = () => {
+      setIsEditEmail(false);
+      setCandidat({
+        ...candidat,
+        email: user.email
+      });
+    };
+  
+    const updateEmail = (e) => {
+      setCandidat({
+        ...candidat,
+        email: e.target.value
+      });
+    };
+  
+    const saveNewEmail = () => {
+      setUser(candidat);
+      modifyEmail(candidat.email)
+      setIsEditEmail(false);
+    };
     
-    const handleClick = () => {
-      if (username.length) {
-        modifyName({ ...user, username: username });
-      }
-    };
-  
-    const handleKeyDown = (e) => {
-      if (e.code === "Enter" && username.length) {
-        modifyName({ ...user, username: username });
-      } 
-    };
-
-    function handleChange2(e) {
-      const value = e.target.value;
-      setEmail(value);
-    }
-  
-    const handleClick2 = () => {
-      if (email.length) {
-        modifyEmail({ ...user, email: email });
-      }
-    };
-  
-    const handleKeyDown2 = (e) => {
-      if (e.code === "Enter" && email.length) {
-        modifyEmail({ ...user, email: email });
-      } 
-    };
-
-    function handleChange3(e) {
-      const value = e.target.value;
-      setPassword(value);
-    }
-  
-    const handleClick3 = () => {
-      if (password.length) {
-        modifyPassword({ ...user, password: password });
-      }
-    };
-  
-    const handleKeyDown3 = (e) => {
-      if (e.code === "Enter" && password.length) {
-        modifyPassword({ ...user, password: password });
-      } 
-    };
     console.log(user);
     return(
-        <div className="d-flex align-items-center flex-column  mb20 mt20">
+        <div className="d-flex align-items-center flex-column  mb20 mt20 ">
             <h1>Gestion de profile</h1>
             <div className="cards">
               <div className="d-flex flex-column justify-content-center align-items-center mt20">
                 <h3>Bienvenue {user.username} </h3>
-                <>
-                <ProfileImage className="mt20" user={user}/>
-                </>
                 
+                <>
+                <ProfileImage className="mt20" user={user} />
+                </> 
               </div>
               <div className="gestion2 ">
-              <div className="d-flex justify-content-between align-items-center gestion">
-                <p className="ml20">Votre password :</p>
-                <input
-                    type="password"
-                    onChange={handleChange3}
-                    onKeyDown={handleKeyDown3}
-                    value={password}
-                    className="p10"
-                    
-                />
-                
-                <button onClick={handleClick3} className="btn btn-primary mr20">
-                    Modifier
-                </button>
-              </div> 
-              <div className="d-flex justify-content-between align-items-center gestion">
-                <p className="ml20">Votre pseudo :</p>
-                <input
-                    type="name"
-                    onChange={handleChange}
-                    onKeyDown={handleKeyDown}
-                    // value={username}
-                    className="p10"
-                    
-                />
-                
-                <button onClick={handleClick} className="btn btn-primary mr20">
-                    Modifier
-                </button>
-              </div> 
-              <div className="d-flex justify-content-between align-items-center gestion">
-                <p className="ml20">Votre email :</p>
-                <input
-                    type="email"
-                    onChange={handleChange2}
-                    onKeyDown={handleKeyDown2}
-                    value={email}
-                    className="p10"
-                    
-                />
-                
-                <button onClick={handleClick2} className="btn btn-primary mr20">
-                    Modifier
-                </button>
+              <>
+              { isEditEmail ? (
+              <div className="d-flex align-items-center justify-content-center mb20" >
+                <input onChange={ updateEmail } className="ml20 mb10" value={ candidat.email } />
+                <button onClick={ saveNewEmail } className="ml20 btn btn-primary">Sauvegarder</button>
+                <button onClick={ cancelEditingEmail } className="ml20 btn btn-primary">Annuler</button>
+              </div >
+               ) : (
+              <div className="d-flex align-items-center justify-content-center mb20" >
+                <h3 className="ml20 mb10">Email : { user.email }</h3>
+                <button onClick={ editingEmail } className="ml20 btn btn-primary">Modifier</button>
+              </div >
+               )
+              }
+            </> 
+            <>
+             { isEditUsername ? (
+              <div className="d-flex align-items-center justify-content-center mb20" >
+                <input onChange={ updateUsername } className="ml20 mb10" value={ candidat.username } />
+                <button onClick={ saveNewUsername } className="ml20 btn btn-primary">Sauvegarder</button>
+                <button onClick={ cancelEditingUsername } className="ml20 btn btn-primary">Annuler</button>
+              </div >
+              ) : (
+              <div className="d-flex align-items-center justify-content-center mb20" >
+                <h3 className="ml20 mb10">username : { user.username }</h3>
+                <button onClick={ editingUsername } className="ml20 btn btn-primary">Modifier</button>
+              </div >
+              )
+              } 
+            </> 
+              
+              <div className="custom2"></div>
+              <>
+              <div >
+                <div className="d-flex justify-content-center">
+                  <h2>Ajouter un projet pour contribuer au Blog</h2>
+                </div>
+                <div className="d-flex justify-content-around align-items-center">
+                  <AddProjet user={user}/>
+                  <img   src={image1} alt="GIF animé" />
                 </div>
               </div> 
-              <>
-            <AddProjet />
             </> 
-            </div>
-            
-        </div>
+            </div>   
+          </div>
+        </div> 
     )
 }

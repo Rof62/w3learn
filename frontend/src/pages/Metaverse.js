@@ -9,7 +9,7 @@ export default function Metaverse() {
         <div>
             <h1>METAVERSE</h1>
                 <div className={` ${styles.container}`}>
-                    <div className="d-flex justify-content-around align-items-center container1Mobile">
+                    <div className="d-flex justify-content-around align-items-center container1Mobile container2Mobile mb20">
                         <h2> Introduction <br /><br />au Métaverse</h2>
                             <p>
                                 Le métaverse est un concept en plein essor qui englobe un environnement numérique tridimensionnel 
@@ -24,7 +24,7 @@ export default function Metaverse() {
                 </div>
                 <div className={` ${styles.container}`}>
                     <h2>Caractéristiques et Composants du Métaverse</h2>
-                        <div className="d-flex justify-content-around align-items-center container3 mt20">
+                        <div className="d-flex justify-content-around align-items-center container3 container1Mobile mt20 mb20">
                             <p>
                                 Le métaverse est caractérisé par plusieurs composants clés qui le distinguent des expériences en 
                                 ligne traditionnelles. Tout d'abord, il offre une interactivité en temps réel, permettant aux 
@@ -36,7 +36,8 @@ export default function Metaverse() {
                             </p>
                                 <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
                         </div>
-                        <div className="d-flex justify-content-around align-items-center container2">
+                        <div className="custom "></div>
+                        <div className="d-flex resume size container3 mb20 mt20">
                             <p>
                                 Les économies virtuelles jouent également un rôle important dans le métaverse. Les utilisateurs 
                                 peuvent acheter, vendre et échanger des biens numériques, tels que des propriétés virtuelles, 
@@ -48,7 +49,7 @@ export default function Metaverse() {
                 </div>
                 <div className={` ${styles.container}`}>
                     <h2>Applications et Implications du Métaverse</h2>
-                        <div className="d-flex justify-content-around align-items-center container3 mt20">
+                        <div className="d-flex justify-content-around align-items-center container3 container1Mobile mt20 mb20">
                             <p>
                                 Le métaverse offre un large éventail d'applications et d'implications dans divers domaines. Dans le secteur 
                                 du divertissement, il permet aux utilisateurs de participer à des jeux vidéo immersifs, de regarder des concerts 
@@ -57,10 +58,21 @@ export default function Metaverse() {
                                 la conception collaborative et la vente au détail virtuelle. Les artistes et les créateurs de contenu utilisent 
                                 le métaverse pour présenter et vendre des œuvres d'art numérique, des animations et d'autres créations.
                             </p>
-                            <img  src={img1} alt=" Decentraland" />
+                            <div>
+                                <img style={{ width: "300px", height: "200px"}}  src={img1} alt=" Decentraland" />
+                                    <div className="container3 d-flex justify-content-around align-items-center styleNone mb20">
+                                        <li ><a href="https://decentraland.org/" target="-blank" >Decentraland</a></li>
+                                    </div>
+                                </div> 
                         </div>
-                        <div className="d-flex justify-content-around align-items-center container3 mt20">
-                        <img  src={img2} alt=" Sandbox" />
+                        <div className="custom "></div>
+                        <div className="d-flex justify-content-around align-items-center container3 container3Mobile mb20 mt20">
+                            <div>
+                                <img style={{ width: "300px", height: "200px"}}  src={img2} alt=" Sandbox" />
+                                    <div className="container3 d-flex justify-content-around align-items-center styleNone mb20">
+                                        <li ><a href="https://www.sandbox.game/en/" target="-blank" >The Sandbox</a></li>
+                                    </div>
+                                </div>
                             <p>
                                 Cependant, le métaverse soulève également des questions sur la vie privée, la sécurité, la régulation
                                 et l'accès équitable. Alors que les interactions numériques deviennent plus intégrées à la vie

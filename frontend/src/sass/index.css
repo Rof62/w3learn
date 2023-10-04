@@ -109,6 +109,10 @@ img {
   align-content: space-between;
 }
 
+.text-align {
+  text-align: center;
+}
+
 .btn {
   height: 30px;
   padding: 5px 15px;
@@ -139,6 +143,10 @@ img {
 
 .text-error {
   color: var(--error);
+}
+
+.margin-top {
+  margin-top: 5%;
 }
 
 .p5 {

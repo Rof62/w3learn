@@ -22,14 +22,19 @@
 .projet .imgContainer img:hover {
   transform: scale(1.1);
 }
-@media (max-width: 647px) {
+@media (max-width: 577px) {
   .projet .imgContainer {
     height: 250px;
   }
 }
+@media (min-width: 769px) and (max-width: 992px) {
+  .projet .imgContainer {
+    height: 350px;
+  }
+}
 @media (min-width: 577px) and (max-width: 768px) {
   .projet .imgContainer {
-    height: 230px;
+    height: 280px;
   }
 }
 .projet .title {
@@ -43,7 +48,7 @@
 .projet .title h3 {
   font-size: 16px;
 }
-@media (max-width: 647px) {
+@media (max-width: 577px) {
   .projet .title p {
     font-size: 10px;
   }

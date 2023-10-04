@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 
-const connection = require("../../database");
+const connection = require("../../database/index");
 
 router.post("/login", (req, res) => {
     const { email, password } = req.body;
-    const sql = `SELECT idUsers, username, password FROM users WHERE email=? `;
+    const sql = `SELECT idUsers, username, password, blobby FROM users WHERE email=? `;
     connection.query(sql, [email], async (err, result) => {
       if (err) throw err;
       console.log(result);
@@ -24,6 +24,7 @@ router.post("/login", (req, res) => {
         let resultBack = req.body;
         resultBack.idUsers = result[0].idUsers;
         resultBack.username = result[0].username;
+        resultBack.blobby = result[0].blobby;
         resultBack.password = dbPassword;
         res.json(resultBack);
       }
@@ -67,5 +68,7 @@ router.post("/login", (req, res) => {
       res.send(JSON.stringify(result));
     });
   });
+
+  
 
   module.exports = router;

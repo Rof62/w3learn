@@ -1,3 +1,6 @@
+@use "../sass/mixin" as mixin;
+
+
 .cards{
     background-color: var(--light-grey);
     width: 80vw;
@@ -8,7 +11,7 @@
 
 .gestion{
     margin-top: 20px;
-    width: 100%;
+    width: 50%;
     margin: 0 auto;
     p{
         width: 150px;
@@ -21,4 +24,11 @@
 .gestion2{
     margin-top: 50px;
 }
+
+@include mixin.md-lt{
+    .button{
+        display: block;
+    }
+   
+  }
     

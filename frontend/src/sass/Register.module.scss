@@ -26,7 +26,7 @@
   }
   
   input {
-    width: 35vw;
+    width: 25vw;
     height: 40px;
     border-radius: 20px;
     margin: 10px;
@@ -39,9 +39,19 @@
     width: 50%;
   }
 
+  .width{
+    width: 25vw;
+  }
+
   @include mixin.md-lt{
     .button{
         display: block;
+    }
+    label{
+      font-size: 14px;
+    }
+    input{
+      width: 80%;
     }
    
   }

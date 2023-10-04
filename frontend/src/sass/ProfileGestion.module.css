@@ -8,7 +8,7 @@
 
 .gestion {
   margin-top: 20px;
-  width: 100%;
+  width: 50%;
   margin: 0 auto;
 }
 .gestion p {
@@ -17,4 +17,10 @@
 
 .gestion2 {
   margin-top: 50px;
+}
+
+@media (max-width: 997px) {
+  .button {
+    display: block;
+  }
 }/*# sourceMappingURL=ProfileGestion.module.css.map */

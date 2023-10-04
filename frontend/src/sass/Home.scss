@@ -4,13 +4,13 @@ h1{
     font-size: 80px;
     display: flex;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 23px;
     // text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
     text-shadow: 0 0 10px  #00DDEB ,  0 0 20px #00DDEB, 0 0 30px #00DDEB  ;
     
 }
 h2{
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bold;
     // text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
     text-shadow: 0 0 10px  #00DDEB ,  0 0 20px #00DDEB, 0 0 30px #00DDEB  ;
@@ -24,6 +24,7 @@ h2{
    
 }
 .container3{
+    margin-top: 5%;
     p{
         width: 50%;
     }
@@ -34,12 +35,13 @@ h2{
 } 
 .resume{
     p{
-        width: 100%;
+        width: 95%;
+        margin: 0 auto;
         
         
     }
 }
-.container1Mobile{
+.container2Mobile{
     p{
         width: 50%;
     }
@@ -70,6 +72,13 @@ h2{
     }
  }
 
+ .custom2{
+    width: 60%;
+    margin: 40px auto;
+    border: 1px solid ;
+    box-shadow: 0 0 5px #00DDEB, 0 0 6px #5B42F3, 0 0 7px #00DDEB, 0 0 8px #5B42F3, 0 0 9px #00DDEB;
+ }
+
 
      
 @include mixin.md-lt {
@@ -77,7 +86,7 @@ h2{
         font-size: 25px;
     }
     h2{
-        font-size: 20px;
+        font-size: 16px;
         margin-top: 10px;
     }
     span{
@@ -90,21 +99,42 @@ h2{
             font-size: 14px;
         }
      }
+
+     .custom{
+        width: 60%;
+        margin: 0 auto;
+        border: 1px solid ;
+        box-shadow: 0 0 5px #00DDEB, 0 0 6px #5B42F3, 0 0 7px #00DDEB, 0 0 8px #5B42F3, 0 0 9px #00DDEB;
+     }
     
     .container2{
        gap: 20px;
-       text-align: center;
+       display: flex;
+       flex-direction: column-reverse;
+    //    text-align: center;
+    //    justify-content: center;
+
         span{
             font-size: 14px;
             
-            width: 70%;
         }
          p{
-             width: 90%;
+            //  width: 90%;
              font-size: 14px;
          }
+         h2{
+            font-size: 18px;
+            
+        }
         
      } 
+
+    //  .container3{
+    //     p{
+    //         font-size: 14px;
+            
+    //     }
+    //  }
     
    .container1Mobile{
     display: flex;
@@ -112,7 +142,25 @@ h2{
     text-align: center;
     gap: 20px;
 h2{
-    font-size: 20px;
+    font-size: 18px;
+    margin-top: 10px;
+}
+p{
+    font-size: 14px;
+    width: 80%;
+}
+br{
+    display: none;
+}
+   }
+
+   .container3Mobile{
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 20px;
+h2{
+    font-size: 18px;
     margin-top: 10px;
 }
 p{

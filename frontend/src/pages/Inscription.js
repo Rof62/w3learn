@@ -6,16 +6,13 @@ import { NavLink,  useNavigate } from "react-router-dom";
 import logo from "../img/logo.png"
 import styles from "../sass/Register.module.scss";
 
-export default function Register( {seeLoginForm}) {
-  // on récupére toutes les compétences que l'on va stocker dans ce useState
-  const [allTheSkills, setAllTheSkills] = useState([]);
+export default function Register( {}) {
+  
   // useState pour l'erreur ou la validation provenant de l'API
   const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
 
   const navigate = useNavigate()
-
-  
 
   const yupSchema = yup.object({
     username: yup
@@ -96,10 +93,6 @@ export default function Register( {seeLoginForm}) {
       }
     } 
   }
-
-  
-
- 
 
   return (
     <div className={` d-flex flex-column justify-content-center align-items-center ${styles.appContainer} `}>

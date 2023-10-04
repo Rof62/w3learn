@@ -2,12 +2,12 @@ h1 {
   font-size: 80px;
   display: flex;
   justify-content: center;
-  margin-top: 25px;
+  margin-top: 23px;
   text-shadow: 0 0 10px #00DDEB, 0 0 20px #00DDEB, 0 0 30px #00DDEB;
 }
 
 h2 {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: bold;
   text-shadow: 0 0 10px #00DDEB, 0 0 20px #00DDEB, 0 0 30px #00DDEB;
 }
@@ -17,6 +17,9 @@ h2 {
   font-size: 18px;
 }
 
+.container3 {
+  margin-top: 5%;
+}
 .container3 p {
   width: 50%;
 }
@@ -26,10 +29,11 @@ h2 {
 }
 
 .resume p {
-  width: 100%;
+  width: 95%;
+  margin: 0 auto;
 }
 
-.container1Mobile p {
+.container2Mobile p {
   width: 50%;
 }
 
@@ -49,12 +53,19 @@ h2 {
   text-shadow: 0 0 10px #00DDEB, 0 0 20px #00DDEB, 0 0 30px #00DDEB;
 }
 
+.custom2 {
+  width: 60%;
+  margin: 40px auto;
+  border: 1px solid;
+  box-shadow: 0 0 5px #00DDEB, 0 0 6px #5B42F3, 0 0 7px #00DDEB, 0 0 8px #5B42F3, 0 0 9px #00DDEB;
+}
+
 @media (max-width: 997px) {
   h1 {
     font-size: 25px;
   }
   h2 {
-    font-size: 20px;
+    font-size: 16px;
     margin-top: 10px;
   }
   span {
@@ -64,17 +75,25 @@ h2 {
   .size p {
     font-size: 14px;
   }
+  .custom {
+    width: 60%;
+    margin: 0 auto;
+    border: 1px solid;
+    box-shadow: 0 0 5px #00DDEB, 0 0 6px #5B42F3, 0 0 7px #00DDEB, 0 0 8px #5B42F3, 0 0 9px #00DDEB;
+  }
   .container2 {
     gap: 20px;
-    text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
   }
   .container2 span {
     font-size: 14px;
-    width: 70%;
   }
   .container2 p {
-    width: 90%;
     font-size: 14px;
+  }
+  .container2 h2 {
+    font-size: 18px;
   }
   .container1Mobile {
     display: flex;
@@ -83,7 +102,7 @@ h2 {
     gap: 20px;
   }
   .container1Mobile h2 {
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 10px;
   }
   .container1Mobile p {
@@ -91,6 +110,23 @@ h2 {
     width: 80%;
   }
   .container1Mobile br {
+    display: none;
+  }
+  .container3Mobile {
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 20px;
+  }
+  .container3Mobile h2 {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  .container3Mobile p {
+    font-size: 14px;
+    width: 80%;
+  }
+  .container3Mobile br {
     display: none;
   }
 }/*# sourceMappingURL=Home.css.map */

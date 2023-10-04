@@ -12,7 +12,7 @@ export default function blockchain() {
         <div>
             <h1>BLOCKCHAIN</h1>
                 <div className={` ${styles.container}`}>
-                    <div className="d-flex justify-content-around align-items-center container1Mobile">
+                    <div className="d-flex justify-content-around align-items-center container1Mobile container2Mobile mb20">
                         <h2> Introduction à <br /><br /> la Technologie</h2>
                             <p>
                                 La blockchain est une avancée majeure dans le domaine de la technologie qui a vu le jour avec l'avènement 
@@ -27,8 +27,8 @@ export default function blockchain() {
                 </div>
                 <div className={`${styles.container}`}>
                     <h2>Principes de Base de la Technologie</h2>
-                    <div className="container2">
-                        <div className="d-flex justify-content-around align-items-center">
+                    <div className="">
+                        <div className="d-flex justify-content-around align-items-center container3 container3Mobile mb20">
                         <img style={{ width: "150px", height: "150px"}} src={anime3} alt="GIF animé" />
                             <p>
                                 <span>La blockchain tire son nom <br /> de sa structure fondamentale :</span>
@@ -41,8 +41,10 @@ export default function blockchain() {
                                 en raison de la puissance de calcul nécessaire.
                             </p>
                         </div>
-                        <div className="d-flex justify-content-around align-items-center">
+                        <div className="custom"></div>
+                        <div className="d-flex justify-content-around align-items-center container3 container1Mobile mb20">
                             <p>
+                            <span>Le mecanisme de consensus:</span>
                                 <br /><br />
                                 Le mécanisme de consensus est au cœur du fonctionnement de la blockchain. Il s'agit d'un processus par
                                 lequel les participants du réseau parviennent à un accord sur l'ajout de nouveaux blocs à la chaîne. 
@@ -57,7 +59,7 @@ export default function blockchain() {
                 </div>
                 <div className={`${styles.container}`}>
                     <h2>Applications et Avantages de la Technologie</h2>
-                    <div className="size d-flex justify-content-around align-items-center container2 ">
+                    <div className="size d-flex justify-content-around align-items-center container3 container1Mobile mb20">
                         <p> 
                             <span>Le potentiel :</span>
                             <br /><br />
@@ -71,8 +73,9 @@ export default function blockchain() {
                         </p>
                         <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
                         </div>
+                        <div className="custom"></div>
                         <br />
-                        <div className=" d-flex justify-content-around align-items-center container2">
+                        <div className=" d-flex justify-content-around align-items-center container3 container3Mobile mb20">
                         <img style={{ width: "150px", height: "150px"}} src={anime5} alt="GIF animé" />
                         <p> 
                             <span>Les avantages :</span>

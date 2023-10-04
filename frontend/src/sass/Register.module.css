@@ -21,7 +21,7 @@
 }
 
 input {
-  width: 35vw;
+  width: 25vw;
   height: 40px;
   border-radius: 20px;
   margin: 10px;
@@ -33,8 +33,18 @@ input {
   width: 50%;
 }
 
+.width {
+  width: 25vw;
+}
+
 @media (max-width: 997px) {
   .button {
     display: block;
+  }
+  label {
+    font-size: 14px;
+  }
+  input {
+    width: 80%;
   }
 }/*# sourceMappingURL=Register.module.css.map */

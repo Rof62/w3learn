@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 
-const connection = require("../../database");
+const connection = require("../../database/index");
 
 router.patch("/updateUsername", (req, res) => {
   console.log("username", req.body);

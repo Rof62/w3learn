@@ -3,6 +3,7 @@ import anime1 from "../img/anime.crypto1.gif"
 import anime2 from "../img/anime.crypto2.gif"
 import anime3 from "../img/anime.crypto3.gif"
 import anime4 from "../img/anime.crypto4.gif"
+import anime5 from "../img/securite.crypto.gif"
 
 export default function crypto() {
     return(
@@ -10,7 +11,7 @@ export default function crypto() {
         <div>
             <h1>CRYPTO</h1>
                 <div className={`${styles.container}`}>
-                    <div className="d-flex justify-content-around align-items-center container1Mobile">
+                    <div className="d-flex justify-content-around align-items-center container1Mobile container2Mobile mb20">
                         <h2>Introduction à <br /><br /> la Cryptomonnaie</h2>
                             <p>
                                 La cryptomonnaie est une forme de monnaie numérique basée sur la technologie de la cryptographie.
@@ -27,11 +28,11 @@ export default function crypto() {
                 <div className={`${styles.container}`}>
                     <h2>Fonctionnement des Cryptomonnaies</h2>
                         <div>
-                            <div className="d-flex justify-content-between">
+                            <div className="d-flex justify-content-between ">
                                 <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
                                 <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
                             </div>
-                            <div className="">
+                            <div className="d-flex resume size container3 mb20">
                                 <p>
                                     Les cryptomonnaies fonctionnent grâce à une combinaison de concepts de cryptographie, de mathématiques 
                                     et de technologie blockchain. Chaque cryptomonnaie a sa propre architecture et son propre mécanisme de 
@@ -39,7 +40,8 @@ export default function crypto() {
                                     utilise le mécanisme de preuve de travail (Proof of Work) pour sécuriser son réseau.
                                 </p>
                             </div>
-                            <div className="d-flex justify-content-around align-items-center container2">
+                            <div className="custom "></div>
+                            <div className="d-flex justify-content-around align-items-center container3 container1Mobile mb20">
                                     <br />
                                 <p>
                                     <span>Les transactions :</span>
@@ -55,8 +57,9 @@ export default function crypto() {
                                 <img style={{ width: "150px", height: "150px"}} src={anime3} alt="GIF animé"/>                     
                                     <br />
                             </div>
-                            <div className="d-flex justify-content-between align-items-center container2">
-                                <img style={{ width: "150px", height: "150px"}} src={anime3} alt="GIF animé"/>
+                            <div className="custom"></div>
+                            <div className="d-flex justify-content-around align-items-center container3 container3Mobile mb20">
+                                <img style={{ width: "150px", height: "150px"}} src={anime5} alt="GIF animé"/>
                                 <p>
                                     <span>La securité :</span>
                                     <br /><br />
@@ -73,7 +76,7 @@ export default function crypto() {
                 </div>
                 <div className={`${styles.container}`}>
                     <h2>Utilisations et Impact des Cryptomonnaies</h2>
-                        <div>
+                        <div className="d-flex justify-content-around align-items-center container3 container1Mobile">
                             <p>
                                 Les cryptomonnaies ont un impact majeur sur divers domaines, notamment les services financiers, 
                                 la technologie et l'économie. Elles permettent des transactions rapides et peu coûteuses à l'échelle 
@@ -89,7 +92,9 @@ export default function crypto() {
                                 cryptomonnaie vont au-delà des aspects financiers, touchant des domaines tels que la gouvernance,
                                 la protection de la vie privée et les évolutions technologiques.
                             </p>
+                            <div className="d-flex  align-items-center mb20">
                             <img style={{ width: "150px", height: "150px"}} src={anime4} alt="GIF animé" />
+                            </div>
                         </div>
                 </div>
         </div>

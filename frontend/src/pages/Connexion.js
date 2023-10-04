@@ -63,8 +63,6 @@ export default function Login({ getUser }) {
         setFeedBackGood("Connexion réussi ! vous allez être rediriger")
         reset(defaultValues);
         console.log("User recuperer", newUser);
-        console.log("ID de l'utilisateur connecté :", newUser.idUsers);
-        console.log("profile_image recuperer :", newUser.profile_image );
         reset(defaultValues);
         setTimeout(() => {
           // toggleRegister()

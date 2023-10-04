@@ -1,53 +1,70 @@
 const router = require("express").Router();
+const multer = require('multer');
+const upload = multer();
 
-const connection = require("../../database");
+const connection = require("../../database/index");
 
-const multer = require("multer");
+router.get("/getAvatarFromUser", (req, res) => {
+  const id = req.query.id;
+  console.log(req.query);
+  const sql = "SELECT blobby FROM users WHERE idUsers = ?";
+  connection.query(sql, [id], (err, result) => {
+    if (err) throw err;
+    res.send(result[0]);
+  });
+});
 
 
-const storage = multer.memoryStorage(); // Stocke l'image en mémoire
-const upload = multer({ storage: storage });
+  router.get('/getDefaultImage', (req, res) => {
+    const sql = " SELECT blobby FROM image LIMIT 1";
+    connection.query(sql, (err, result) => {
+      if(err) throw err;
+      res.send(result[0]);
+    });
+  })
 
-
-
-router.post("/uploadImage", upload.single("profileImage"), (req, res) => {
-    if (!req.file) {
-      return res.status(400).json({ message: "Aucun fichier n'a été téléchargé." });
-    }
+  router.patch("/insertImage", (req, res) => {
+    console.log(req.body);
+    const idUser = req.body.idUsers;
+    const blobby = req.body.value;
   
-    const userId = req.body.idUsers; // Assurez-vous d'avoir un moyen d'identifier l'utilisateur
-    console.log("userId", userId);
-  
-    // Insérez l'image dans la base de données
-    const insertImageSql = "UPDATE users SET profile_image = ? WHERE idUsers = ?";
-    connection.query(insertImageSql, [req.file.buffer, userId], (err, result) => {
-      if (err) {
-        console.error("Erreur de base de données :", err);
-        return res.status(500).json({ message: "Erreur lors de la mise à jour de l'image de profil." });
-      }
-      res.status(200).json({ message: "Image de profil mise à jour avec succès." });
+    const updateSQL = "UPDATE users SET blobby = ? WHERE idUsers = ?";
+    connection.query(updateSQL, [blobby, idUser], (err, result) => {
+      if (err) throw err;
+    });
+    const searchSQL = "SELECT blobby FROM users WHERE idUsers = ?";
+    connection.query(searchSQL, [idUser], (err, result) => {
+      if (err) throw err;
+      res.send(result[0]);
     });
   });
+
+  router.post('/addProjet', upload.single('image'), async (req, res) => {
+    const { name, year, description, link, idUsers } = req.body;
+    const imageBlob = req.body.image; // Supposons que le champ "image" contient le Blob
   
-  router.get("/profileImage/:idUsers", (req, res) => {
-    const userId = req.params.idUsers;
-    
-    // Récupérer l'image de profil de l'utilisateur depuis la base de données
-    const getImageSql = "SELECT profile_image FROM users WHERE idUsers = ?";
-    
-    connection.query(getImageSql, [userId], (err, result) => {
+    // Insérez les données dans la base de données, y compris l'image Blob
+    const insertSql = 'INSERT INTO projet (name, year, description, link, idUsers, image) VALUES (?, ?, ?, ?, ?, ?)';
+  
+    // Utilisez la méthode de connexion à la base de données pour exécuter la requête d'insertion
+    connection.query(insertSql, [name, year, description, link, idUsers, imageBlob], (err, result) => {
       if (err) {
         console.error("Erreur de base de données :", err);
-        res.status(500).json({ message: "Erreur lors de la récupération de l'image de profil." });
-      } else if (result.length === 0) {
-        res.status(404).json({ message: "Aucune image de profil trouvée pour cet utilisateur." });
-      } else {
-        // Envoyer l'image de profil en tant que réponse
-        res.writeHead(200, {
-          'Content-Type': 'image/jpeg', // Remplacez par le type MIME approprié de l'image
-        });
-        res.end(result[0].profile_image);
+        return res.status(500).json({ message: "Une erreur s'est produite lors de l'ajout du projet." });
       }
+  
+      // Si l'insertion réussit, renvoyez une réponse avec un statut 201 (Created)
+      res.status(201).json({
+        message: "Projet ajouté avec succès",
+        messageGood: "Projet ajouté avec succès une confirmation vous sera envoyer ,une fois que le projet sera validée.",
+        projet: {
+          name,
+          year,
+          description,
+          link,
+          idUsers,
+        },
+      });
     });
   });
 

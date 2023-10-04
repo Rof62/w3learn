@@ -18,22 +18,16 @@
     grid-auto-columns: repeat(2, 45%);
   }
 }
-@media (max-width: 647px) {
-  .grid {
-    grid-template-columns: 65%;
-    grid-auto-columns: 25%;
-  }
-}
-@media (min-width: 577px) and (max-width: 768px) {
+@media (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 45%);
     grid-auto-columns: repeat(2, 45%);
   }
 }
-@media (min-width: 993px) and (max-width: 1200px) {
+@media (max-width: 577px) {
   .grid {
-    grid-template-columns: repeat(2, 35%);
-    grid-auto-columns: repeat(2, 35%);
+    grid-template-columns: 80%;
+    grid-auto-columns: 100%;
   }
 }
 
@@ -79,5 +73,11 @@
   .card {
     width: 80%;
     margin: 0 auto;
+  }
+  .search {
+    height: 50px;
+  }
+  .search input {
+    height: 20px;
   }
 }/*# sourceMappingURL=Blog.module.css.map */
