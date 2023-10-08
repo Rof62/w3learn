@@ -20,13 +20,13 @@
 }
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: repeat(2, 45%);
-    grid-auto-columns: repeat(2, 45%);
+    grid-template-columns: repeat(2, 40%);
+    grid-auto-columns: repeat(2, 40%);
   }
 }
 @media (max-width: 577px) {
   .grid {
-    grid-template-columns: 80%;
+    grid-template-columns: 70%;
     grid-auto-columns: 100%;
   }
 }

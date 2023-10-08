@@ -29,14 +29,14 @@
         @include mixin.xs {
             // grid-template-columns: 40%;
             // grid-auto-columns: 40%;
-            height: 250px;
+            height: 220px;
             
         }
         @include mixin.md{
             height: 350px;
         }
         @include mixin.sm{
-            height: 280px;
+            height: 250px;
             
         }
     }

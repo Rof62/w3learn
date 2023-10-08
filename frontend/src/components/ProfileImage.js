@@ -135,16 +135,16 @@ console.log({user});
       )}
       <form
         onSubmit={handleSubmit}
-        className="d-flex justify-content-center align-items-center  mt20"
+        className="d-flex justify-content-center align-items-center"
       >
         <div>
         <label className=""> 
           <input className=" " type="file" onChange={handleChange} />
         </label>
-          <button className="btn btn-primary ">Save</button>
+          <button className="btn btn-primary ">Sauvegarder</button>
         </div>
       </form>
-      <div className="custom2"></div>
+      {/* <div className="custom2"></div> */}
     </div>
     
   );

@@ -3,6 +3,7 @@ import { useState } from "react";
 import ProfileImage from "../components/ProfileImage";
 import AddProjet from "../components/AddProjet";
 import image1 from "../img/utopia1.png";
+import Contributeur from "../components/Contributeur";
 
 export default function ProfileGestion({ user, setUser}) {
 
@@ -168,7 +169,11 @@ export default function ProfileGestion({ user, setUser}) {
               </div >
               )
               } 
-            </> 
+            </>
+              <div className="custom2"></div>
+              <div>
+                <Contributeur user={user}/>
+              </div>
               
               <div className="custom2"></div>
               <>

@@ -1,17 +1,32 @@
 import styles from "../sass/Register.module.scss";
-import React, { useState } from 'react';
-import {  useForm, Controller } from "react-hook-form";
+import React, { useState, useEffect } from 'react';
+import {  useForm, Controller, useFieldArray } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
+
 
 
 export default function AddProjet({user}) {
 
   const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
+  const [allTheGenres, setAllTheGenres] = useState([]);
 
-  const navigate = useNavigate()
+  useEffect(() => {
+    async function getGenres() {
+      try {
+        const response = await fetch("http://localhost:8003/api/profileImage/getGenres");
+        if (response.ok) {
+          const genres = await response.json();
+          console.log(genres);
+          setAllTheGenres(genres);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getGenres();
+  }, []);
   
     const yupSchema = yup.object({
         name: yup
@@ -44,7 +59,8 @@ const defaultValues = {
     validation: false,
     image: null,
     link: "",
-    
+    genre: [],
+ 
   };
 
   const {
@@ -59,9 +75,15 @@ const defaultValues = {
     resolver: yupResolver(yupSchema),
   });
 
+  const { fields, append, remove } = useFieldArray({
+    name: "genre",
+    control,
+  });
+
   async function submit(values) {
     setFeedBack("");
     try {
+      console.log("genre", values.genre);
 
       if (!values.name || !values.year || !values.description || !values.link || !values.image) {
         setFeedBack("Veuillez remplir tous les champs.");
@@ -75,10 +97,12 @@ const defaultValues = {
       formData.append("year", values.year);
       formData.append("description", values.description);
       formData.append("link", values.link);
+      const genreValues = values.genre.map((genre) => genre.value);
+      formData.append("genre", genreValues);
       formData.append("image", imageBlob);
       formData.append("idUsers", user.idUsers);
       
-
+      console.log(values);
       const response = await fetch("http://localhost:8003/api/profileImage/addProjet", {
         method: "POST",
         body: formData,
@@ -90,8 +114,8 @@ const defaultValues = {
           setFeedBackGood(result.messageGood);
           setTimeout(() => { 
             reset(defaultValues);
-            navigate("/ProfileGestion")
-          }, 1500)
+            setFeedBackGood("")
+          }, 3000)
         } 
       } else {
         setFeedBack("Une erreur s'est produite lors de l'envoi du formulaire.");
@@ -116,6 +140,17 @@ const defaultValues = {
     });
   };
 
+  function addGenres() {
+    append({
+      value: "",
+      
+    });
+  }
+
+  function deleteGenres(id) {
+    remove(id);
+  }
+
 
   return(
     <div className={`d-flex flex-column justify-content-center align-items-center ${styles.appContainer}`}>
@@ -129,6 +164,39 @@ const defaultValues = {
           {errors?.name && (
             <p className={`${styles.feedback}`}>{errors.name.message}</p>
           )}
+        </div>
+        <div className="d-flex flex-column mb10">
+        <label className="mb10 d-flex justify-content-center align-items-center">
+            <span className="flex-fill mr10">Genre</span>
+            <button
+              onClick={addGenres}
+              type="button"
+              className="btn btn-primary-reverse"
+            >
+              +
+            </button>
+          </label>
+        <ul>
+            {fields.map((genre, index) => (
+              <li key={genre.id} className="mb10 d-flex">
+                <select
+                  className="mr10"
+                  {...register(`genre[${index}].value`)}
+                >
+                  {allTheGenres.map((genre) => (
+                    <option key={genre.idGenre} value={genre.idGenre}>
+                      {genre.nameGenre}
+                    </option>
+                  ))}
+                </select>
+                <button
+                  onClick={() => deleteGenres(index)}
+                  className="btn btn-primary"
+                >
+                  -
+                </button>
+                </li>))}
+                </ul>
         </div>
         <div className={`d-flex flex-column mb10 `}>
           <label htmlFor="year" className="mb10 ml10 ">

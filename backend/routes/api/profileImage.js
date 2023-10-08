@@ -20,6 +20,7 @@ router.get("/getAvatarFromUser", (req, res) => {
     connection.query(sql, (err, result) => {
       if(err) throw err;
       res.send(result[0]);
+      console.log(result[0]);
     });
   })
 
@@ -39,8 +40,18 @@ router.get("/getAvatarFromUser", (req, res) => {
     });
   });
 
+  router.get("/getGenres", (req, res) => {
+    const sql = "SELECT * FROM genre";
+    connection.query(sql, (err, result) => {
+      if (err) throw err;
+      res.send(JSON.stringify(result)) ;
+    });
+  });
+
   router.post('/addProjet', upload.single('image'), async (req, res) => {
-    const { name, year, description, link, idUsers } = req.body;
+    const { name, year, description, link, idUsers, genre } = req.body;
+    
+    console.log(req.body);
     const imageBlob = req.body.image; // Supposons que le champ "image" contient le Blob
   
     // Insérez les données dans la base de données, y compris l'image Blob
@@ -51,8 +62,22 @@ router.get("/getAvatarFromUser", (req, res) => {
       if (err) {
         console.error("Erreur de base de données :", err);
         return res.status(500).json({ message: "Une erreur s'est produite lors de l'ajout du projet." });
-      }
-  
+      } 
+      let idProjet = result.insertId
+      console.log(idProjet);
+      console.log(genre);
+
+      const genreArray = genre.split(',');
+      genreArray.map((g, index) => {
+        let sqlGenre = `INSERT INTO infos SET idProjet = ?, idGenre= ? `;
+        const idGenre = g
+        
+        connection.query(sqlGenre, [idProjet, idGenre], (err, result) => {
+          if(err) throw err;
+          console.log(result);
+        });
+      });
+    
       // Si l'insertion réussit, renvoyez une réponse avec un statut 201 (Created)
       res.status(201).json({
         message: "Projet ajouté avec succès",
@@ -63,6 +88,8 @@ router.get("/getAvatarFromUser", (req, res) => {
           description,
           link,
           idUsers,
+          
+          
         },
       });
     });

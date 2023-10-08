@@ -24,7 +24,7 @@
 }
 @media (max-width: 577px) {
   .projet .imgContainer {
-    height: 250px;
+    height: 220px;
   }
 }
 @media (min-width: 769px) and (max-width: 992px) {
@@ -34,7 +34,7 @@
 }
 @media (min-width: 577px) and (max-width: 768px) {
   .projet .imgContainer {
-    height: 280px;
+    height: 250px;
   }
 }
 .projet .title {
