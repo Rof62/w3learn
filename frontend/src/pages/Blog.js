@@ -1,18 +1,57 @@
 import styles from "../sass/Blog.module.scss"
 import Projet from "../components/Projet"
-import { projet } from "../Data"
-import { useState } from "react"
+
+import React, { useState, useEffect } from "react"
+
 import { NavLink } from "react-router-dom";
+
+
 
 export default function Blog() {
     const [filter, setFilter] = useState("")
+    const [allTheProjet, setAllTheProjet] = useState([])
+    
 
     const handleInput = (e) =>{
         const search = e.target.value;
         setFilter(search.trim().toLowerCase())
     }
+
+    useEffect(() => {
+        async function getProjet() {
+          try {
+            const response = await fetch(`http://localhost:8003/api/profileImage/getProjetValidate`);
+            if (response.ok) {
+              const projet = await response.json();
+              const modifiedDataBack = projet.map((s) =>
+                s.validation === 1 ? { ...s, validation: true } : { ...s, validation: false }
+              );
+      
+              const newModifiedDatas = await Promise.all(
+                modifiedDataBack.map(async (s) => {
+                  if (s.validation === true) {
+                    const response = await fetch(URL.createObjectURL(new Blob([new Uint8Array(s.image.data)])));
+                    const text = await response.text();
+                    s.image = text;
+                  }
+                  return { ...s };
+                  
+                })
+              );
+      
+              setAllTheProjet(newModifiedDatas);
+            }
+          } catch (error) {
+            console.error(error);
+          }
+        }
+        getProjet();
+      }, []);
+      
+      console.log(allTheProjet);
     return(
         <>
+        
         <div className="flex-fill container">
             <h1 className="my mb20 30">Bienvenue sur notre blog!</h1>
                 <div className={`${styles.card} p20 d-flex flex-column mt20 `}>
@@ -21,14 +60,15 @@ export default function Blog() {
                         <input onInput={handleInput} className="flex-fill p20" type="text" placeholder="Rechercher" />
                     </div>
                     <div className={`${styles.grid}`}>
-                        {projet
-                            .filter((s) => s.title.toLowerCase().startsWith(filter))
+                        {allTheProjet
+                            .filter((s) => s.name.toLowerCase().startsWith(filter))
                             .map((projet) => (
-                            <Projet key={projet.id} projet={projet} />
+                            <Projet key={projet.idProjet} projet={projet} />
                         ))}
                     </div>
                 </div>
         </div>
+       
         
         <div className="d-flex flex-column justify-content-center align-items-center m20">
             <h2>Vous voulez contribuer au Blog ?</h2>

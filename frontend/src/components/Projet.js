@@ -1,33 +1,34 @@
 import styles from "../sass/Projet.module.scss"
-import { useState } from "react"
+
 import React from 'react';
+import { NavLink } from "react-router-dom";
 
 export default function Projet({ projet}) {
-    const [liked, setLiked] = useState(false)
-
+    const {idProjet} = projet
+        
     
 
-        const handleClick = () => {
-            setLiked(!liked)
-        }
-
+    console.log(projet.image);
     return(
         
-        <div className={`${styles.projet}`} onClick={handleClick} >
+        
+        <div className={`${styles.projet}`} >
+            <NavLink to={`/description/${idProjet}`}>
             <div className={`${styles.imgContainer}`}>
-               <img src={projet.image} alt="" /> 
+               <img   src={projet.image} alt="" /> 
             </div>
+            </NavLink>  
             <div className={`${styles.title}  `}>
                 <div className="d-flex justify-content-between align-items-center">
-                <h3  className="m5">{projet.title}</h3>
-                <i  className={`fas fa-heart ${liked ? "text-error" : ""} m5`} ></i>
+                <h3  className="m5">{projet.name}</h3>
+                
                 </div>
-                <p>Genre: {projet.genre.map((genre, index) => (<span key={index}>{genre}</span>)
-                )}</p>
+                
                 <p>crée en {projet.year}</p>
             </div>
-                
+            
         </div>
+        
         
     );
 }

@@ -14,10 +14,8 @@ import Connexion from "./pages/Connexion";
 import Footer from "./components/Footer";
 import ProfileGestion from "./pages/ProfileGestion";
 import Termes from "./pages/Conditions d'utilisations/Termes";
-import Confidentialite from "./pages/Conditions d'utilisations/Confidentialite";
-import Cookies from "./pages/Conditions d'utilisations/Cookies";
-import Dementi from "./pages/Conditions d'utilisations/Dementi";
 import './sass/App.scss';
+import Description from "./pages/Description";
 
 
 function App() {
@@ -25,14 +23,7 @@ function App() {
   const [logged, setLogged] = useState(false);
   const [user, setUser] = useState("");
   const [userlist, setUserlist] = useState([]);
-
-  // function updateUser(newUsername) {
-  //   setUserlist(
-  //     userlist.map((user) => (user.idUsers === newUsername.idUsers ? newUsername : user))
-  //   );
-  // }
-  
-  
+ 
   useEffect(() => {
     
     const fetchUserList = async () => {
@@ -56,19 +47,7 @@ function App() {
  
   
 console.log({user});
-  // function updateUser(newUsername, newEmail, newPassword) {
-  //   setUserlist(
-  //     userlist.map((user) => (user.idUsers === newUsername.idUsers ? newUsername : user)) ||  
-  //     userlist.map((user) => (user.idUsers === newEmail.idUsers ? newEmail : user)) 
-  //     // userlist.map((user) => (user.idUsers === newPassword.idUsers ? newPassword : user))  
-  //   ); 
-  // }
-  // function updateUser2( newPassword) {
-  //   setUserlist(
-  //     userlist.map((user) => (user.idUsers === newPassword.idUsers ? newPassword : user))   
-        
-  //   ); 
-  // }
+
   console.log(userlist) ;
 
   function deleteUser(deletedUser) {
@@ -101,9 +80,7 @@ console.log({user});
         <Route path="/connexion" element={<Connexion getUser={getUser}  />} />         
         <Route path="/profileGestion" element={<ProfileGestion  user={user} userlist={userlist} setUser={setUser}/>} />  
         <Route path="/termes" element={<Termes />} />  
-        <Route path="/confidentialite" element={<Confidentialite />} />  
-        <Route path="/cookies" element={<Cookies />} />  
-        <Route path="/dementi" element={<Dementi />} />  
+        <Route path="/description/:idProjet" element={<Description />} />  
       </Routes>
       <Footer />
     </Router> 

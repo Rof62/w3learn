@@ -48,6 +48,41 @@ router.get("/getAvatarFromUser", (req, res) => {
     });
   });
 
+  router.get("/getProjet/:idUsers", (req, res) => {
+    const idUser = req.params.idUsers
+    console.log(idUser);
+    const sql = "SELECT * FROM projet WHERE idUsers = ?";
+    connection.query(sql, [idUser], (err, result) => {
+      if (err) throw err;
+      res.send(JSON.stringify(result)) ;
+    });
+  });
+
+  router.get("/projet/:idProjet", (req, res) => {
+    const {idProjet} = req.params
+    console.log(idProjet);
+    const sql = "SELECT * FROM projet WHERE idProjet = ?";
+    console.log(sql)
+    connection.query(sql, [idProjet], (err, result) => {
+      if (err) throw err;
+      res.send(JSON.stringify(result)) 
+      console.log(result);;
+    });
+  });
+
+  router.get('/getProjetValidate', (req, res) => {
+    // Exécutez une requête SQL pour sélectionner tous les projets validés (avec validate = 1)
+    const query = 'SELECT * FROM projet WHERE validation = 1';
+    connection.query(query, (err, result) => {
+      if (err) {
+        console.error('Erreur lors de l\'exécution de la requête SQL:', err);
+        res.status(500).json({ error: 'Une erreur s\'est produite' });
+      } else {
+        res.json(result);
+      }
+    });
+  });
+
   router.post('/addProjet', upload.single('image'), async (req, res) => {
     const { name, year, description, link, idUsers, genre } = req.body;
     
