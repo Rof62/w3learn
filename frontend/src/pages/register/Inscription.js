@@ -3,8 +3,8 @@ import {  useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { NavLink,  useNavigate } from "react-router-dom";
-import logo from "../img/logo.png"
-import styles from "../sass/Register.module.scss";
+import logo from "../../img/logo.png"
+import styles from "../../sass/Register.module.scss";
 
 export default function Register( {}) {
   

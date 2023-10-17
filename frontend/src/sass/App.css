@@ -53,6 +53,13 @@ h2 {
   text-shadow: 0 0 10px #00DDEB, 0 0 20px #00DDEB, 0 0 30px #00DDEB;
 }
 
+.custom2 {
+  width: 60%;
+  margin: 40px auto;
+  border: 1px solid;
+  box-shadow: 0 0 5px #00DDEB, 0 0 6px #5B42F3, 0 0 7px #00DDEB, 0 0 8px #5B42F3, 0 0 9px #00DDEB;
+}
+
 @media (max-width: 997px) {
   h1 {
     font-size: 25px;

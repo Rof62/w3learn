@@ -2,20 +2,20 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Blockchain from './pages/Blockchain';
-import Crypto from './pages/Crypto';
-import Metaverse from'./pages/Metaverse';
-import Blog from "./pages/Blog";
-import NFT from './pages/NFT';
-import Inscription from "./pages/Inscription";
-import Connexion from "./pages/Connexion";
-import Footer from "./components/Footer";
-import ProfileGestion from "./pages/ProfileGestion";
+import Navbar from './components/Header/Navbar'
+import Home from './pages/homepage/Home';
+import Blockchain from './pages/blockchain/Blockchain';
+import Crypto from './pages/crypto/Crypto';
+import Metaverse from'./pages/metaverse/Metaverse';
+import Blog from "./pages/blog/Blog";
+import NFT from './pages/nft/NFT';
+import Inscription from "./pages/register/Inscription";
+import Connexion from "./pages/login/Connexion";
+import Footer from "./components/Footer/Footer";
+import ProfileGestion from "./pages/profile/ProfileGestion";
 import Termes from "./pages/Conditions d'utilisations/Termes";
 import './sass/App.scss';
-import Description from "./pages/Description";
+import Description from "./pages/description/Description";
 
 
 function App() {
@@ -24,31 +24,7 @@ function App() {
   const [user, setUser] = useState("");
   const [userlist, setUserlist] = useState([]);
  
-  useEffect(() => {
-    
-    const fetchUserList = async () => {
-      try {
-        const response = await fetch("http://localhost:8003/api/users/getUserList");
-        if (response.ok) {
-          const users = await response.json();
-          setUserlist(users); // Mettez à jour userlist avec les données récupérées
-        } else {
-          console.error("Échec de la récupération des données des utilisateurs.");
-        }
-      } catch (error) {
-        console.error("Erreur lors de la récupération des données des utilisateurs :", error);
-      }
-    };
-  
-    // Appelez la fonction pour récupérer la liste des utilisateurs
-    fetchUserList();
-  }, [user]);
-
- 
-  
 console.log({user});
-
-  console.log(userlist) ;
 
   function deleteUser(deletedUser) {
     setUserlist(userlist.filter((user) => user.id !== deletedUser.id));
@@ -62,8 +38,6 @@ console.log({user});
   function getUser(userLogged) {
     setUser(userLogged);
   }
-
-  
 
   return (
     <>

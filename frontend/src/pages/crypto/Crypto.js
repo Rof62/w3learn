@@ -1,9 +1,9 @@
-import styles from "../sass/container.module.scss"
-import anime1 from "../img/anime.crypto1.gif"
-import anime2 from "../img/anime.crypto2.gif"
-import anime3 from "../img/anime.crypto3.gif"
-import anime4 from "../img/anime.crypto4.gif"
-import anime5 from "../img/securite.crypto.gif"
+import styles from "../../sass/container.module.scss"
+import anime1 from "../../img/anime.crypto1.gif"
+import anime2 from "../../img/anime.crypto2.gif"
+import anime3 from "../../img/anime.crypto3.gif"
+import anime4 from "../../img/anime.crypto4.gif"
+import anime5 from "../../img/securite.crypto.gif"
 
 export default function crypto() {
     return(
@@ -35,7 +35,7 @@ export default function crypto() {
                             <div className="d-flex resume size container3 mb20">
                                 <p>
                                     Les cryptomonnaies fonctionnent grâce à une combinaison de concepts de cryptographie, de mathématiques 
-                                    et de technologie blockchain. Chaque cryptomonnaie a sa propre architecture et son propre mécanisme de 
+                                    et de technologie blockchain . Chaque cryptomonnaie a sa propre architecture et son propre mécanisme de 
                                     consensus pour valider les transactions. L'un des exemples les plus célèbres est le Bitcoin, qui 
                                     utilise le mécanisme de preuve de travail (Proof of Work) pour sécuriser son réseau.
                                 </p>

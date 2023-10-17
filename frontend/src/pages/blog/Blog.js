@@ -1,5 +1,5 @@
-import styles from "../sass/Blog.module.scss"
-import Projet from "../components/Projet"
+import styles from "./Blog.module.scss"
+import Projet from "../../components/Projet/Projet"
 
 import React, { useState, useEffect } from "react"
 
@@ -26,7 +26,6 @@ export default function Blog() {
               const modifiedDataBack = projet.map((s) =>
                 s.validation === 1 ? { ...s, validation: true } : { ...s, validation: false }
               );
-      
               const newModifiedDatas = await Promise.all(
                 modifiedDataBack.map(async (s) => {
                   if (s.validation === true) {
@@ -38,7 +37,6 @@ export default function Blog() {
                   
                 })
               );
-      
               setAllTheProjet(newModifiedDatas);
             }
           } catch (error) {
@@ -68,8 +66,6 @@ export default function Blog() {
                     </div>
                 </div>
         </div>
-       
-        
         <div className="d-flex flex-column justify-content-center align-items-center m20">
             <h2>Vous voulez contribuer au Blog ?</h2>
             <br />

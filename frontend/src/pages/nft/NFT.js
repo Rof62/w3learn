@@ -1,9 +1,8 @@
-import styles from "../sass/container.module.scss"
-import anime from "../img/anime.nft1.gif"
-import image1 from "../img/img.nft1.png"
-import image2 from "../img/img.nft2.png"
-import Carrousel from "../components/Carrousel"
-
+import styles from "../../sass/container.module.scss"
+import anime from "../../img/anime.nft1.gif"
+import image1 from "../../img/img.nft1.png"
+import image2 from "../../img/img.nft2.png"
+import Carrousel from "../../components/Carrousel/Carrousel"
 
 export default function Nft() {
     return(

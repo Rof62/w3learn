@@ -2,10 +2,10 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import nft1 from "../img/carrousel1.webp"
-import nft2 from "../img/caroussel2.webp"
-import nft3 from "../img/carrousel3.webp"
-import nft4 from "../img/carrousel4.webp"
+import nft1 from "../../img/carrousel1.webp"
+import nft2 from "../../img/caroussel2.webp"
+import nft3 from "../../img/carrousel3.webp"
+import nft4 from "../../img/carrousel4.webp"
 
 export default function Carrousel() {
     const settings = {

@@ -1,0 +1,49 @@
+.image {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.image img {
+  width: 50%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.description {
+  background-color: var(--light-grey);
+}
+.description h3 {
+  margin-top: 50px;
+}
+
+.lien {
+  margin-bottom: 50px;
+}
+.lien h3 {
+  margin-bottom: 50px;
+}
+
+.link {
+  color: var(--gray-2);
+  text-decoration: none;
+  transition: 0.5s all;
+  margin-left: 20px;
+}
+.link:hover {
+  transition: 0.5s all;
+  transform: scale(1.2);
+}
+
+.test {
+  width: 40%;
+}
+
+.test2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  text-shadow: 2px 4px 3px var(--gray-2);
+}/*# sourceMappingURL=Description.module.css.map */

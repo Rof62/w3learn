@@ -1,9 +1,9 @@
 import { useState } from "react";
 // import ImageUploadForm from '../components/ImageUploadForm';
-import ProfileImage from "../components/ProfileImage";
-import AddProjet from "../components/AddProjet";
-import image1 from "../img/utopia1.png";
-import Contributeur from "../components/Contributeur";
+import ProfileImage from "../../components/ProfileImage/ProfileImage";
+import AddProjet from "../../components/AddProjet/AddProjet";
+import image1 from "../../img/utopia1.png";
+import Contributeur from "../../components/Contributeur/Contributeur";
 
 export default function ProfileGestion({ user, setUser}) {
 
@@ -133,8 +133,7 @@ export default function ProfileGestion({ user, setUser}) {
             <h1>Gestion de profile</h1>
             <div className="cards">
               <div className="d-flex flex-column justify-content-center align-items-center mt20">
-                <h3>Bienvenue {user.username} </h3>
-                
+                <h3>Bienvenue {user.username} </h3> 
                 <>
                 <ProfileImage className="mt20" user={user} />
                 </> 
@@ -173,8 +172,7 @@ export default function ProfileGestion({ user, setUser}) {
               <div className="custom2"></div>
               <div>
                 <Contributeur user={user}/>
-              </div>
-              
+              </div> 
               <div className="custom2"></div>
               <>
               <div >
@@ -183,9 +181,14 @@ export default function ProfileGestion({ user, setUser}) {
                 </div>
                 <div className="d-flex justify-content-around align-items-center">
                   <AddProjet user={user}/>
-                  <img   src={image1} alt="GIF animé" />
+                  <img src={image1} alt="GIF animé" />
                 </div>
-              </div> 
+              </div>
+              <div className="custom2"></div>
+              <div className="d-flex justify-content-center mb20">
+                <h3>Supprimer mon compte</h3>
+                <button className="btn btn-primary ml20">Supprimer</button>
+              </div>
             </> 
             </div>   
           </div>

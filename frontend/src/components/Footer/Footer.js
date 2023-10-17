@@ -1,5 +1,5 @@
-import styles from "../sass/Footer.module.scss"
-import logo from "../img/logo.png"
+import styles from "./Footer.module.scss"
+import logo from "../../img/logo.png"
 // import { useState } from "react";
 import { NavLink } from "react-router-dom";
 

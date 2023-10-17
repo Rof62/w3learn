@@ -1,13 +1,11 @@
-import anime1 from "../img/anime.home1.gif";
-import anime2 from "../img/anime.home2.gif";
-import anime3 from "../img/anime.home3.gif";
-import anime4 from "../img/anime.web.gif";
-import anime5 from "../img/anime.web2.gif";
-import anime6 from "../img/anime.web3.gif";
-import anime7 from "../img/anime.web4.gif";
-
-
-import styles from "../sass/container.module.scss"
+import anime1 from "../../img/anime.home1.gif";
+import anime2 from "../../img/anime.home2.gif";
+import anime3 from "../../img/anime.home3.gif";
+import anime4 from "../../img/anime.web.gif";
+import anime5 from "../../img/anime.web2.gif";
+import anime6 from "../../img/anime.web3.gif";
+import anime7 from "../../img/anime.web4.gif";
+import styles from "../../sass/container.module.scss"
 
 export default function Home() {
     return(
@@ -46,7 +44,6 @@ export default function Home() {
                 <div className="d-flex margin-top container1Mobile ">
                     <div className="custom"></div>
                     <div className="d-flex flex-column container2 align-items-center text-align ">
-                    
                     <p>
                        <span> Blockchain et <br /> contrats intelligents :</span>
                         <br /><br />
@@ -127,8 +124,6 @@ export default function Home() {
                 </p>
             </div>
         </div>
-        </>
-       
-        
+        </>   
     );
 }

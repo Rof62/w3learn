@@ -1,10 +1,9 @@
-import styles from "../sass/container.module.scss"
-import anime1 from "../img/anime.blockchain1.gif"
-import anime2 from "../img/anime.blockchain2.gif"
-import anime3 from "../img/anime.blockchain3.gif"
-import anime4 from "../img/anime.blockchain4.gif"
-import anime5 from "../img/anime.blockchain5.gif"
-
+import styles from "../../sass/container.module.scss"
+import anime1 from "../../img/anime.blockchain1.gif"
+import anime2 from "../../img/anime.blockchain2.gif"
+import anime3 from "../../img/anime.blockchain3.gif"
+import anime4 from "../../img/anime.blockchain4.gif"
+import anime5 from "../../img/anime.blockchain5.gif"
 
 export default function blockchain() {
     return(
@@ -86,11 +85,9 @@ export default function blockchain() {
                             permet à tous les participants de vérifier les transactions, renforçant la confiance. Enfin, l'immuabilité 
                             de la blockchain empêche la manipulation des données historiques, ce qui peut être essentiel dans des domaines 
                             tels que l'historique médical ou les contrats intelligents.
-                        </p>               
-                        
+                        </p>                                 
                         </div>
                 </div>
-
         </div>
         </>
     )

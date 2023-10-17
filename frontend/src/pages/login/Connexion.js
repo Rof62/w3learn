@@ -1,5 +1,5 @@
-import styles from "../sass/Register.module.scss";
-import logo from "../img/logo.png"
+import styles from "../../sass/Register.module.scss";
+import logo from "../../img/logo.png"
 import { NavLink,  useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";

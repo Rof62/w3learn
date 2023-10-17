@@ -1,4 +1,4 @@
-import styles from "../sass/Register.module.scss";
+import styles from "../../sass/Register.module.scss";
 import React, { useState, useEffect } from 'react';
 import {  useForm, Controller, useFieldArray } from "react-hook-form";
 import * as yup from "yup";
@@ -43,6 +43,9 @@ export default function AddProjet({user}) {
           .string()
           .required("Le champ est obligatoire"),
         link: yup
+          .string()
+          .required("Le champ est obligatoire"),
+        genre: yup
           .string()
           .required("Le champ est obligatoire"),
         
@@ -197,6 +200,9 @@ const defaultValues = {
                 </button>
                 </li>))}
                 </ul>
+                {errors?.genre && (
+            <p className={`${styles.feedback}`}>{errors.genre.message}</p>
+          )} 
         </div>
         <div className={`d-flex flex-column mb10 `}>
           <label htmlFor="year" className="mb10 ml10 ">

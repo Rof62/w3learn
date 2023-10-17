@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import styles from "../sass/MobileMenu.module.scss"
+import styles from "../../sass/MobileMenu.module.scss"
 
 
 export default function MobileMenu( {showMenu, closeMenu}) {

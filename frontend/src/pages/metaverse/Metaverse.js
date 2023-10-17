@@ -1,8 +1,8 @@
-import styles from "../sass/container.module.scss"
-import anime1 from '../img/anime.metaverse1.gif'
-import anime2 from '../img/anime.metaverse2.gif'
-import img1 from '../img/img.meta1.png'
-import img2 from '../img/img.meta2.png'
+import styles from "../../sass/container.module.scss"
+import anime1 from '../../img/anime.metaverse1.gif'
+import anime2 from '../../img/anime.metaverse2.gif'
+import img1 from '../../img/img.meta1.png'
+import img2 from '../../img/img.meta2.png'
 
 export default function Metaverse() {
     return(

@@ -1,7 +1,7 @@
-import logo from "../img/logo.png";
-import logo2 from "../img/profile-fill.png";
-import styles from "../sass/Navbar.module.scss";
-import MobileMenu from "./MobileMenu";
+import logo from "../../img/logo.png";
+import logo2 from "../../img/profile-fill.png";
+import styles from "../../sass/Navbar.module.scss";
+import MobileMenu from "../Mobilemenu/MobileMenu";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
