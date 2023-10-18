@@ -1,44 +1,24 @@
 import { useState } from "react";
-import {  useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { NavLink,  useNavigate } from "react-router-dom";
-import logo from "../../img/logo.png"
+import { NavLink, useNavigate } from "react-router-dom";
+import { createUser } from "../../api/users";
+import logo from "../../img/logo.png";
 import styles from "../../sass/Register.module.scss";
 
-export default function Register( {}) {
-  
-  // useState pour l'erreur ou la validation provenant de l'API
+export default function Inscription() {
   const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const yupSchema = yup.object({
-    username: yup
-      .string()
-      .required("Le champ est obligatoire")
-      .min(2, "Le champ doit contenir au minimum 2 caractères")
-      .max(12),
-    email: yup
-      .string()
-      .required("Le champ est obligatoire")
-      .email("Vous devez saisir un email valide"),
-    password: yup
-      .string()
-      .required("Le champ est obligatoire")
-      .min(5, "Mot de passe trop court")
-      .max(10, "Mot de passe trop long"),
-    confirmPassword: yup
-      .string()
-      .required("Vous devez confirmer votre mot de passe")
-      .oneOf(
-        [yup.ref("password", "")],
-        "Les mots de passe ne correspondent pas"
-      ),
+    username: yup.string().required("Le champ est obligatoire").min(2, "Le champ doit contenir au minimum 2 caractères").max(20),
+    email: yup.string().required("Le champ est obligatoire").email("Vous devez saisir un email valide"),
+    password: yup.string().required("Le champ est obligatoire").min(5, "Mot de passe trop court").max(10, "Mot de passe trop long"),
+    confirmPassword: yup.string().required("Vous devez confirmer votre mot de passe").oneOf([yup.ref("password", "")], "Les mots de passe ne correspondent pas"),
   });
 
-  // valeurs par défaut de notre formulaire d'inscription
   const defaultValues = {
     username: "",
     password: "",
@@ -46,110 +26,59 @@ export default function Register( {}) {
     email: "",
   };
 
-  // register pour connecter les input et recupérer leurs valeurs
-  // handleSublit qui va gérer la méthode de soumission
-  // reset pour vider les champs après soumission du formulaire
-  // control pour connecter les champs dynamiques avec useFieldArray à useForm
-  // errors pour le feedback des erreurs
-  // isSubmitting pour éviter de valider plusieurs fois le formulaire
-  const {
-    register,
-    handleSubmit,
-    reset,
-    control,
-    formState: { errors, isSubmitted },
-  } = useForm({
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting }, setError, clearErrors } = useForm({
     defaultValues,
     mode: "onChange",
     resolver: yupResolver(yupSchema),
   });
 
-  
-
-  // il ne sera invoqué que si aucune erreur n'a été rencontré
-  // c'est à cet endroit que vous placez votre requete HTTP de type POST pour insérer en BDD en passant par votre API
   async function submit(values) {
-    setFeedBack("");
-    console.log(values);
-    const response = await fetch("http://localhost:8003/api/users/addUser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
-    if (response.ok) {
-      const newUser = await response.json();
-      console.log("newUser", newUser);
-      if (newUser.message) {
-        setFeedBack(newUser.message)
-      } else {
-        setFeedBackGood(newUser.messageGood)
-        reset(defaultValues);
-        setTimeout(() => {
-          
-          navigate("/connexion")
-        }, 3000)
-      }
-    } 
+    try {
+      clearErrors();
+      await createUser(values);
+      setTimeout(() => {
+        navigate("/connexion");
+      }, 3000);
+   } catch (error) {
+    reset(defaultValues)
+     setError("generic", {type: "generic", message: error});  
+   }
   }
 
   return (
-    <div className={` d-flex flex-column justify-content-center align-items-center ${styles.appContainer} `}>
-      <form onSubmit={handleSubmit(submit)} className={`d-flex align-items-center flex-column ${styles.card} p20 mb20`}>
-      <NavLink to="/" ><img src={logo} alt="" className={`${styles.logo}`} /></NavLink> 
-        <div className="d-flex flex-column mb10">
-          <label htmlFor="username" className="mb10 ml20">
-            Votre pseudo
-          </label>
-          <input placeholder="Votre pseudo" className="p10" type="text" id="username" {...register("username")} />
-          {errors?.username && (
-            <p className={`${styles.feedback}`}>{errors.username.message}</p>
-          )}
-        </div>
-        <div className="d-flex flex-column mb10">
-          <label htmlFor="email" className="mb10 ml20">
-            Votre email
-          </label>
-          <input type="email" id="email" {...register("email")} placeholder="Email" className="p10"/>
-          {errors?.email && (
-            <p className={`${styles.feedback}`}>{errors.email.message}</p>
-          )}
-        </div>
-        <div className="d-flex flex-column mb10">
-          <label htmlFor="password" className="mb10 ml20">
-            Mot de passe
-          </label>
-          <input placeholder="Mot de passe" className="p10" type="password" id="password" {...register("password")} />
-          {errors?.password && (
-            <p className={`${styles.feedback}`}>{errors.password.message}</p>
-          )}
-        </div>
-        <div className="d-flex flex-column mb10">
-          <label htmlFor="confirmPassword" className="mb10 ml20">
-            Confirmer votre mot de passe
-          </label>
-          <input
-            type="password"
-            id="confirmPassword"
-            {...register("confirmPassword")}
-            placeholder="Confirmer votre mot de passe"
-             className="p10"
-          />
-          {errors?.confirmPassword && (
-            <p className={`${styles.feedback}`}>
-              {errors.confirmPassword.message}
-            </p>
-          )}
-        </div>
-        {feedback && <p className={`${styles.feedback} mb20`}>{feedback}</p>}
-        {feedbackGood && (
-          <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
-        )}
-        <button className={`btn btn-primary ${styles.button}`} disabled={isSubmitted}>
-          Submit
-        </button>
-      </form>
+    <div className={` d-flex flex-column justify-content-center align-items-center ${styles.appContainer}`}>
+    <form onSubmit={handleSubmit(submit)} className={`d-flex align-items-center flex-column ${styles.card} p20 mb20`}>
+        <NavLink to="/">
+           <img src={logo} alt="" className={`${styles.logo}`} />
+         </NavLink>
+    <div className="mb10 d-flex flex-column">
+        <label className="mb10 ml20" htmlFor="username">Name</label>
+        <input type="text" {...register("username")} id="username" placeholder="pseudo"  className="p10" />
+        {errors.username  && <p className="form-error">{errors.username.message}</p>}
     </div>
+    <div className="mb10 d-flex flex-column">
+        <label className="mb10 ml20" htmlFor="email">Email</label>
+        <input type="text" {...register("email")} id="email" placeholder="email" className="p10"/>
+        {errors.email  && <p className="form-error">{errors.email.message}</p>}
+    </div>
+    <div className="mb10 d-flex flex-column">
+        <label className="mb10 ml20" htmlFor="password">Password</label>
+        <input type="password" {...register("password")} id="password" placeholder="  mot de passe" className="p10"/>
+        {errors.password  && <p className="form-error">{errors.password.message}</p>}
+    </div>
+    <div className="d-flex flex-column mb10">
+          <label htmlFor="confirmPassword" className="mb10 ml20">
+             Confirmer votre mot de passe
+          </label>
+           <input type="password" id="confirmPassword" {...register("confirmPassword")} placeholder="confirmer mot de passe" className="p10" />
+           {errors?.confirmPassword && <p className="form-error">{errors.confirmPassword.message}</p>}
+         </div>
+         {errors.generic  && <p className="form-error">{errors.generic.message}</p>}
+         
+    <div className="mb10">
+        <button className="btn btn-primary" disabled={isSubmitting}>Submit</button>
+    </div>
+    </form>
+</div>
   );
 }

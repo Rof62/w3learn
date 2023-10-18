@@ -31,35 +31,34 @@ router.post("/login", (req, res) => {
     });
   });
 
-  router.post("/addUser", async (req, res) => {
+  router.post("/addUser", (req, res) => {
+    const {email, password, username} = req.body;
     
-    const {username, email, password} = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const sqlVerify = `SELECT * FROM users WHERE email=?`;
-    console.log(req.body);
-  
-    connection.query(sqlVerify, {email}, (err, result) => {
-      if (err) throw err;
-      if(result.length) {
-        console.log("email existant");
-        let isEmail = { message: "email existant" };
-        res.send(isEmail)
-      } else {
-        const sqlInsert = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)"
-        const values = [username, email, hashedPassword];
-        connection.query(sqlInsert, values, (err, result) => {
-          if(err) throw err;
-          let idUser = result.insertId;
-          req.body.password = "";
-          req.body.confirmPassword = "";
-          console.log(idUser); 
-        });
-        let isEmail = { messageGood: "inscription reussi ! Vous allez être rediriger" };
-        res.send(isEmail)
-      }
-    });
-  });
+    const verifyMailSql = "Select * FROM users WHERE email = ?";
+    connection.query(verifyMailSql, [email], async (err, result) => {
+        try {
+          if(result.length === 0) {
+            console.log("here");
+            const hashedPassword = await bcrypt.hash(password, 10);
+            const insertSql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+            connection.query(insertSql, [username, email, hashedPassword], (err, result) => {
+                if (err) throw err;
+                let idUser = result.insertId;
+                const sqlSelect = "SELECT idUsers, username, email FROM users WHERE idUsers = ?";
+                connection.query(sqlSelect, [idUser], (err, result) => {
+                    if (err) throw err;
+                    res.status(201).json("Inscription réussie" );
+                })
+            })
+          } else {
+            console.log("there");
+            res.status(400).json("le mail existe");
+          }  
+        } catch (error) {
+           res.status(500).end("Une erreur interne s'est produite") 
+        }
+    })
+})
 
   router.get("/getUserList", (req, res) => {
     const sql = "SELECT * FROM users ";

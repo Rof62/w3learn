@@ -252,6 +252,10 @@ img {
   height: 100vh;
 }
 
+.form-error {
+  color: red;
+}
+
 :root {
   --primary: #AF40FF;
   --gray-1: #5B42F3;

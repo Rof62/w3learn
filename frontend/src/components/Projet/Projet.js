@@ -1,4 +1,4 @@
-import styles from "../../sass/Projet.module.scss"
+import styles from "./Projet.module.scss"
 
 import React from 'react';
 import { NavLink } from "react-router-dom";

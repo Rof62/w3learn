@@ -1,0 +1,34 @@
+@use "../../sass/mixin" as mixin;
+
+
+.cards{
+    background-color: var(--light-grey);
+    width: 80vw;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+.gestion{
+    margin-top: 20px;
+    width: 50%;
+    margin: 0 auto;
+    p{
+        width: 150px;
+    }
+    // input{
+    //     width: 33.3%;
+    // }
+}
+
+.gestion2{
+    margin-top: 50px;
+}
+
+@include mixin.md-lt{
+    .button{
+        display: block;
+    }
+   
+  }
+    
