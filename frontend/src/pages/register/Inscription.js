@@ -8,7 +8,7 @@ import logo from "../../img/logo.png";
 import styles from "../../sass/Register.module.scss";
 
 export default function Inscription() {
-  const [feedback, setFeedBack] = useState("");
+  const [feedback, setFeedBack] = useState(false);
   const [feedbackGood, setFeedBackGood] = useState("");
   const navigate = useNavigate();
 
@@ -36,6 +36,7 @@ export default function Inscription() {
     try {
       clearErrors();
       await createUser(values);
+      setFeedBack(true)
       setTimeout(() => {
         navigate("/connexion");
       }, 3000);
@@ -46,8 +47,8 @@ export default function Inscription() {
   }
 
   return (
-    <div className={` d-flex flex-column justify-content-center align-items-center ${styles.appContainer}`}>
-    <form onSubmit={handleSubmit(submit)} className={`d-flex align-items-center flex-column ${styles.card} p20 mb20`}>
+    <div className={`flex-fill d-flex flex-column justify-content-center align-items-center ${styles.appContainer}`}>
+    <form onSubmit={handleSubmit(submit)} className={`d-flex align-items-center flex-column card p20 mb20`}>
         <NavLink to="/">
            <img src={logo} alt="" className={`${styles.logo}`} />
          </NavLink>
@@ -72,11 +73,11 @@ export default function Inscription() {
           </label>
            <input type="password" id="confirmPassword" {...register("confirmPassword")} placeholder="confirmer mot de passe" className="p10" />
            {errors?.confirmPassword && <p className="form-error">{errors.confirmPassword.message}</p>}
-         </div>
+    </div>
          {errors.generic  && <p className="form-error">{errors.generic.message}</p>}
-         
+         {feedback && <p>Inscription réussi !</p>}
     <div className="mb10">
-        <button className="btn btn-primary" disabled={isSubmitting}>Submit</button>
+        <button className={`btn btn-primary ${styles.button}`} disabled={isSubmitting}>Submit</button>
     </div>
     </form>
 </div>

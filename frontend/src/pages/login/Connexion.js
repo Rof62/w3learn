@@ -5,14 +5,20 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import {useContext} from "react"
+import {AuthContext} from "../../context"
 
 
-export default function Login({ getUser }) {
+
+export default function Login({  }) {
+
+    const navigate = useNavigate();
+    const {login} = useContext(AuthContext)
 
   const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
 
-  const navigate = useNavigate()
+  
 
   const yupSchema = yup.object({
     
@@ -35,6 +41,8 @@ export default function Login({ getUser }) {
   const {
     register,
     handleSubmit,
+    setError,
+    clearErrors,
     reset,
     formState: { errors, isSubmitted },
   } = useForm({
@@ -44,33 +52,15 @@ export default function Login({ getUser }) {
   });
 
   async function submit(values) {
-    setFeedBack("");
-    console.log(values);
-    const response = await fetch("http://localhost:8003/api/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
-    if (response.ok) {
-      const newUser = await response.json();
-      console.log("newUser", newUser);
-      if (newUser.message) {
-        setFeedBack(newUser.message)
-      } 
-      else {
-        setFeedBackGood("Connexion réussi ! vous allez être rediriger")
-        reset(defaultValues);
-        console.log("User recuperer", newUser);
-        reset(defaultValues);
-        setTimeout(() => {
-          // toggleRegister()
-          getUser(newUser)
-          navigate("/profileGestion")
-        }, 3000)
-      };
-    }};
+    try {
+      clearErrors();
+    await login(values)
+    navigate("/profileGestion");
+    
+   } catch (error) {
+     setError("generic", {type: "generic", message: error})  
+   }
+    };
 
   return (
     <div className={`flex-fill d-flex flex-column justify-content-center align-items-center ${styles.appContainer}`}>

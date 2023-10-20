@@ -1,11 +1,15 @@
-import { useState } from "react";
+
 // import ImageUploadForm from '../components/ImageUploadForm';
 import ProfileImage from "../../components/ProfileImage/ProfileImage";
 import AddProjet from "../../components/AddProjet/AddProjet";
 import image1 from "../../img/utopia1.png";
 import Contributeur from "../../components/Contributeur/Contributeur";
+import {useState, useContext} from "react"
+import {AuthContext} from "../../context"
 
-export default function ProfileGestion({ user, setUser}) {
+export default function ProfileGestion({  setUser}) {
+
+  const {user} = useContext(AuthContext)
 
     console.log(user);
     

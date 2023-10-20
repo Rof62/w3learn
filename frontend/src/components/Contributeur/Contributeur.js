@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function Contributeur({user}) {
-    console.log(user);
+    
     const {idUsers} = user
     const [allTheProjet, setAllTheProjet] = useState([])
 
@@ -30,7 +30,7 @@ export default function Contributeur({user}) {
                 <p>{allTheProjet.map((projet, index) => (
                     <div key={index} className="d-flex align-items-center justify-content-around"  value={projet.idUsers}>
                         <h4 className="ml20"> {projet.name}:</h4>
-                        <p>{ projet.validation ? <p className="ml20">projet valider ✅</p> : <p className="ml20">❌projet en cours de validation...</p>}</p> 
+                        { projet.validation ? <p className="ml20">projet valider ✅</p> : <p className="ml20">❌projet en cours de validation...</p>} 
                     </div>
             ))}</p>
             </div>

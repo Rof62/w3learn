@@ -33,7 +33,7 @@ export default function AddProjet({user}) {
           .string()
           .required("Le champ est obligatoire")
           .min(2, "Le champ doit contenir au minimum 2 caractères")
-          .max(12),
+          .max(20),
         year: yup
           .string()
           .required("Le champ est obligatoire")
@@ -45,9 +45,9 @@ export default function AddProjet({user}) {
         link: yup
           .string()
           .required("Le champ est obligatoire"),
-        genre: yup
-          .string()
-          .required("Le champ est obligatoire"),
+        
+          
+          // .required("Le champ est obligatoire"),
         
       });
 

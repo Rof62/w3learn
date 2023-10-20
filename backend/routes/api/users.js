@@ -1,35 +1,36 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
+const jsonwebtoken = require("jsonwebtoken");
+const {key, keyPub} = require("../../keys");
 
 const connection = require("../../database/index");
 
-router.post("/login", (req, res) => {
-    const { email, password } = req.body;
-    const sql = `SELECT idUsers, username, password, blobby FROM users WHERE email=? `;
-    connection.query(sql, [email], async (err, result) => {
-      if (err) throw err;
-      console.log(result);
-      if (!result.length) {
-        console.log("USER INCORRECT");
-        let doesExist = { message: "User incorrect" };
-        res.send(doesExist);
-      } else {
-        const dbPassword = result[0].password;
-        const passwordMatch = await bcrypt.compare(password, dbPassword); //retourne un boolean
-        if(!passwordMatch) {
-          console.log("USER INCORRECT");
-        let doesExist = { message: "User incorrect" };
-        res.send(doesExist);
-        }
-        let resultBack = req.body;
-        resultBack.idUsers = result[0].idUsers;
-        resultBack.username = result[0].username;
-        resultBack.blobby = result[0].blobby;
-        resultBack.password = dbPassword;
-        res.json(resultBack);
+router.post("/login", (req,res) => {
+    
+  const { email, password} = req.body
+  const verifyMailSql = "Select * FROM users WHERE email = ?";
+  connection.query(verifyMailSql, [email], (err, result) => {
+      try {
+          if(result.length > 0) {
+              if (bcrypt.compareSync(password, result[0].password)) {
+                  const token = jsonwebtoken.sign({}, key, {
+                      subject: result[0].idUsers.toString(),
+                      expiresIn: 3600 * 24 * 30,
+                      algorithm: "RS256",
+                  });
+                  res.cookie("token", token, {maxAge: 30 * 24 * 60 * 60 * 1000});
+                  res.json(result[0]);
+              } else {
+                  res.status(400).json("Email et/ou mot de passe incorrects"); 
+              }
+          } else {
+              res.status(400).json("Email et/ou mot de passe incorrects");
+          } 
+      } catch (error) {
+          console.log(error);
       }
-    });
-  });
+  })
+})
 
   router.post("/addUser", (req, res) => {
     const {email, password, username} = req.body;
@@ -58,6 +59,38 @@ router.post("/login", (req, res) => {
            res.status(500).end("Une erreur interne s'est produite") 
         }
     })
+})
+
+router.get("/userConnected", (req,res) => {
+  const {token} = req.cookies;
+  if (token) {
+      try {
+        const decodedToken = jsonwebtoken.verify(token, keyPub, {
+          algorithms: "RS256"
+        });
+        const sqlSelect = " SELECT idUsers, username, email, blobby FROM users WHERE idUsers = ?";
+        connection.query(sqlSelect, [decodedToken.sub], (err, result) => {
+          if (err) throw err;
+          const connectedUser = result[0];
+          connectedUser.password = "";
+          if (connectedUser) {
+              res.json(connectedUser)
+          } else {
+              res.json(null)
+          }
+        })  
+      } catch (error) {
+          console.log(error);
+      }
+  } else {
+      res.json(null)
+  }
+})
+
+router.get("/logout", (req, res) => {
+  res.clearCookie("token")
+  res.json({ message: 'vous etes deconnecter'})
+  console.log("deconnexion en cour");
 })
 
   router.get("/getUserList", (req, res) => {

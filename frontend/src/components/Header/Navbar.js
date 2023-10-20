@@ -2,11 +2,22 @@ import logo from "../../img/logo.png";
 import logo2 from "../../img/profile-fill.png";
 import styles from "./Navbar.module.scss";
 import MobileMenu from "../Mobilemenu/MobileMenu";
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import {useState, useContext} from "react"
+import {AuthContext} from "../../context"
+import {logout} from "../../api/users"
 
-export default function Navbar({ deconnexion, user}) {
+export default function Navbar({ }) {
+
+    const {user} = useContext(AuthContext)
+    const {setUser} = useContext(AuthContext)
     const [showMenu, setShowMenu] = useState(false)
+
+    function deconnexion() {
+    
+        setUser(null)
+        logout()
+      }
 
     const closeMenu = () => {
         setShowMenu(false)

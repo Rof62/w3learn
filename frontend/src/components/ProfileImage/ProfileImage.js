@@ -1,6 +1,10 @@
-import { useState, useEffect } from "react";
 
-export default function ProfileImage({ user }) {
+import {useState, useContext, useEffect} from "react"
+import {AuthContext} from "../../context"
+
+export default function ProfileImage({  }) {
+
+  const {user} = useContext(AuthContext)
   // useState pour l'input de type file
   const [selectedFile, setSelectedFile] = useState(null);
 // useState pour l'attribut src de notre balise img
