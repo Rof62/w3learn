@@ -68,7 +68,7 @@ router.get("/userConnected", (req,res) => {
         const decodedToken = jsonwebtoken.verify(token, keyPub, {
           algorithms: "RS256"
         });
-        const sqlSelect = " SELECT idUsers, username, email, blobby FROM users WHERE idUsers = ?";
+        const sqlSelect = " SELECT idUsers, username, email, role, blobby FROM users WHERE idUsers = ?";
         connection.query(sqlSelect, [decodedToken.sub], (err, result) => {
           if (err) throw err;
           const connectedUser = result[0];

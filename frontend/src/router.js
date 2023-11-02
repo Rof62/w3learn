@@ -2,6 +2,7 @@ import { createBrowserRouter} from "react-router-dom";
 import App from "./App"
 import { lazy } from "react"
 import { userLoader } from "./Loaders/userLoader";
+import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 
 
 const Homepage = lazy(() => import("./pages/homepage/Home"));
@@ -14,6 +15,7 @@ const Metaverse = lazy(() => import("./pages/metaverse/Metaverse"));
 const Blog = lazy(() => import("./pages/blog/Blog"));
 const Description = lazy(() => import("./pages/description/Description"));
 const Profile = lazy(() => import("./pages/profile/ProfileGestion"));
+const Admin = lazy(() => import("./pages/admin/Admin"));
 
 
 export const router = createBrowserRouter([
@@ -60,7 +62,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: "profileGestion",
-                element: <Profile />
+                element:<ProtectedRoute > <Profile /> </ ProtectedRoute>
+            },
+            {
+                path: "admin",
+                element: <Admin />
             },
 
         ]

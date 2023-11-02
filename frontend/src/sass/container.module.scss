@@ -139,5 +139,15 @@ p{
 //     display: none;
 // }
    } 
-}  
+} 
+
+@include mixin.xs {
+    .container{
+        p{
+            font-size: 14px;
+        }
+    }
+
+}
+
 

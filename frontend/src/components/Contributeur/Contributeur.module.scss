@@ -1,0 +1,36 @@
+@use "../../sass/mixin" as mixin;
+
+.contribution{
+   
+    h4{
+        text-align: center;
+        width: 50%;
+    }
+    p{
+        width: 50%;
+        text-align: center;
+    }
+    
+}
+
+@include mixin.md-lt{
+    .button{
+        display: block;
+    }
+    label{
+      font-size: 14px;
+    }
+    input{
+      width: 80%;
+    }
+   
+  }
+
+@include mixin.xs {
+    .container{
+        p{
+            font-size: 14px;
+        }
+    }
+
+}

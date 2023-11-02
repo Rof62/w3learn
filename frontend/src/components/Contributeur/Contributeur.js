@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./Contributeur.module.scss"
 
 export default function Contributeur({user}) {
     
@@ -22,15 +23,15 @@ export default function Contributeur({user}) {
       }, [idUsers]);
       console.log(allTheProjet);
     return(
-        <div>
+        <div >
             <div className="d-flex justify-content-center">
                 <h2>Mes contribution au Blog</h2>
             </div>
             <div className="ml20">
-                <p>{allTheProjet.map((projet, index) => (
-                    <div key={index} className="d-flex align-items-center justify-content-around"  value={projet.idUsers}>
-                        <h4 className="ml20"> {projet.name}:</h4>
-                        { projet.validation ? <p className="ml20">projet valider ✅</p> : <p className="ml20">❌projet en cours de validation...</p>} 
+                <p >{allTheProjet.map((projet, index) => (
+                    <div key={index} className={`d-flex align-items-center justify-content-around ${styles.contribution} `}  value={projet.idUsers}>
+                        <h4 className={`ml20 `}> {projet.name}:</h4>
+                        { projet.validation ? <p className={`ml20 `}>projet valider ✅</p> : <p className={`ml20 ${styles.contribution}`}>❌projet en cours de validation...</p>} 
                     </div>
             ))}</p>
             </div>

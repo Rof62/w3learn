@@ -25,10 +25,36 @@
     margin-top: 50px;
 }
 
-@include mixin.md-lt{
+
+
+  @include mixin.md-lt{
     .button{
+        display: block;
+    }
+    label{
+      font-size: 14px;
+    }
+    input{
+      width: 80%;
+    }
+    img{
+        width: 50%;
+    }
+    button{
         display: block;
     }
    
   }
+
+  @include mixin.xs {
+    .container{
+        p{
+            font-size: 14px;
+        }
+    }
+    h5{
+        font-size: 14px;
+    }
+
+}
     

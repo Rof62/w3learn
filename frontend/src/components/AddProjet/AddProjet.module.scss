@@ -1,0 +1,65 @@
+@use "../../sass/mixin" as mixin;
+
+.lien{
+    li{
+        width: 80%;
+    }
+}
+
+.appContainer {
+    min-height: 80vh;
+    
+    // height: 100vh;
+  }
+  
+  .feedback {
+    color: red;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .feedbackGood {
+    color: green;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  input {
+    width: 25vw;
+    height: 40px;
+    border-radius: 20px;
+    margin: 10px;
+  }
+
+  .card {
+    border-radius: 20px;
+    background-color: var(--light-grey);
+    // margin-bottom: 100px;
+    width: 50%;
+  }
+
+  .width{
+    width: 25vw;
+  }
+
+  @include mixin.md-lt{
+    .button{
+        display: block;
+    }
+    label{
+      font-size: 14px;
+    }
+    input{
+      width: 80%;
+    }
+   
+  }
+
+  @include mixin.xs {
+    .container{
+        p{
+            font-size: 14px;
+        }
+    }
+
+}

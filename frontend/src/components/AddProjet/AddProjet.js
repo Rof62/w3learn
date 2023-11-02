@@ -1,4 +1,4 @@
-import styles from "../../sass/Register.module.scss";
+import styles from "./AddProjet.module.scss";
 import React, { useState, useEffect } from 'react';
 import {  useForm, Controller, useFieldArray } from "react-hook-form";
 import * as yup from "yup";
@@ -181,7 +181,7 @@ const defaultValues = {
           </label>
         <ul>
             {fields.map((genre, index) => (
-              <li key={genre.id} className="mb10 d-flex">
+              <li key={genre.id} className="mb10 d-flex ">
                 <select
                   className="mr10"
                   {...register(`genre[${index}].value`)}

@@ -1,8 +1,20 @@
 import { NavLink } from "react-router-dom";
 import styles from "./MobileMenu.module.scss"
+import {useState, useContext} from "react"
+import {AuthContext} from "../../context"
+import {logout} from "../../api/users"
 
 
 export default function MobileMenu( {showMenu, closeMenu}) {
+
+    const {user} = useContext(AuthContext)
+    const {setUser} = useContext(AuthContext)
+
+    function deconnexion() {
+    
+        setUser(null)
+        logout()
+      }
     
     const handleNavLinkClick = () => {
         closeMenu()
@@ -17,8 +29,21 @@ export default function MobileMenu( {showMenu, closeMenu}) {
             <li><NavLink to="/nft" className={`${styles.none}`} onClick={handleNavLinkClick}>NFT</NavLink></li>        
             <li><NavLink to="/metaverse" className={`${styles.none}`} onClick={handleNavLinkClick}>METAVERSE</NavLink></li>        
             <li><NavLink to="/blog" className={`${styles.none}`} onClick={handleNavLinkClick}>Blog</NavLink></li>
-            <li><NavLink to="/connexion" className={`${styles.none}`} onClick={handleNavLinkClick}>Connexion</NavLink></li>
-            <li><NavLink to="/inscription" className={`${styles.none}`} onClick={handleNavLinkClick}>Inscription</NavLink></li>
+            <div>
+                { user ? (
+                    <>
+                    
+                    <li onClick={deconnexion} ><NavLink to="/" className={`${styles.none}`} onClick={handleNavLinkClick}>Deconnexion</NavLink></li>
+                    </>
+                ) : (
+                    <>
+                    <li><NavLink to="/inscription" className={`${styles.none}`} onClick={handleNavLinkClick}>Inscription</NavLink></li>
+                    <li><NavLink to="/connexion" className={`${styles.none}`} onClick={handleNavLinkClick}>connexion</NavLink></li></>
+                ) }
+            
+            </div>
+            {/* <li><NavLink to="/connexion" className={`${styles.none}`} onClick={handleNavLinkClick}>Connexion</NavLink></li>
+            <li><NavLink to="/inscription" className={`${styles.none}`} onClick={handleNavLinkClick}>Inscription</NavLink></li> */}
         </ul>
         </div>
     )

@@ -60,7 +60,7 @@ export default function Description() {
                             <div className={`d-flex justify-content-around ${styles.lien}`}>
                                 <div className='d-flex align-items-center'>
                                     <h3>Lien utile :</h3>
-                                    <Link className={styles.link} to={p.link}>{p.link}</Link>
+                                    <Link target="-blank" className={styles.link} to={p.link}>{p.link}</Link>
                                 </div>  
                             </div>
                         </div>

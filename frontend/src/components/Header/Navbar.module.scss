@@ -12,7 +12,7 @@
        bottom: 21%; 
     }
     button:nth-child(2){
-        left: 86%;
+        right: 6%;
         bottom: 21%; 
      }
     i{
@@ -54,9 +54,19 @@
     height: 25px;
     position: absolute;
        z-index: 1;
-       right: 19%; 
+       right: 21%; 
        bottom: 32%;
  }
+
+ .logo3{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+       z-index: 1;
+       right: 27%; 
+       bottom: 32%;
+ }
+
 
 .burger{
     display: none;
@@ -107,12 +117,25 @@
     text-decoration: none;
     
 }
+.button2{
+    color: #AF40FF;
+    text-decoration: none;
+    right: 6%;
+        bottom: 21%; 
+    
+}
 .none{
     text-decoration: none;
     color: #fff;
     
 }
 @include mixin.md-lt {
+    .button{
+        display: none;
+    }
+    .button2{
+        display: none;
+    }
     .neon{
         li{
             display: none;
@@ -145,6 +168,18 @@
     }
 
   } 
+
+  @include mixin.xs {
+    .container{
+        p{
+            font-size: 14px;
+        }
+    }
+    h5{
+        font-size: 14px;
+    }
+
+}
 
 
 

@@ -1,5 +1,6 @@
 import logo from "../../img/logo.png";
 import logo2 from "../../img/profile-fill.png";
+import logo3 from "../../img/Admin.png";
 import styles from "./Navbar.module.scss";
 import MobileMenu from "../Mobilemenu/MobileMenu";
 import { NavLink } from "react-router-dom";
@@ -37,14 +38,22 @@ export default function Navbar({ }) {
             </ul>
             <div>
                 { user ? (
+
                     <>
+                    <div>
+                    {user.role === 1 && ( // Vérification du rôle admin
+                        <NavLink to="/Admin">
+                        <img src={logo3} alt="Admin" className={`${styles.logo3}`} />
+                        </NavLink>
+                    )}
+                    </div>
                     <NavLink to="/profileGestion" ><img src={logo2} alt="" className={`${styles.logo2}`} /></NavLink> 
-                    <button onClick={deconnexion} className=" btn btn-primary-reverse m5"><NavLink to="/" className={`${styles.button}`}>Deconnexion</NavLink></button>
+                    <button onClick={deconnexion} className={` btn btn-primary-reverse m5 ${styles.button2}`}><NavLink to="/" className={`${styles.button}`}>Deconnexion</NavLink></button>
                     </>
                 ) : (
                     <>
-                    <button className=" btn btn-primary-reverse m5"><NavLink to="/inscription" className={`${styles.button}`}>Inscription</NavLink></button>
-                    <button className=" btn btn-primary-reverse m5"><NavLink to="/connexion" className={`${styles.button}`}>connexion</NavLink></button></>
+                    <button className={` btn btn-primary-reverse m5 ${styles.button}`}><NavLink to="/inscription" className={`${styles.button}`}>Inscription</NavLink></button>
+                    <button className={` btn btn-primary-reverse m5 ${styles.button}`}><NavLink to="/connexion" className={`${styles.button}`}>connexion</NavLink></button></>
                 ) }
             
             </div>
