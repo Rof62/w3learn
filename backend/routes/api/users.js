@@ -9,7 +9,7 @@ router.post("/login", (req,res) => {
     
   const { email, password} = req.body
   const verifyMailSql = "Select * FROM users WHERE email = ?";
-  connection.query(verifyMailSql, [email], (err, result) => {
+  connection.query(verifyMailSql, [email], (err, result) =>  {
       try {
           if(result.length > 0) {
               if (bcrypt.compareSync(password, result[0].password)) {

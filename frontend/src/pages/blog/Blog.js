@@ -31,6 +31,7 @@ export default function Blog() {
                   if (s.validation === true) {
                     const response = await fetch(URL.createObjectURL(new Blob([new Uint8Array(s.image.data)])));
                     const text = await response.text();
+                    
                     s.image = text;
                   }
                   return { ...s };

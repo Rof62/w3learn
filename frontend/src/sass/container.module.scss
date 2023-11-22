@@ -25,6 +25,8 @@
     gap: 20%;
     padding: 2%;
     background-color: var(--light-grey);
+    // background: linear-gradient(135deg, #AF40FF, #5B42F3, #00DDEB, #AF40FF); /* Dégradé de couleurs représentant la galaxie */
+    animation: galaxyEntry 10s linear infinite;
     position: relative;
     border-radius: 50px;
     box-shadow: 0 0 5px #AF40FF, 0 0 6px #5B42F3, 0 0 7px #00DDEB, 0 0 8px #5B42F3, 0 0 9px #AF40FF;
@@ -104,7 +106,20 @@
           }
         
     }
+
 }
+
+@keyframes galaxyEntry {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.01);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 
 @include mixin.md-lt {
     .container{

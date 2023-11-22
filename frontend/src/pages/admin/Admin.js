@@ -66,6 +66,7 @@ console.log(allTheProjet);
                                 <th>Nom du projet</th>
                                 <th>Description</th>
                                 <th>année</th>
+                                <th>link</th>
                                 <th>Validation</th>
                             </tr>
                         </thead>
@@ -73,10 +74,11 @@ console.log(allTheProjet);
                         
           {allTheProjet.map((projet) => (
             <tr key={projet.idProjet}>
-                <td><img style={{ width: "200px", height: "100px",display: "block"}} src={projet.image} alt="" /></td>
+                <td><img style={{ width: "300px", height: "100px",display: "block"}} src={projet.image} alt="" /></td>
               <td>{projet.name}</td>
               <td>{projet.description}</td>
               <td>{projet.year}</td>
+              <td>{projet.link}</td>
               <td>
                 <input
                   type="checkbox"

@@ -1,0 +1,25 @@
+.contribution h4 {
+  text-align: center;
+  width: 50%;
+}
+.contribution p {
+  width: 50%;
+  text-align: center;
+}
+
+@media (max-width: 997px) {
+  .button {
+    display: block;
+  }
+  label {
+    font-size: 14px;
+  }
+  input {
+    width: 80%;
+  }
+}
+@media (max-width: 577px) {
+  .container p {
+    font-size: 14px;
+  }
+}/*# sourceMappingURL=Contributeur.module.css.map */

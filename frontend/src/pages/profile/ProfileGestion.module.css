@@ -23,4 +23,24 @@
   .button {
     display: block;
   }
+  label {
+    font-size: 14px;
+  }
+  input {
+    width: 80%;
+  }
+  img {
+    width: 50%;
+  }
+  button {
+    display: block;
+  }
+}
+@media (max-width: 577px) {
+  .container p {
+    font-size: 14px;
+  }
+  h5 {
+    font-size: 14px;
+  }
 }/*# sourceMappingURL=ProfileGestion.module.css.map */

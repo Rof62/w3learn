@@ -1,0 +1,36 @@
+.card {
+  border-radius: 20px;
+  background-color: var(--light-grey);
+  width: 80%;
+  margin: 50px auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th {
+  background-color: var(--light-grey);
+  padding: 10px;
+  text-align: center;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: var(--light-grey);
+}
+
+tr:nth-child(odd) {
+  background-color: var(--light-grey);
+}
+
+input[type=checkbox] {
+  margin: 0;
+}/*# sourceMappingURL=admin.module.css.map */

@@ -2,7 +2,7 @@ import { createBrowserRouter} from "react-router-dom";
 import App from "./App"
 import { lazy } from "react"
 import { userLoader } from "./Loaders/userLoader";
-import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
+import {ProtectedRoute, ProtectedRouteAdmin} from "./components/protectedRoute/ProtectedRoute";
 
 
 const Homepage = lazy(() => import("./pages/homepage/Home"));
@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "admin",
-                element: <Admin />
+                element: <ProtectedRouteAdmin> <Admin /> </ProtectedRouteAdmin> 
             },
 
         ]
