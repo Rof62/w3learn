@@ -38,5 +38,6 @@ table {
 //   }
   
   input[type="checkbox"] {
-    margin: 0; // Réinitialiser la marge du bouton de validation
+    margin: 0;
+    width: 20px; // Réinitialiser la marge du bouton de validation
   }

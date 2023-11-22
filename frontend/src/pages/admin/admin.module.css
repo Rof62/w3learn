@@ -33,4 +33,5 @@ tr:nth-child(odd) {
 
 input[type=checkbox] {
   margin: 0;
+  width: 20px;
 }/*# sourceMappingURL=admin.module.css.map */

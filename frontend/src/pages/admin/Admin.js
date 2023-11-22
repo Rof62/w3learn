@@ -1,9 +1,13 @@
+import AddProjet from "../../components/AddProjet/AddProjet";
 import styles from "./admin.module.scss"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react";
+import {AuthContext} from "../../context"
 
 export default function Admin() {
 
-    const [allTheProjet, setAllTheProjet] = useState([])
+    const [allTheProjet, setAllTheProjet] = useState([]);
+    const {user} = useContext(AuthContext)
+
 
     useEffect(() => {
         async function getProjet() {
@@ -59,6 +63,9 @@ console.log(allTheProjet);
             <h1>bonjour</h1>
             <div className={` ${styles.card}`}>
                 <h1>Page d'administration</h1>
+                <div>
+                  <AddProjet user={user}/>
+                </div>
                     <table>
                         <thead>
                             <tr>
@@ -74,17 +81,22 @@ console.log(allTheProjet);
                         
           {allTheProjet.map((projet) => (
             <tr key={projet.idProjet}>
-                <td><img style={{ width: "300px", height: "100px",display: "block"}} src={projet.image} alt="" /></td>
+                <td className="d-flex justify-content-center align-items-center"><img style={{ width: "150px", height: "150px",display: "block"}} src={projet.image} alt="" /></td>
               <td>{projet.name}</td>
               <td>{projet.description}</td>
               <td>{projet.year}</td>
               <td>{projet.link}</td>
               <td>
+                <div className="d-flex justify-content-center">
+              <button className="btn btn-primary mr20 button">supprimer</button>
+              </div>
+              <div className="d-flex justify-content-center align-items-center">
                 <input
                   type="checkbox"
                   checked={projet.validation }
                   onChange={(e) => handleValidation(projet.idProjet, e.target.checked)}
                 />
+                </div>
               </td>
             </tr>
           ))}

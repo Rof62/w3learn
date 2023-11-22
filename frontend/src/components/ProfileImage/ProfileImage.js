@@ -13,7 +13,7 @@ console.log({user});
   useEffect(() => {
     async function getDefaultImage() {
       let response;
-      if (user.blobby) {
+      if (user.blobby ) {
         response = await fetch(
           `http://localhost:8003/api/profileImage/getAvatarFromUser?id=${user.idUsers}`
         );

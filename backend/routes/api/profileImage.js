@@ -125,6 +125,7 @@ router.get("/getAvatarFromUser", (req, res) => {
           idUsers,
           
           
+          
         },
       });
     });

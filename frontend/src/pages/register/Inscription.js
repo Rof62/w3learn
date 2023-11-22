@@ -10,6 +10,7 @@ import styles from "../../sass/Register.module.scss";
 export default function Inscription() {
   const [feedback, setFeedBack] = useState(false);
   const [feedbackGood, setFeedBackGood] = useState("");
+  const [acceptedCGU, setAcceptedCGU] = useState(false);
   const navigate = useNavigate();
 
   const yupSchema = yup.object({
@@ -17,6 +18,7 @@ export default function Inscription() {
     email: yup.string().required("Le champ est obligatoire").email("Vous devez saisir un email valide"),
     password: yup.string().required("Le champ est obligatoire").min(5, "Mot de passe trop court").max(10, "Mot de passe trop long"),
     confirmPassword: yup.string().required("Vous devez confirmer votre mot de passe").oneOf([yup.ref("password", "")], "Les mots de passe ne correspondent pas"),
+    acceptCGU: yup.boolean().oneOf([true], "Vous devez accepter les CGU pour continuer"),
   });
 
   const defaultValues = {
@@ -36,6 +38,10 @@ export default function Inscription() {
     try {
       clearErrors();
       await createUser(values);
+      if (!acceptedCGU) {
+        setError("acceptCGU", { type: "manual", message: "Vous devez accepter les CGU pour continuer" });
+        return;
+      }
       setFeedBack(true)
       setTimeout(() => {
         navigate("/connexion");
@@ -53,7 +59,7 @@ export default function Inscription() {
            <img src={logo} alt="" className={`${styles.logo}`} />
          </NavLink>
     <div className="mb10 d-flex flex-column">
-        <label className="mb10 ml20" htmlFor="username">Name</label>
+        <label className="mb10 ml20" htmlFor="username">Pseudo</label>
         <input type="text" {...register("username")} id="username" placeholder="pseudo"  className="p10" />
         {errors.username  && <p className="form-error">{errors.username.message}</p>}
     </div>
@@ -63,7 +69,7 @@ export default function Inscription() {
         {errors.email  && <p className="form-error">{errors.email.message}</p>}
     </div>
     <div className="mb10 d-flex flex-column">
-        <label className="mb10 ml20" htmlFor="password">Password</label>
+        <label className="mb10 ml20" htmlFor="password">Mot de passe</label>
         <input type="password" {...register("password")} id="password" placeholder="  mot de passe" className="p10"/>
         {errors.password  && <p className="form-error">{errors.password.message}</p>}
     </div>
@@ -74,10 +80,19 @@ export default function Inscription() {
            <input type="password" id="confirmPassword" {...register("confirmPassword")} placeholder="confirmer mot de passe" className="p10" />
            {errors?.confirmPassword && <p className="form-error">{errors.confirmPassword.message}</p>}
     </div>
+    <div className="mb10 d-flex justify-content-center align-items-center ">
+      <label className="mb10 ml20 d-flex align-items-center" htmlFor="acceptCGU">
+        <input style={{width: "20px"}} type="checkbox" {...register("acceptCGU")} id="acceptCGU" onChange={(e) => setAcceptedCGU(e.target.checked)} />
+        <div>
+        J'accepte les CGU
+        </div>
+      </label>
+      {errors.acceptCGU && <p className="form-error">{errors.acceptCGU.message}</p>}
+    </div>
          {errors.generic  && <p className="form-error">{errors.generic.message}</p>}
          {feedback && <p>Inscription réussi !</p>}
     <div className="mb10">
-        <button className={`btn btn-primary ${styles.button}`} disabled={isSubmitting}>Submit</button>
+        <button className={`btn btn-primary ${styles.button}`} disabled={isSubmitting}>Confirmer</button>
     </div>
     </form>
 </div>

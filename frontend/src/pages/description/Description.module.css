@@ -1,9 +1,8 @@
 .image {
   height: 100%;
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-bottom: 50px;
 }
 .image img {
@@ -38,7 +37,7 @@
 }
 
 .test {
-  width: 40%;
+  width: 50%;
 }
 
 .test2 {
