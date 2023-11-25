@@ -20,9 +20,6 @@
 }
 
 @media (max-width: 997px) {
-  .button {
-    display: block;
-  }
   label {
     font-size: 14px;
   }
@@ -32,15 +29,45 @@
   img {
     width: 50%;
   }
-  button {
-    display: block;
-  }
 }
 @media (max-width: 577px) {
+  .contributeur {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .contributeur h2 {
+    font-size: 14px;
+  }
+  .delete {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .delete h3 {
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
+  .avatar {
+    display: none;
+  }
   .container p {
     font-size: 14px;
   }
   h5 {
     font-size: 14px;
+  }
+  .column {
+    flex-direction: column;
+    margin-top: 5px;
+  }
+  .column button {
+    margin-top: 5px;
+  }
+}
+@media (max-width: 997px) {
+  .avatar {
+    display: none;
   }
 }/*# sourceMappingURL=ProfileGestion.module.css.map */

@@ -11,10 +11,11 @@
         position: absolute;
         z-index: 4;
         top: 3%;
-         left: 95%;
+         right: 5%;
     }
     li {
-        
+        text-decoration: none;
+        // color: var(--primary) ;
         text-align: center;
         // width: 20%;
         display: block;
@@ -28,7 +29,11 @@
             background: white;
         color: var(--primary) ;
         border: 2px solid var(--primary);
-             
+        
+        }
+        a{
+            text-decoration: none;
+            color: var(--primary) ;
         }
     }
 }
@@ -40,6 +45,7 @@
 
 .none{
     text-decoration: none;
+    
     
     
 }

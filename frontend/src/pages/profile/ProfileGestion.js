@@ -3,13 +3,14 @@
 import ProfileImage from "../../components/ProfileImage/ProfileImage";
 import AddProjet from "../../components/AddProjet/AddProjet";
 import image1 from "../../img/utopia1.png";
+import styles from "../profile/ProfileGestion.module.scss"
 import Contributeur from "../../components/Contributeur/Contributeur";
 import {useState, useContext} from "react"
 import {AuthContext} from "../../context"
 
-export default function ProfileGestion({  setUser}) {
+export default function ProfileGestion({ }) {
 
-  const {user} = useContext(AuthContext)
+  const {user, setUser} = useContext(AuthContext)
 
     console.log(user);
     
@@ -145,30 +146,30 @@ export default function ProfileGestion({  setUser}) {
               <div className="gestion2 ">
               <>
               { isEditEmail ? (
-              <div className="d-flex align-items-center justify-content-center mb20" >
+              <div className={`d-flex align-items-center justify-content-center mb20 ${styles.column}`} >
                 <input onChange={ updateEmail } className="ml20 mb10" value={ candidat.email } />
-                <button onClick={ saveNewEmail } className={`ml20 btn btn-primary button`}>Sauvegarder</button>
-                <button onClick={ cancelEditingEmail } className="ml20 btn btn-primary button">Annuler</button>
+                <button onClick={ saveNewEmail } className="ml20 btn btn-primary ">Sauvegarder</button>
+                <button onClick={ cancelEditingEmail } className="ml20 btn btn-primary ">Annuler</button>
               </div >
                ) : (
-              <div className="d-flex align-items-center justify-content-center mb20" >
+              <div className={`d-flex align-items-center justify-content-center mb20 ${styles.column}`}>
                 <h5 className="ml20 mb10">Email : { user.email }</h5>
-                <button onClick={ editingEmail } className="ml20 btn btn-primary button">Modifier</button>
+                <button onClick={ editingEmail } className="ml20 btn btn-primary">Modifier</button>
               </div >
                )
               }
             </> 
             <>
              { isEditUsername ? (
-              <div className="d-flex align-items-center justify-content-center mb20" >
+              <div className={`d-flex align-items-center justify-content-center mb20 ${styles.column}`} >
                 <input onChange={ updateUsername } className="ml20 mb10" value={ candidat.username } />
-                <button onClick={ saveNewUsername } className="ml20 btn btn-primary button">Sauvegarder</button>
-                <button onClick={ cancelEditingUsername } className="ml20 btn btn-primary button">Annuler</button>
+                <button onClick={ saveNewUsername } className="ml20 btn btn-primary">Sauvegarder</button>
+                <button onClick={ cancelEditingUsername } className="ml20 btn btn-primary ">Annuler</button>
               </div >
               ) : (
-              <div className="d-flex align-items-center justify-content-center mb20" >
+              <div className={`d-flex align-items-center justify-content-center mb20 ${styles.column}`} >
                 <h5 className="ml20 mb10">username : { user.username }</h5>
-                <button onClick={ editingUsername } className="ml20 btn btn-primary button">Modifier</button>
+                <button onClick={ editingUsername } className="ml20 btn btn-primary">Modifier</button>
               </div >
               )
               } 
@@ -180,16 +181,16 @@ export default function ProfileGestion({  setUser}) {
               <div className="custom2"></div>
               <>
               <div >
-                <div className="d-flex justify-content-center">
+                <div className={`d-flex justify-content-center ${styles.contributeur}`}>
                   <h2>Ajouter un projet pour contribuer au Blog</h2>
                 </div>
                 <div className="d-flex justify-content-around align-items-center">
                   <AddProjet user={user}/>
-                  <img src={image1} alt="GIF animé" />
+                  <img className={`${styles.avatar}`} src={image1} alt="GIF animé" />
                 </div>
               </div>
               <div className="custom2"></div>
-              <div className="d-flex justify-content-center mb20">
+              <div className={`d-flex justify-content-center mb20 ${styles.delete}`}>
                 <h3>Supprimer mon compte</h3>
                 <button className="btn btn-primary ml20 button">Supprimer</button>
               </div>

@@ -158,7 +158,8 @@ const defaultValues = {
   return(
     <div className={`d-flex flex-column justify-content-center align-items-center ${styles.appContainer}`}>
         
-        <form onSubmit={handleSubmit(submit)}  className={`d-flex align-items-center flex-column  p20 mb20`}>
+        <form onSubmit={handleSubmit(submit)}  >
+          <fieldset className={`d-flex align-items-center flex-column mt20  p20 mb20`}>
         <div className="d-flex flex-column mb10">
           <label htmlFor="name" className="mb10 ml20">
             Nom du projet
@@ -257,9 +258,10 @@ const defaultValues = {
         {feedbackGood && (
           <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
         )}
-        <button className={`btn btn-primary ${styles.button}`} disabled={isSubmitted}>
+        <button className={`btn btn-primary `} disabled={isSubmitted}>
           Submit
         </button>
+        </fieldset>
       </form>
     </div>
 )

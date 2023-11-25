@@ -57,8 +57,8 @@ export default function blockchain() {
                     </div>
                 </div>
                 <div className={`${styles.container}`}>
-                    <h2>Applications et Avantages de la Technologie</h2>
-                    <div className="size d-flex justify-content-around align-items-center container3 container1Mobile mb20">
+                    <h2 className={`${styles.center}`}>Applications et Avantages de la Technologie</h2>
+                    <div className=" d-flex justify-content-around align-items-center container3 container3Mobile mb20">
                         <p> 
                             <span>Le potentiel :</span>
                             <br /><br />
@@ -74,7 +74,7 @@ export default function blockchain() {
                         </div>
                         <div className="custom"></div>
                         <br />
-                        <div className=" d-flex justify-content-around align-items-center container3 container3Mobile mb20">
+                        <div className=" d-flex justify-content-around align-items-center container3 container1Mobile mb20">
                         <img style={{ width: "150px", height: "150px"}} src={anime5} alt="GIF animé" />
                         <p> 
                             <span>Les avantages :</span>

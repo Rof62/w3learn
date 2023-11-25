@@ -1,13 +1,40 @@
 @use "../../sass/mixin" as mixin;
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+  }
+  
+  th {
+    background-color: var(--light-grey); // Fond blanc pour la ligne d'en-tête
+    padding: 10px;
+    text-align: center;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #e0e0e0; // Bordure légère gris clair
+    text-align: center;
+  }
+  
+  tr:nth-child(even) {
+    background-color: var(--light-grey); // Fond gris clair pour les lignes paires
+  }
+  
+  tr:nth-child(odd) {
+    background-color: var(--light-grey); // Fond blanc pour les lignes impaires
+  }
+
 .contribution{
    
     h4{
         text-align: center;
-        width: 50%;
+        // width: 50%;
     }
     p{
-        width: 50%;
+        // width: 50%;
         text-align: center;
     }
     
@@ -27,6 +54,14 @@
   }
 
 @include mixin.xs {
+    .contribution{
+        p{
+            font-size: 14px;
+        }
+        h4{
+            font-size: 16px;
+        }
+    }
     .container{
         p{
             font-size: 14px;

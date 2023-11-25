@@ -28,11 +28,11 @@ export default function crypto() {
                 <div className={`${styles.container}`}>
                     <h2>Fonctionnement des Cryptomonnaies</h2>
                         <div>
-                            <div className="d-flex justify-content-between ">
-                                <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
-                                <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
+                            <div className={`d-flex justify-content-between ${styles.anime}`}>
+                                <img className={`${styles.anime2}`} style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
+                                <img   style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
                             </div>
-                            <div className="d-flex resume size container3 mb20">
+                            <div className="d-flex resume size container3  container1Mobile mb20">
                                 <p>
                                     Les cryptomonnaies fonctionnent grâce à une combinaison de concepts de cryptographie, de mathématiques 
                                     et de technologie blockchain . Chaque cryptomonnaie a sa propre architecture et son propre mécanisme de 

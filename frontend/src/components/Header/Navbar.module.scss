@@ -2,6 +2,16 @@
 
 .navbar{
     
+        a{
+            
+        text-decoration: none;
+        text-align: center;
+        &:hover {
+            transition: 0.2s opacity;
+            opacity: 0.8;
+            color: var(--primary);
+           }}
+    
     button{
         position: absolute;
        z-index: 1;
@@ -9,11 +19,26 @@
     }
     button:nth-child(1){
        left: 73%;
-       bottom: 21%; 
+       bottom: 21%;
+       display: flex;
+       align-items: center;
+       a{
+        color: #AF40FF;
+    text-decoration: none;
+    text-align: center;
+       }
+
     }
     button:nth-child(2){
         right: 6%;
         bottom: 21%; 
+        display: flex;
+        align-items: center;
+        a{
+         color: #AF40FF;
+     text-decoration: none;
+     text-align: center;
+        }
      }
     i{
         cursor: pointer;
@@ -115,6 +140,8 @@
 .button{
     color: #AF40FF;
     text-decoration: none;
+    text-align: center;
+    
     
 }
 .button2{
@@ -122,6 +149,13 @@
     text-decoration: none;
     right: 6%;
         bottom: 21%; 
+        display: flex;
+        align-items: center;
+        a{
+         color: #AF40FF;
+     text-decoration: none;
+     text-align: center;
+        }
     
 }
 .none{
@@ -166,6 +200,9 @@
     button{
         display: none;
     }
+    .logo3{
+        right: 37%;   
+    }
 
   } 
 
@@ -178,6 +215,19 @@
     h5{
         font-size: 14px;
     }
+    .logo3{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+           z-index: 1;
+           right: 37%; 
+           bottom: 36%;
+     }
+     .logo{
+        width: 35px;
+        height: 25px;
+        
+     }
 
 }
 

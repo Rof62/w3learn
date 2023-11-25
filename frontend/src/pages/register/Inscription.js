@@ -54,7 +54,7 @@ export default function Inscription() {
 
   return (
     <div className={`flex-fill d-flex flex-column justify-content-center align-items-center ${styles.appContainer}`}>
-    <form onSubmit={handleSubmit(submit)} className={`d-flex align-items-center flex-column card p20 mb20`}>
+    <form onSubmit={handleSubmit(submit)} className={`d-flex align-items-center flex-column card p20 mb20 mt20`}>
         <NavLink to="/">
            <img src={logo} alt="" className={`${styles.logo}`} />
          </NavLink>

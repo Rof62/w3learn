@@ -1,9 +1,33 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th {
+  background-color: var(--light-grey);
+  padding: 10px;
+  text-align: center;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: var(--light-grey);
+}
+
+tr:nth-child(odd) {
+  background-color: var(--light-grey);
+}
+
 .contribution h4 {
   text-align: center;
-  width: 50%;
 }
 .contribution p {
-  width: 50%;
   text-align: center;
 }
 
@@ -19,6 +43,12 @@
   }
 }
 @media (max-width: 577px) {
+  .contribution p {
+    font-size: 14px;
+  }
+  .contribution h4 {
+    font-size: 16px;
+  }
   .container p {
     font-size: 14px;
   }

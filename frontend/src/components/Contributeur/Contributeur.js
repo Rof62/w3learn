@@ -27,14 +27,23 @@ export default function Contributeur({user}) {
             <div className="d-flex justify-content-center">
                 <h2>Mes contribution au Blog</h2>
             </div>
-            <div className="ml20">
-                <p >{allTheProjet.map((projet, index) => (
-                    <div key={index} className={`d-flex align-items-center justify-content-around ${styles.contribution} `}  value={projet.idUsers}>
-                        <h4 className={`ml20 `}> {projet.name}:</h4>
-                        { projet.validation ? <p className={`ml20 `}>projet valider ✅</p> : <p className={`ml20 ${styles.contribution}`}>❌projet en cours de validation...</p>} 
-                    </div>
-            ))}</p>
-            </div>
+              <table>
+                        <thead>
+                            <tr>
+                                <th>nom</th>
+                                <th>Validation</th>   
+                            </tr>
+                        </thead>
+                <tbody>
+                {allTheProjet.map((projet, index) => (
+                  <tr key={projet.idProjet}>
+                         <td> <h4 className={`ml20 `}> {projet.name}</h4></td> 
+                      <td> { projet.validation ? <p className={`ml20 `}>projet valider ✅</p> : <p className={`ml20 ${styles.contribution}`}>❌projet en cours de validation...</p>} </td> 
+                    </tr>  
+            ))}
+                </tbody>
+            </table>
         </div>
+        
     )
 }

@@ -39,13 +39,15 @@ export default function Admin() {
       }, []);
 
       function handleValidation(idProjet, isChecked) {
+
+        const { email } = user;
         // Envoyez une requête au backend pour mettre à jour l'état de validation
         fetch(`http://localhost:8003/api/admin/project/${idProjet}`, {
           method: 'PATCH', // Vous pouvez utiliser la méthode appropriée
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ validation: isChecked }),
+          body: JSON.stringify({ validation: isChecked, email }),
         })
           .then((response) => response.json())
           .then((data) => {
@@ -56,6 +58,32 @@ export default function Admin() {
                 );
             }
         });
+      }
+
+      function handleDelete(idProjet) {
+
+        const { email } = user;
+        // Envoyer une requête au backend pour supprimer le projet
+        fetch(`http://localhost:8003/api/admin/deleteProject/${idProjet}`, {
+          method: 'DELETE', // Utilisez la méthode DELETE pour supprimer le projet
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              // Mettre à jour la liste des projets après la suppression
+              setAllTheProjet((projets) =>
+                projets.filter((projet) => projet.idProjet !== idProjet)
+              );
+            }
+          })
+          .catch((error) => {
+            console.error('Erreur lors de la suppression du projet :', error);
+            // Gérer les erreurs ici selon vos besoins
+          });
       }
 console.log(allTheProjet);
     return(
@@ -88,7 +116,7 @@ console.log(allTheProjet);
               <td>{projet.link}</td>
               <td>
                 <div className="d-flex justify-content-center">
-              <button className="btn btn-primary mr20 button">supprimer</button>
+              <button onClick={() => handleDelete(projet.idProjet)} className="btn btn-primary mr20 button">supprimer</button>
               </div>
               <div className="d-flex justify-content-center align-items-center">
                 <input

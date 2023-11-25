@@ -1,4 +1,4 @@
-
+import styles from "../ProfileImage/ProfileImage.module.scss"
 import {useState, useContext, useEffect} from "react"
 import {AuthContext} from "../../context"
 
@@ -141,11 +141,13 @@ console.log({user});
         onSubmit={handleSubmit}
         className="d-flex justify-content-center align-items-center"
       >
-        <div>
-        <label className=""> 
+        <div >
+        <label className="d-flex justify-content-center align-items-center"> 
           <input className=" " type="file" onChange={handleChange} />
         </label>
+        <div className="d-flex justify-content-center ">
           <button className="btn btn-primary ">Sauvegarder</button>
+          </div>
         </div>
       </form>
       {/* <div className="custom2"></div> */}

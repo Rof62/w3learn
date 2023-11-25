@@ -2,8 +2,17 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const jsonwebtoken = require("jsonwebtoken");
 const {key, keyPub} = require("../../keys");
+const nodemailer = require ("nodemailer");
 
-const connection = require("../../database/index");
+const transporter = nodemailer.createTransport({
+  service: "Gmail",
+  auth: {
+    user: "w3learn.w3@gmail.com",
+    pass: "jwmn vxia sbvi mgck",
+  }
+})
+
+const connection = require("../../database/index") ;
 
 router.post("/login", (req,res) => {
     
@@ -32,34 +41,50 @@ router.post("/login", (req,res) => {
   })
 })
 
-  router.post("/addUser", (req, res) => {
-    const {email, password, username} = req.body;
-    
-    const verifyMailSql = "Select * FROM users WHERE email = ?";
-    connection.query(verifyMailSql, [email], async (err, result) => {
-        try {
-          if(result.length === 0) {
-            console.log("here");
-            const hashedPassword = await bcrypt.hash(password, 10);
-            const insertSql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-            connection.query(insertSql, [username, email, hashedPassword], (err, result) => {
-                if (err) throw err;
-                let idUser = result.insertId;
-                const sqlSelect = "SELECT idUsers, username, email FROM users WHERE idUsers = ?";
-                connection.query(sqlSelect, [idUser], (err, result) => {
-                    if (err) throw err;
-                    res.status(201).json("Inscription réussie" );
-                })
-            })
-          } else {
-            console.log("there");
-            res.status(400).json("le mail existe");
-          }  
-        } catch (error) {
-           res.status(500).end("Une erreur interne s'est produite") 
-        }
-    })
-})
+router.post("/addUser", (req, res) => {
+  const { email, password, username } = req.body;
+
+  const token = jsonwebtoken.sign({}, key, {
+    subject: email, // Utiliser le mail comme sujet
+    expiresIn: '24h',
+    algorithm: "RS256", // Utiliser le même algorithme que pour la connexion
+  });
+
+  const verifyMailSql = "Select * FROM users WHERE email = ?";
+  connection.query(verifyMailSql, [email], async (err, result) => {
+    try {
+      if (result.length === 0) {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const insertSql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        connection.query(insertSql, [username, email, hashedPassword], (err, result) => {
+          if (err) throw err;
+
+          const mailOptions = {
+            from: 'w3learn.w3@gmail.com',
+            to: email,
+            subject: 'Confirmez votre inscription',
+            text: `Cliquez sur ce lien pour confirmer votre inscription : http://localhost:3000/connexion`,
+          };
+
+          transporter.sendMail(mailOptions, (emailErr, info) => {
+            if (emailErr) {
+              console.error('Erreur lors de l\'envoi de l\'e-mail de confirmation :', emailErr);
+              res.status(500).json({ error: 'Une erreur s\'est produite lors de l\'envoi de l\'e-mail de confirmation' });
+            } else {
+              res.status(201).json("Inscription réussie. Vérifiez votre e-mail pour confirmer votre inscription.");
+            }
+          });
+        })
+      } else {
+        res.status(400).json("Le mail existe");
+      }
+    } catch (error) {
+      res.status(500).end("Une erreur interne s'est produite");
+    }
+  });
+});
+
+
 
 router.get("/userConnected", (req,res) => {
   const {token} = req.cookies;
@@ -100,6 +125,33 @@ router.get("/logout", (req, res) => {
       res.send(JSON.stringify(result));
     });
   });
+
+  router.get("/resetPassword/:email", (req, res) => {
+    console.log(req.params);
+    const email = req.params.email;
+    const sqlSearchMail = "SELECT * FROM users WHERE email = ?"
+    connection.query(sqlSearchMail, [email], (err, result) => {
+      if (err) throw err;
+      if (result.length !== 0 ) {
+        const confirmLink = `http://localhost:3000/resetPassword?email=${email}`;
+        const mailOptions = {
+          from: "w3learn.w3@gmail.com",
+          to: email,
+          subject: "mot de passe oublié de tel site",
+          text: ` Cliquer sur ce lien pour modifier votre mot de passe : ${confirmLink}`
+  
+        };
+        transporter.sendMail(mailOptions, (err, info) => {
+          if (err) {
+            throw err;
+          } else {
+            res.end();
+          }
+  
+        })
+      }
+    })
+  })
 
   
 

@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const bcrypt = require("bcrypt");
 
 
 const connection = require("../../database/index");
@@ -61,29 +62,28 @@ router.patch("/updateUsername", (req, res) => {
   });
   
   router.patch("/updatePassword", (req, res) => {
-    const { password, idUsers } = req.body;
+    const { email, password } = req.body;
   
     // Utilisation de paramètres de requête
-    const updateSql = `UPDATE users SET password = ? WHERE idUsers = ?`;
+    const updateSql = `UPDATE users SET password = ? WHERE email = ?`;
   
-    connection.query(updateSql, [password, idUsers], (err, result) => {
+    bcrypt.hash(password, 10, (err, hashedPassword) => {
       if (err) {
-        console.error("Erreur de base de données :", err);
-        res.status(500).json({ message: "Une erreur s'est produite lors de la mise à jour du nom d'utilisateur." });
-      } else {
-        console.log("Password mis à jour en base de données");
-  
-        // Après la mise à jour réussie, vous pouvez renvoyer les nouvelles informations de l'utilisateur
-        const getUserSql = "SELECT * FROM users WHERE idUsers = ?";
-        connection.query(getUserSql, [idUsers], (err, user) => {
-          if (err) {
-            console.error("Erreur de base de données :", err);
-            res.status(500).json({ message: "Une erreur s'est produite lors de la récupération des informations de l'utilisateur." });
-          } else {
-            res.status(200).json({ message: "Nom d'utilisateur mis à jour avec succès", user: user[0] });
-          }
-        });
+        console.error("Erreur de hachage du mot de passe :", err);
+        return res.status(500).json({ message: "Une erreur s'est produite lors du hachage du mot de passe." });
       }
+  
+      connection.query(updateSql, [hashedPassword, email], (err, result) => {
+        if (err) {
+          console.error("Erreur de base de données :", err);
+          return res.status(500).json({ message: "Une erreur s'est produite lors de la mise à jour du mot de passe." });
+        }
+  
+        console.log("Mot de passe mis à jour en base de données");
+  
+        // Renvoyer une réponse si nécessaire
+        return res.status(200).json({ message: "Mot de passe mis à jour avec succès" });
+      });
     });
   });
 

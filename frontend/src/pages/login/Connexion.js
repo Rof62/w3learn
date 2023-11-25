@@ -88,7 +88,10 @@ export default function Login({  }) {
         {feedbackGood && (
           <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
         )}
-        <button className={`btn btn-primary ${styles.button}`}  disabled={isSubmitted}>
+        <div className="d-flex flex-column">
+          <NavLink to= "/forgotPassword">Mot de passe oublié</NavLink>
+        </div>
+        <button className={`btn btn-primary mt20 ${styles.button}`}  disabled={isSubmitted}>
           Submit
         </button>
       </form>

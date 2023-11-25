@@ -6,6 +6,12 @@
     }
 }
 
+fieldset{
+  border-radius: 20px;
+    border: 1px solid ;
+    box-shadow: 0 0 5px #00DDEB, 0 0 6px #5B42F3, 0 0 7px #00DDEB, 0 0 8px #5B42F3, 0 0 9px #00DDEB;
+}
+
 .appContainer {
     min-height: 80vh;
     
@@ -43,9 +49,9 @@
   }
 
   @include mixin.md-lt{
-    .button{
-        display: block;
-    }
+    // .button{
+    //     display: block;
+    // }
     label{
       font-size: 14px;
     }

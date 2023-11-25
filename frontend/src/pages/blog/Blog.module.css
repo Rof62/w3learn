@@ -80,4 +80,21 @@
   .search input {
     height: 20px;
   }
+}
+.pagination ul {
+  display: flex;
+  gap: 1rem;
+}
+.pagination li {
+  border: 1px solid white;
+  padding: 0.5rem;
+  background-color: var(--light-grey);
+  border-radius: 0.5rem;
+  transition: 0.5s all;
+}
+.pagination li:hover {
+  transform: scale(1.1);
+}
+.pagination li a {
+  color: white;
 }/*# sourceMappingURL=Blog.module.css.map */

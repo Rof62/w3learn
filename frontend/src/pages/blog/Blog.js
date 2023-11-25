@@ -10,6 +10,49 @@ import { NavLink } from "react-router-dom";
 export default function Blog() {
     const [filter, setFilter] = useState("")
     const [allTheProjet, setAllTheProjet] = useState([])
+     // Bonus
+  // const sorteData = allTheProjet.sort((a, b) => {
+  //   const dateA = a.dateOfRelease.split("-")[0];
+  //   const dateB = b.dateOfRelease.split("-")[0];
+  //   return dateB.localeCompare(dateA)
+  // })
+
+  // page en cours
+  const [currentPage, setCurrentPage] = useState(1); 
+  // nombre de projet par page
+  const viewPerPage = 5
+  // dernier index affiché
+  const lastIndex = currentPage * viewPerPage;
+  // premier index affiché
+  const firstIndex = lastIndex - viewPerPage;
+  // recuper depuis firstindex a lastindex non inclus
+  const views = allTheProjet.slice(firstIndex, lastIndex);
+  
+  // const views = sorteData.slice(firstIndex, lastIndex);  // Bonus
+
+  // nombre total de pages
+  const numberOfPage = Math.ceil(allTheProjet.length / viewPerPage);
+  // 
+  const numbers = [...Array(numberOfPage + 1).keys()].slice(1)
+
+  // function formaDate(date) {
+  //   const [year, month, day] = date.split("-");
+  //   return`${day}-${month}-${year}`;
+  // }
+
+  function previousPage() {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+  function nextPage() {
+    if (currentPage !== numberOfPage) {
+      setCurrentPage(currentPage + 1);
+    }
+  }
+  function changeCurrentPage(id) {
+    setCurrentPage(id);
+  }
     
 
     const handleInput = (e) =>{
@@ -59,7 +102,7 @@ export default function Blog() {
                         <input onInput={handleInput} className="flex-fill p20" type="text" placeholder="Rechercher" />
                     </div>
                     <div className={`${styles.grid}`}>
-                        {allTheProjet
+                        {views
                             .filter((s) => s.name.toLowerCase().startsWith(filter))
                             .map((projet) => (
                             <Projet key={projet.idProjet} projet={projet} />
@@ -67,6 +110,32 @@ export default function Blog() {
                     </div>
                 </div>
         </div>
+        <nav className={`d-flex justify-content-center ${styles.pagination}`}>
+        <ul className='pagination d-flex justify-content-center'>
+          <li className='page-item'>
+            <a href="#" onClick={previousPage} className='page-link'>Prev</a>
+          </li>
+          {
+            numbers.map((n, i ) => (
+              <li key={i}
+              className={`page-item ${currentPage === n ? "active" : ""}`}
+              >
+                <a 
+                href="#"
+                className='page-link' 
+                onClick={() => changeCurrentPage(n)}
+                >
+                    {n}
+                </a>
+              </li>
+            ))
+          }
+          <li className='page-item'>
+            <a href="#" onClick={nextPage} className='page-link'>Next</a>
+          </li>
+
+        </ul>
+      </nav>
         <div className="d-flex flex-column justify-content-center align-items-center m20">
             <h2>Vous voulez contribuer au Blog ?</h2>
             <br />

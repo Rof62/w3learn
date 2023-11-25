@@ -5,6 +5,7 @@ import { userLoader } from "./Loaders/userLoader";
 import {ProtectedRoute, ProtectedRouteAdmin} from "./components/protectedRoute/ProtectedRoute";
 
 
+
 const Homepage = lazy(() => import("./pages/homepage/Home"));
 const Register = lazy(() => import("./pages/register/Inscription"));
 const Login = lazy(() => import("./pages/login/Connexion"));
@@ -16,6 +17,8 @@ const Blog = lazy(() => import("./pages/blog/Blog"));
 const Description = lazy(() => import("./pages/description/Description"));
 const Profile = lazy(() => import("./pages/profile/ProfileGestion"));
 const Admin = lazy(() => import("./pages/admin/Admin"));
+const ForgotPassword = lazy(() => import("./pages/Security/ForgotPssword"));
+const ResetPassword = lazy(() => import("./pages/Security/ResetPassword"));
 
 
 export const router = createBrowserRouter([
@@ -59,6 +62,14 @@ export const router = createBrowserRouter([
             {
                 path: "description/:idProjet",
                 element: <Description />
+            },
+            {
+                path: "forgotPassword",
+                element: <ForgotPassword />
+            },
+            {
+                path: "resetPassword",
+                element: <ResetPassword/>
             },
             {
                 path: "profileGestion",

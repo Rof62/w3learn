@@ -37,7 +37,7 @@ export default function Metaverse() {
                                 <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
                         </div>
                         <div className="custom "></div>
-                        <div className="d-flex resume size container3 mb20 mt20">
+                        <div className="d-flex resume size container3 container1Mobile mb20 mt20">
                             <p>
                                 Les économies virtuelles jouent également un rôle important dans le métaverse. Les utilisateurs 
                                 peuvent acheter, vendre et échanger des biens numériques, tels que des propriétés virtuelles, 

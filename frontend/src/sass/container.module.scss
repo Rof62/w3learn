@@ -157,10 +157,29 @@ p{
 } 
 
 @include mixin.xs {
+  .center{
+    
+    padding-left: 30px;
+  }
     .container{
+      h2{
+        font-size: 12px;
+        justify-content: center;
+      }
         p{
             font-size: 14px;
         }
+    }
+    .anime{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      } 
+      img{
+       
+    }
+    .anime2{
+      display: none;
     }
 
 }

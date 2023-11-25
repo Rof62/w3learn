@@ -37,6 +37,10 @@ img {
   max-width: 100%;
 }
 
+a {
+  text-decoration: none;
+}
+
 .b1 {
   background-color: teal;
   border: 1px solid black;
@@ -119,6 +123,8 @@ img {
   border-radius: 20px;
   cursor: pointer;
   transition: 0.2s opacity;
+  display: flex;
+  align-items: center;
 }
 .btn:hover {
   transition: 0.2s opacity;
@@ -127,7 +133,14 @@ img {
 .btn-primary {
   background-color: var(--primary);
   color: white;
+  border: 0;
   border: 2px solid var(--primary);
+}
+.btn-primary:hover {
+  transition: 0.2s opacity;
+  opacity: 0.8;
+  background-color: var(--primary);
+  color: white;
 }
 .btn-primary-reverse {
   background-color: white;

@@ -85,7 +85,22 @@
   }
 }
 @media (max-width: 577px) {
+  .center {
+    padding-left: 30px;
+  }
+  .container h2 {
+    font-size: 12px;
+    justify-content: center;
+  }
   .container p {
     font-size: 14px;
+  }
+  .anime {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .anime2 {
+    display: none;
   }
 }/*# sourceMappingURL=container.module.css.map */

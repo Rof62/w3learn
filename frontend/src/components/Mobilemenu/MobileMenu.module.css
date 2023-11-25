@@ -11,9 +11,10 @@
   position: absolute;
   z-index: 4;
   top: 3%;
-  left: 95%;
+  right: 5%;
 }
 .menuContainer li {
+  text-decoration: none;
   text-align: center;
   display: block;
   padding: 10px 15px;
@@ -26,6 +27,10 @@
   background: white;
   color: var(--primary);
   border: 2px solid var(--primary);
+}
+.menuContainer li a {
+  text-decoration: none;
+  color: var(--primary);
 }
 
 .burger {
