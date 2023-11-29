@@ -11,19 +11,8 @@
       opacity: 0.8;
     }
     &-primary {
-      // background-color: var(--primary);
-      background-color: black;
+      background-color: var(--primary);
       color: white;
-      // border: 2px solid var(--primary);
-      border: 0;
-      &:hover {
-        transition: 0.2s opacity;
-        opacity: 0.8;
-        border: 2px solid var(--primary);
-    }
-        background-color: var(--primary);
-      color: white;
-      }
       border: 2px solid var(--primary);
     }
     &-primary-reverse {
@@ -31,7 +20,7 @@
       color: var(--primary);
       border: 2px solid var(--primary);
     }
-  
+  }
   
   .card {
     border-radius: 20px;

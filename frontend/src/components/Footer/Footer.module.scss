@@ -97,6 +97,26 @@
 
 }
 
+.ul2{
+  
+   li{
+      // width: 300px;   
+   position: absolute;
+       z-index: 1;
+       transform: translateY(-50%);
+  }
+  li:nth-child(1){
+   top: 15%;
+   left: 62%;
+   font-weight: 600;
+   font-size: 20px;
+}
+li:nth-child(3) {
+   top: 30%;
+   left: 62%;
+ }
+}
+
 
 
 @include mixin.lg-lt{
@@ -125,6 +145,18 @@
         
        }
       }
+      .ul2{
+         li:nth-child(1){
+            top: 15%;
+            left: 48%;
+            font-weight: 600;
+            font-size: 20px;
+         }
+            li:nth-child(3) {
+               top: 30%;
+               left: 48%;
+             }
+            }
 }
 
 @include mixin.lg{

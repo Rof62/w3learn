@@ -48,7 +48,7 @@ export default function Navbar({ }) {
                     )}
                     </div>
                     <NavLink to="/profileGestion" ><img src={logo2} alt="" className={`${styles.logo2}`} /></NavLink> 
-                    <button onClick={deconnexion} className={` btn btn-primary-reverse  ${styles.button2}`}><NavLink to="/" className={`${styles.button}`}>Deconnexion</NavLink></button>
+                    <button onClick={deconnexion} className={` btn btn-primary-reverse m5 ${styles.button2}`}><NavLink to="/" className={`${styles.button}`}>Deconnexion</NavLink></button>
                     </>
                 ) : (
                     <>

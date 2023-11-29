@@ -6,11 +6,7 @@
             
         text-decoration: none;
         text-align: center;
-        &:hover {
-            transition: 0.2s opacity;
-            opacity: 0.8;
-            color: var(--primary);
-           }}
+           }
     
     button{
         position: absolute;
@@ -20,25 +16,25 @@
     button:nth-child(1){
        left: 73%;
        bottom: 21%;
-       display: flex;
-       align-items: center;
-       a{
-        color: #AF40FF;
-    text-decoration: none;
-    text-align: center;
-       }
+    //    display: flex;
+    //    align-items: center;
+    //    a{
+    //     color: #AF40FF;
+    // text-decoration: none;
+    // text-align: center;
+    //    }
 
     }
     button:nth-child(2){
         right: 6%;
         bottom: 21%; 
-        display: flex;
-        align-items: center;
-        a{
-         color: #AF40FF;
-     text-decoration: none;
-     text-align: center;
-        }
+        // display: flex;
+        // align-items: center;
+    //     a{
+    //      color: #AF40FF;
+    //  text-decoration: none;
+    //  text-align: center;
+    //     }
      }
     i{
         cursor: pointer;
@@ -46,7 +42,7 @@
     background-color: var(--light-grey);
     position: relative;
     border-radius: 50px;
-    width: 80%;
+    width: 90%;
     height: 70px;
     margin:25px  auto 0 ;
     &:before{
@@ -151,11 +147,11 @@
         bottom: 21%; 
         display: flex;
         align-items: center;
-        a{
-         color: #AF40FF;
-     text-decoration: none;
-     text-align: center;
-        }
+    //     a{
+    //      color: #AF40FF;
+    //  text-decoration: none;
+    //  text-align: center;
+    //     }
     
 }
 .none{
@@ -180,7 +176,7 @@
     }
     
     .navbar{
-        width: 60%;
+        width: 80%;
        
     }
     

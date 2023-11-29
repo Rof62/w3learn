@@ -6,6 +6,7 @@ import {ProtectedRoute, ProtectedRouteAdmin} from "./components/protectedRoute/P
 
 
 
+
 const Homepage = lazy(() => import("./pages/homepage/Home"));
 const Register = lazy(() => import("./pages/register/Inscription"));
 const Login = lazy(() => import("./pages/login/Connexion"));
@@ -15,6 +16,7 @@ const Nft = lazy(() => import("./pages/nft/NFT"));
 const Metaverse = lazy(() => import("./pages/metaverse/Metaverse"));
 const Blog = lazy(() => import("./pages/blog/Blog"));
 const Description = lazy(() => import("./pages/description/Description"));
+const Termes = lazy(() => import("./pages/Conditions d'utilisations/Termes"));
 const Profile = lazy(() => import("./pages/profile/ProfileGestion"));
 const Admin = lazy(() => import("./pages/admin/Admin"));
 const ForgotPassword = lazy(() => import("./pages/Security/ForgotPssword"));
@@ -58,6 +60,10 @@ export const router = createBrowserRouter([
             {
                 path: "blog",
                 element: <Blog />
+            },
+            {
+                path: "termes",
+                element: <Termes />
             },
             {
                 path: "description/:idProjet",

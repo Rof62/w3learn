@@ -133,14 +133,7 @@ a {
 .btn-primary {
   background-color: var(--primary);
   color: white;
-  border: 0;
   border: 2px solid var(--primary);
-}
-.btn-primary:hover {
-  transition: 0.2s opacity;
-  opacity: 0.8;
-  background-color: var(--primary);
-  color: white;
 }
 .btn-primary-reverse {
   background-color: white;

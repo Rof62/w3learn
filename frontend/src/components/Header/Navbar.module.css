@@ -2,18 +2,13 @@
   background-color: var(--light-grey);
   position: relative;
   border-radius: 50px;
-  width: 80%;
+  width: 90%;
   height: 70px;
   margin: 25px auto 0;
 }
 .navbar a {
   text-decoration: none;
   text-align: center;
-}
-.navbar a:hover {
-  transition: 0.2s opacity;
-  opacity: 0.8;
-  color: var(--primary);
 }
 .navbar button {
   position: absolute;
@@ -22,24 +17,10 @@
 .navbar button:nth-child(1) {
   left: 73%;
   bottom: 21%;
-  display: flex;
-  align-items: center;
-}
-.navbar button:nth-child(1) a {
-  color: #AF40FF;
-  text-decoration: none;
-  text-align: center;
 }
 .navbar button:nth-child(2) {
   right: 6%;
   bottom: 21%;
-  display: flex;
-  align-items: center;
-}
-.navbar button:nth-child(2) a {
-  color: #AF40FF;
-  text-decoration: none;
-  text-align: center;
 }
 .navbar i {
   cursor: pointer;
@@ -135,11 +116,6 @@
   display: flex;
   align-items: center;
 }
-.button2 a {
-  color: #AF40FF;
-  text-decoration: none;
-  text-align: center;
-}
 
 .none {
   text-decoration: none;
@@ -160,7 +136,7 @@
     left: 15%;
   }
   .navbar {
-    width: 60%;
+    width: 80%;
   }
   .burger {
     display: block;
