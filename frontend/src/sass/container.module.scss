@@ -49,21 +49,6 @@
         animation: rotateColors 6s linear infinite; 
     }  
     @keyframes rotateColors {
-        // 0% {
-        //     background: linear-gradient(to right, #AF40FF, #5B42F3, #00DDEB);
-        //   }
-        //   25% {
-        //     background: linear-gradient(to right, #00DDEB, #AF40FF, #5B42F3);
-        //   }
-        //   50% {
-        //     background: linear-gradient(to right, #5B42F3, #00DDEB, #AF40FF);
-        //   }
-        //   75% {
-        //     background: linear-gradient(to right, #AF40FF, #5B42F3, #00DDEB);
-        //   }
-        //   100% {
-        //     background: linear-gradient(to right, #00DDEB, #AF40FF, #5B42F3);
-        //   }
         0% {
             background-image: conic-gradient(
               from 0deg,

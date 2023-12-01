@@ -47,12 +47,15 @@
   }
 
   @include mixin.xs {
+    h3{
+        font-size: 12px;
+    }
     .contributeur{
         justify-content: center;
         align-items: center;
         text-align: center;
         h2{
-            font-size: 14px;
+            font-size: 12px;
         }
     }
     .delete{

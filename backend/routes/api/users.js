@@ -3,12 +3,13 @@ const bcrypt = require("bcrypt");
 const jsonwebtoken = require("jsonwebtoken");
 const {key, keyPub} = require("../../keys");
 const nodemailer = require ("nodemailer");
+require ("dotenv").config()
 
 const transporter = nodemailer.createTransport({
   service: "Gmail",
   auth: {
-    user: "w3learn.w3@gmail.com",
-    pass: "jwmn vxia sbvi mgck",
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD,
   }
 })
 

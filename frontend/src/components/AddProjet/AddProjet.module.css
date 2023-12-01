@@ -6,6 +6,7 @@ fieldset {
   border-radius: 20px;
   border: 1px solid;
   box-shadow: 0 0 5px #00DDEB, 0 0 6px #5B42F3, 0 0 7px #00DDEB, 0 0 8px #5B42F3, 0 0 9px #00DDEB;
+  min-width: 295px;
 }
 
 .appContainer {
@@ -31,26 +32,46 @@ input {
   margin: 10px;
 }
 
+textarea {
+  width: 25vw;
+  border-radius: 20px;
+}
+
 .card {
   border-radius: 20px;
   background-color: var(--light-grey);
   width: 50%;
 }
 
-.width {
-  width: 25vw;
-}
-
 @media (max-width: 997px) {
+  .appContainer textarea {
+    min-width: 200px;
+  }
+  .appContainer input {
+    width: 35vw;
+  }
   label {
     font-size: 14px;
   }
-  input {
-    width: 80%;
-  }
 }
 @media (max-width: 577px) {
+  p {
+    font-size: 12px;
+  }
   .container p {
-    font-size: 14px;
+    font-size: 12px;
+  }
+  .container input {
+    width: 20vh;
+  }
+  .container label {
+    font-size: 12px;
+  }
+  .appContainer input {
+    width: 55vw;
+  }
+  fieldset {
+    border: none;
+    box-shadow: none;
   }
 }/*# sourceMappingURL=AddProjet.module.css.map */

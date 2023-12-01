@@ -56,31 +56,6 @@ export default function ProfileGestion({ }) {
         console.error(error);
       }
     }
- 
-    // async function modifyPassword(newPassword) {
-    //   try {
-    //     const response = await fetch("http://localhost:8003/api/gestionProfile/updatePassword", {
-    //       method: "PATCH",
-    //       body: JSON.stringify({ idUsers: user.idUsers, password: newPassword }),
-    //       headers: { "Content-Type": "application/json" },
-    //     });
-    //     if (response.ok) {
-    //       const result = await response.json();
-    //       if (result.message === "Mot de passe mis à jour avec succès") {
-    //         // Mise à jour réussie
-    //         console.log("Mot de passe mis à jour avec succès !");
-    //         // Vous pouvez mettre à jour l'état local de l'utilisateur ici si nécessaire
-    //         setPassword(user.password)
-    //       } else {
-    //         console.error("La mise à jour du mot de passe a échoué :", result.message);
-    //       }
-    //     } else {
-    //       console.error("Échec de la mise à jour du mot de passe.");
-    //     }
-    //   } catch (error) {
-    //     console.error("Erreur lors de la mise à jour du mot de passe :", error);
-    //   }
-    // }
   
     const editingUsername = () => {
       setIsEditUsername(true);

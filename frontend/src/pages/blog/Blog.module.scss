@@ -3,49 +3,15 @@
 .grid {
 
     background-color: var(--light-grey);
-    display: grid;
-    place-content: center;
-    grid-template-columns: repeat(3, 30%);
-    grid-auto-columns: repeat(3, 30%);
-    gap: 20px;
-
-    @include mixin.lg-lt {
-        grid-template-columns: repeat(2, 35%);
-        grid-auto-columns: repeat(2, 35%);
-    }
-
-    @include mixin.md {
-        grid-template-columns: repeat(2, 45%);
-        grid-auto-columns: repeat(2, 45%);
-
-    }
-
-    @include mixin.sm-lt {
-        grid-template-columns: repeat(2, 40%);
-        grid-auto-columns: repeat(2, 40%);
-    }
-
-    @include mixin.xs {
-        grid-template-columns: 70%;
-        grid-auto-columns: 100%;
-
-    }
-
-    // @include mixin.lg{
-    //     grid-template-columns: repeat(2, 35%);
-    //     grid-auto-columns: repeat(2, 35%);
-    // }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;  
 }
-
-.item {
-    // height: 500px;
-    // border: 1px solid var(--primary);
-}
-
 .contentCard {
     width: 1130px;
 }
-
 .search {
     padding: 10px 15px;
     border: 2px solid var(--gray-2);
@@ -53,7 +19,6 @@
     width: 80%;
     margin: 0 auto;
     margin-bottom: 30px;
-
     input {
         outline: 0;
         border: 0;
@@ -84,14 +49,9 @@
 }
 
 @include mixin.md-lt {
-    .card {
-        width: 80%;
-        margin: 0 auto;
-    }
-
     .search {
         height: 50px;
-
+        width: 90%;
         input {
             height: 20px;
         }

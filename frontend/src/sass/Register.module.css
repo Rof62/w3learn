@@ -1,5 +1,9 @@
 .appContainer {
   min-height: 80vh;
+  width: 100%;
+}
+.appContainer form {
+  width: 30%;
 }
 
 .feedback {
@@ -30,7 +34,6 @@ input {
 .card {
   border-radius: 20px;
   background-color: var(--light-grey);
-  width: 50%;
 }
 
 .width {
@@ -44,7 +47,15 @@ input {
   label {
     font-size: 14px;
   }
+  .appContainer form {
+    width: 60%;
+  }
   input {
-    width: 80%;
+    width: 35vh;
+  }
+}
+@media (max-width: 577px) {
+  input {
+    width: 20vh;
   }
 }/*# sourceMappingURL=Register.module.css.map */

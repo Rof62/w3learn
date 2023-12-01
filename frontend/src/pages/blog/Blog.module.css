@@ -1,34 +1,10 @@
 .grid {
   background-color: var(--light-grey);
-  display: grid;
-  place-content: center;
-  grid-template-columns: repeat(3, 30%);
-  grid-auto-columns: repeat(3, 30%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
-}
-@media (max-width: 1400px) {
-  .grid {
-    grid-template-columns: repeat(2, 35%);
-    grid-auto-columns: repeat(2, 35%);
-  }
-}
-@media (min-width: 769px) and (max-width: 992px) {
-  .grid {
-    grid-template-columns: repeat(2, 45%);
-    grid-auto-columns: repeat(2, 45%);
-  }
-}
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 40%);
-    grid-auto-columns: repeat(2, 40%);
-  }
-}
-@media (max-width: 577px) {
-  .grid {
-    grid-template-columns: 70%;
-    grid-auto-columns: 100%;
-  }
 }
 
 .contentCard {
@@ -70,12 +46,9 @@
 }
 
 @media (max-width: 997px) {
-  .card {
-    width: 80%;
-    margin: 0 auto;
-  }
   .search {
     height: 50px;
+    width: 90%;
   }
   .search input {
     height: 20px;

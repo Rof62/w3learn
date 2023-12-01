@@ -3,6 +3,12 @@
       @content;
     }
   }
+
+@mixin se {
+    @media (max-width: 477px) {
+      @content;
+    }
+  }
   
   @mixin sm {
     @media (min-width: 577px) and (max-width: 768px) {
@@ -43,5 +49,16 @@
   @mixin xl {
     @media (min-width: 1201px) {
       @content;
+    }
+  }
+
+  @mixin footer{
+    @media (max-width:1025px){
+      @content
+    }
+  }
+  @mixin header{
+    @media (max-width:1107px){
+      @content
     }
   }

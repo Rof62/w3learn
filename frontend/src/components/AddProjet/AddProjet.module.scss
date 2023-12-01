@@ -10,10 +10,13 @@ fieldset{
   border-radius: 20px;
     border: 1px solid ;
     box-shadow: 0 0 5px #00DDEB, 0 0 6px #5B42F3, 0 0 7px #00DDEB, 0 0 8px #5B42F3, 0 0 9px #00DDEB;
+   min-width: 295px; 
+   
 }
 
 .appContainer {
     min-height: 80vh;
+    
     
     // height: 100vh;
   }
@@ -37,6 +40,11 @@ fieldset{
     margin: 10px;
   }
 
+  textarea{
+    width: 25vw;
+    border-radius: 20px;
+  }
+
   .card {
     border-radius: 20px;
     background-color: var(--light-grey);
@@ -44,28 +52,51 @@ fieldset{
     width: 50%;
   }
 
-  .width{
-    width: 25vw;
-  }
+  
 
   @include mixin.md-lt{
-    // .button{
-    //     display: block;
-    // }
+    .appContainer{
+     textarea{
+      
+      min-width: 200px;
+     }
+      input{
+        width: 35vw;
+      }
+    }
     label{
       font-size: 14px;
     }
-    input{
-      width: 80%;
-    }
+    
    
   }
 
   @include mixin.xs {
+    p{
+      font-size: 12px;
+    }
     .container{
         p{
-            font-size: 14px;
+            font-size: 12px;
+        }
+        input{
+          width: 20vh;
+        }
+        label{
+          font-size: 12px;
         }
     }
+    .appContainer{
+     
+      input{
+        width: 55vw;
+      }
+    }
+    fieldset{
+      border: none;
+      box-shadow: none;
+    }
+    
 
 }
+

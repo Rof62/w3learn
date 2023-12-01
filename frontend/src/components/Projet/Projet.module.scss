@@ -1,8 +1,6 @@
 @use "../../sass/mixin" as mixin;
 
 .projet{
-    
-    // margin-top: 20px;
     p{
         margin-left: 5px;
     }
@@ -10,15 +8,16 @@
         color: white;
     }
     border-radius: 20px;
-    height: 460px;
+    // height: 460px;
+    min-width: 225px;
     cursor: pointer;
     .imgContainer{
         overflow: hidden;
-         
+        max-width: 250px;
         img{
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
-           
+           aspect-ratio: 1;
             width: 100%;
             height: 100%;
             transition: 1s transform;
@@ -26,22 +25,8 @@
                 transform: scale(1.1);
             }
         }
-        @include mixin.xs {
-            // grid-template-columns: 40%;
-            // grid-auto-columns: 40%;
-            height: 220px;
-            
-        }
-        @include mixin.md{
-            height: 350px;
-        }
-        @include mixin.sm{
-            height: 250px;
-            
-        }
     }
    
-    
     .title{
         // height: 50px;
         border : 1px solid var(--gray-2);

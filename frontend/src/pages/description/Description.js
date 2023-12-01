@@ -50,23 +50,21 @@ export default function Description() {
                 <div className={`d-flex justify-content-center mt20 mb20 ${styles.test2}`}>
                     <h3 >{p.name}</h3>
                 </div>
-                <div className='d-flex flex-column mb20'>
+                <div className='d-flex flex-column flex-wrap mb20'>
                     <div className={`d-flex  ${styles.image}`}>
-                        <div  className={`d-flex justify-content-center ${styles.test}`}> 
+                        <div  className={`d-flex flex-column align-items-center justify-content-center ${styles.test}`}> 
                           <img src={p.image} alt="" /> 
+                          <p className=''>Année de creation : {p.year} </p>
                         </div> 
                         <div className={`d-flex justify-content-center ${styles.test}`}>
                           <p>{p.description}</p>
+                          
                         </div>     
                     </div>
                     <div className="d-flex justify-content-around">
-                      <div >
-                      <h3 className=''>Année de creation : {p.year} </h3>
-                      </div>
-                        
                             <div className={`d-flex justify-content-around ${styles.lien}`}>
                                 <div className='d-flex align-items-center'>
-                                    <h3>Lien utile :</h3>
+                                    <p>Lien utile :</p>
                                     <Link target="-blank" className={styles.link} to={p.link}>{p.link}</Link>
                                 </div>  
                             </div>

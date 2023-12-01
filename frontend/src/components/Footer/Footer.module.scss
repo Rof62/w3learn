@@ -1,306 +1,65 @@
 @use "../../sass/mixin" as mixin;
 
-.footer{
-   p{
-      margin-top: 200px;
-   }
-   //  height: 330px;
-    background-color: var(--light-grey);
-    position: relative;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    margin:  auto  ;
-    &:before{
-        content: "";
-        position: absolute;
-        z-index: 1;
-        inset: 0;
-        border-top-left-radius: 50px;
-        border-top-right-radius: 50px;
-        padding: 5px; 
-        background:linear-gradient(to right, #AF40FF, #5B42F3, #00DDEB ); 
-        -webkit-mask: 
-           linear-gradient(#fff 0 0) content-box, 
-           linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-                mask-composite: exclude; 
-               
-    }  
-}
-
-.logo{
-    width: 75px;
-    height: 50px;
-    position: absolute;
-       z-index: 1;
-    //    transform: translateX(-50%);
-       left: 5%;
-       top: 12%;
-    
-}
-
-.mention{
-   padding: 2%;
+.footer {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   border-radius: 30px 30px 0 0;
+   background: radial-gradient(circle at 100% 100%, #05062D 0, #05062D 25px, transparent 25px) 0% 0%/30px 30px no-repeat,
+      radial-gradient(circle at 0 100%, #05062D 0, #05062D 25px, transparent 25px) 100% 0%/30px 30px no-repeat,
+      radial-gradient(circle at 100% 0, #05062D 0, #05062D 25px, transparent 25px) 0% 100%/30px 30px no-repeat,
+      radial-gradient(circle at 0 0, #05062D 0, #05062D 25px, transparent 25px) 100% 100%/30px 30px no-repeat,
+      linear-gradient(#05062D, #05062D) 50% 50%/calc(100% - 10px) calc(100% - 60px) no-repeat,
+      linear-gradient(#05062D, #05062D) 50% 50%/calc(100% - 60px) calc(100% - 10px) no-repeat,
+      conic-gradient(#AF40FF 0%, #5B42F3 33.33%, #00DDEB 66.67%, #AF40FF 100%);
+   padding: 9px;
    
-   p{
-      font-size: 16px;
+   // box-sizing: border-box;
+}
+
+.topFooter {
+   padding: 20px;
+   display: flex;
+   align-items: flex-start;
+   width: 100%;
+   gap: 2rem;
+   justify-content: space-around;
+   flex-wrap: wrap;
+
+   @include mixin.footer {
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .logo {
+      width: 75px;
+      height: 50px;
    }
 }
 
-.li{
+.ul {
+   width: 300px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 0.5rem;
+   justify-content: flex-start;
+}
+
+.a {
    color: white;
-   
+   width: max-content;
    font-size: 18px;
    font-weight: 200;
    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
    text-decoration: none;
    cursor: pointer;
    transition: 0.2s opacity;
+
    &:hover {
       transition: 0.2s opacity;
       opacity: 0.8;
       color: var(--gray-2);
-    }
-}
-
-.ul{
-  
-   li{
-      // width: 300px;   
-   position: absolute;
-       z-index: 1;
-       transform: translateY(-50%);
-  }
-  li:nth-child(1){
-   top: 15%;
-   left: 82%;
-   font-weight: 600;
-   font-size: 20px;
-}
-   li:nth-child(3) {
-      top: 30%;
-      left: 82%;
-    }
-   li:nth-child(4) {
-      top: 40%;
-      left: 82%;
-    }
-   li:nth-child(5) {
-      top: 50%;
-      left: 82%;
-    }
-   li:nth-child(6) {
-      top: 60%;
-      left: 82%;
-     
-    }
-
-}
-
-.ul2{
-  
-   li{
-      // width: 300px;   
-   position: absolute;
-       z-index: 1;
-       transform: translateY(-50%);
-  }
-  li:nth-child(1){
-   top: 15%;
-   left: 62%;
-   font-weight: 600;
-   font-size: 20px;
-}
-li:nth-child(3) {
-   top: 30%;
-   left: 62%;
- }
-}
-
-
-
-@include mixin.lg-lt{
-   .ul{
-   li:nth-child(1){
-      top: 15%;
-      left: 78%;
-      font-weight: 600;
-      font-size: 20px;
-   }
-      li:nth-child(3) {
-         top: 30%;
-         left: 78%;
-       }
-      li:nth-child(4) {
-         top: 40%;
-         left: 78%;
-       }
-      li:nth-child(5) {
-         top: 50%;
-         left: 78%;
-       }
-      li:nth-child(6) {
-         top: 60%;
-         left: 78%;
-        
-       }
-      }
-      .ul2{
-         li:nth-child(1){
-            top: 15%;
-            left: 48%;
-            font-weight: 600;
-            font-size: 20px;
-         }
-            li:nth-child(3) {
-               top: 30%;
-               left: 48%;
-             }
-            }
-}
-
-@include mixin.lg{
-   
-   .ul{
-      
-      li:nth-child(1){
-         top: 15%;
-         left: 73%;
-         font-weight: 600;
-         font-size: 16px;
-      }
-         li:nth-child(3) {
-            top: 30%;
-            left: 73%;
-          }
-         li:nth-child(4) {
-            top: 40%;
-            left: 73%;
-          }
-         li:nth-child(5) {
-            top: 50%;
-            left: 73%;
-          }
-         li:nth-child(6) {
-            top: 60%;
-            left: 73%;
-           
-          }
-   }
-   
-}
-
-@include mixin.md-lt{
-   .li{
-      font-size: 14px;
-      font-weight: 100;
-   }
-   .ul{
-      li{
-         font-size: 14px;
-      }
-      li:nth-child(1){
-         top: 15%;
-         left: 70%;
-         font-weight: 600;
-         font-size: 16px;
-      }
-         li:nth-child(3) {
-            top: 30%;
-            left: 70%;
-            
-          }
-         li:nth-child(4) {
-            top: 40%;
-            left: 70%;
-          }
-         li:nth-child(5) {
-            top: 50%;
-            left: 70%;
-          }
-         li:nth-child(6) {
-            top: 60%;
-            left: 70%;
-           
-          }
-   }
-   
-}
-
-@include mixin.sm{
-   // .footer{
-   //    p{
-   //       margin-top: 300px;
-   //    }
-   // }
-   .li{
-      font-size: 14px;
-      font-weight: 100;
-   }
-   .ul{
-      li{
-         font-size: 14px;
-      }
-      li:nth-child(1){
-         top: 15%;
-         left: 65%;
-         font-weight: 600;
-         font-size: 16px;
-      }
-         li:nth-child(3) {
-            top: 30%;
-            left: 65%;
-            
-          }
-         li:nth-child(4) {
-            top: 40%;
-            left: 65%;
-          }
-         li:nth-child(5) {
-            top: 50%;
-            left: 65%;
-          }
-         li:nth-child(6) {
-            top: 60%;
-            left: 65%;
-           
-          }
-   }
-   
-}
-
-@include mixin.xs{
-   .logo{
-      width: 50px;
-      height: 40px; 
-   }
-   li{
-      font-size: 12px;
-   }
-   .ul{
-      li:nth-child(1){
-         top: 15%;
-         left: 50%;
-         font-weight: 600;
-         font-size: 16px;
-      }
-         li:nth-child(3) {
-            top: 30%;
-            left: 50%;
-            
-          }
-         li:nth-child(4) {
-            top: 40%;
-            left: 50%;
-          }
-         li:nth-child(5) {
-            top: 50%;
-            left: 50%;
-          }
-         li:nth-child(6) {
-            top: 60%;
-            left: 50%;
-           
-          }
    }
 }

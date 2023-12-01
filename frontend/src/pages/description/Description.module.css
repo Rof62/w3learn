@@ -6,7 +6,7 @@
   margin-bottom: 50px;
 }
 .image img {
-  width: 50%;
+  width: 80%;
   height: 100%;
   border-radius: 20px;
 }
@@ -37,7 +37,7 @@
 }
 
 .test {
-  width: 50%;
+  width: 100%;
 }
 
 .test2 {
@@ -45,4 +45,18 @@
   font-weight: bold;
   margin-bottom: 50px;
   text-shadow: 2px 4px 3px var(--gray-2);
+}
+
+@media (max-width: 997px) {
+  p {
+    font-size: 14px;
+  }
+  .link {
+    font-size: 14px;
+  }
+}
+@media (max-width: 577px) {
+  .image {
+    flex-direction: column;
+  }
 }/*# sourceMappingURL=Description.module.css.map */

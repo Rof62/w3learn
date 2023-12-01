@@ -1,3 +1,5 @@
+@use "../../sass/mixin" as mixin;
+
 .image{
     height: 100%;
     width: 100%;
@@ -6,7 +8,7 @@
     // align-items: center;
     margin-bottom: 50px;
     img{
-        width: 50%;
+        width: 80%;
         height: 100%;
         border-radius: 20px;       
     }
@@ -39,7 +41,7 @@
 }
 
 .test{
-    width: 50%;
+    width: 100%;
 }
 
 .test2{
@@ -47,4 +49,20 @@
     font-weight: bold;
     margin-bottom: 50px;
     text-shadow: 2px 4px  3px var(--gray-2);  
+}
+
+@include mixin.md-lt {
+    p{
+        font-size: 14px;
+    }
+    .link{
+        font-size: 14px;
+    }
+    
+}
+@include mixin.xs {
+    .image{
+        flex-direction: column;
+    }
+    
 }

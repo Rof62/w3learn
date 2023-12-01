@@ -228,7 +228,7 @@ const defaultValues = {
             <p className={`${styles.feedback}`}>{errors.year.message}</p>
           )}
         </div>
-        <div className={`d-flex flex-column mb10 ${styles.width} `}>
+        <div className={`d-flex flex-column mb10  `}>
           <label htmlFor="description" className="mb10 ml10">
             Description du projet
           </label>

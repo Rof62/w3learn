@@ -101,7 +101,7 @@ export default function Blog() {
                         <i className="fas fa-magnifying-glass mr10"></i>
                         <input onInput={handleInput} className="flex-fill p20" type="text" placeholder="Rechercher" />
                     </div>
-                    <div className={`${styles.grid}`}>
+                    <div className={`  ${styles.grid}`}>
                         {views
                             .filter((s) => s.name.toLowerCase().startsWith(filter))
                             .map((projet) => (

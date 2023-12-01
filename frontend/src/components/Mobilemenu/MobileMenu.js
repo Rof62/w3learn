@@ -28,7 +28,7 @@ export default function MobileMenu( {showMenu, closeMenu}) {
             <li><NavLink to="/crypto" onClick={handleNavLinkClick}>CRYPTO</NavLink></li>
             <li><NavLink to="/nft" onClick={handleNavLinkClick}>NFT</NavLink></li>        
             <li><NavLink to="/metaverse" onClick={handleNavLinkClick}>METAVERSE</NavLink></li>        
-            <li><NavLink to="/blog" onClick={handleNavLinkClick}>Blog</NavLink></li>
+            <li><NavLink to="/blog" onClick={handleNavLinkClick}>BLOG</NavLink></li>
             <div>
                 { user ? (
                     <>

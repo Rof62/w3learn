@@ -31,13 +31,16 @@
   }
 }
 @media (max-width: 577px) {
+  h3 {
+    font-size: 12px;
+  }
   .contributeur {
     justify-content: center;
     align-items: center;
     text-align: center;
   }
   .contributeur h2 {
-    font-size: 14px;
+    font-size: 12px;
   }
   .delete {
     flex-direction: column;

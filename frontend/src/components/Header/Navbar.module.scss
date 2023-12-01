@@ -159,7 +159,7 @@
     color: #fff;
     
 }
-@include mixin.md-lt {
+@include mixin.header {
     .button{
         display: none;
     }
