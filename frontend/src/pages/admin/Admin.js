@@ -119,6 +119,7 @@ console.log(allTheProjet);
               <button onClick={() => handleDelete(projet.idProjet)} className="btn btn-primary mr20 button">supprimer</button>
               </div>
               <div className="d-flex justify-content-center align-items-center">
+                valider :
                 <input
                   type="checkbox"
                   checked={projet.validation }

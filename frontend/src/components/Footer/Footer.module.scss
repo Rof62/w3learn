@@ -18,6 +18,18 @@
    // box-sizing: border-box;
 }
 
+.reseau{
+   margin-top: 20px;
+   gap: 0.9rem;
+   a{
+      gap: 10px;
+   }
+   img{
+      width: 50px;
+      
+   }
+}
+
 .topFooter {
    padding: 20px;
    display: flex;

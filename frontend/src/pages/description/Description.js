@@ -48,7 +48,7 @@ export default function Description() {
            {projet.map((p) =>(
             <div >
                 <div className={`d-flex justify-content-center mt20 mb20 ${styles.test2}`}>
-                    <h3 >{p.name}</h3>
+                    <h4 >{p.name}</h4>
                 </div>
                 <div className='d-flex flex-column flex-wrap mb20'>
                     <div className={`d-flex  ${styles.image}`}>

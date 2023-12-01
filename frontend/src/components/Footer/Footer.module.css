@@ -8,6 +8,17 @@
   padding: 9px;
 }
 
+.reseau {
+  margin-top: 20px;
+  gap: 0.9rem;
+}
+.reseau a {
+  gap: 10px;
+}
+.reseau img {
+  width: 50px;
+}
+
 .topFooter {
   padding: 20px;
   display: flex;
