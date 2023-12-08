@@ -33,7 +33,7 @@ export default function Footer() {
                         </ul>
             </div>
                 <div className={styles.bottomFooter}>
-                <p>© 2023 We Learn.  Tous droits réservés.</p>
+                <p>© 2023 W3 Learn.  Tous droits réservés.</p>
                 </div>
         </footer>
     )

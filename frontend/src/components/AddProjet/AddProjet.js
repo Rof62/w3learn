@@ -11,6 +11,7 @@ export default function AddProjet({user}) {
   const [feedback, setFeedBack] = useState("");
   const [feedbackGood, setFeedBackGood] = useState("");
   const [allTheGenres, setAllTheGenres] = useState([]);
+  // const [submitForm,setSubmitForm] = useState()
 
   useEffect(() => {
     async function getGenres() {
@@ -45,9 +46,14 @@ export default function AddProjet({user}) {
         link: yup
           .string()
           .required("Le champ est obligatoire"),
-        
+        genre: yup
+          .array()
+          .min(1,"Selectionner au moins 1 genre"),
+        image: yup
+          .mixed()
+          .required("veuillez selectionner une image"),
+          // .test("required", "veuillez selectionner une image", function (value)  {return value !== null && value.length > 0 }),
           
-          // .required("Le champ est obligatoire"),
         
       });
 
@@ -70,8 +76,9 @@ const defaultValues = {
     register,
     handleSubmit,
     reset,
+    clearErrors,
     control,
-    formState: { errors, isSubmitted },
+    formState: { errors},
   } = useForm({
     defaultValues,
     mode: "onChange",
@@ -86,6 +93,7 @@ const defaultValues = {
   async function submit(values) {
     setFeedBack("");
     try {
+      clearErrors()
       console.log("genre", values.genre);
 
       if (!values.name || !values.year || !values.description || !values.link || !values.image) {
@@ -258,7 +266,7 @@ const defaultValues = {
         {feedbackGood && (
           <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
         )}
-        <button className={`btn btn-primary `} disabled={isSubmitted}>
+        <button className={`btn btn-primary `} >
           Submit
         </button>
         </fieldset>

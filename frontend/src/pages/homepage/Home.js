@@ -9,10 +9,10 @@ import styles from "../../sass/container.module.scss"
 
 export default function Home() {
     return(
-        <>
-        <div>
+        <main>
+        <section>
             <h1>WEB 3</h1>
-                <div className={`${styles.container}`}>
+                <article className={`${styles.container}`}>
                     
                         <div className="d-flex justify-content-around align-items-center container1Mobile container2Mobile mb20">
                         <h2> Qu'est-ce que <br /><br /> le Web 3.0 ?</h2>
@@ -25,12 +25,12 @@ export default function Home() {
                             </p>
                             <img style={{ width: "150px", height: "150px"}} src={anime1} alt="GIF animé" />
                         </div>
-                </div>
-        </div>
-        <div className={`${styles.container}`}>
+                </article>
+        </section>
+        <section className={`${styles.container}`}>
             <h2>Les caractéristiques clés</h2>
             <br /><br />
-            <div  className="">
+            <article  className="">
             <div className="d-flex align-items-center justify-content-around container3 container1Mobile">
                 <img style={{ width: "150px", height: "150px"}} src={anime4} alt="GIF animé" />
                     <p>
@@ -43,7 +43,7 @@ export default function Home() {
                 </div>
                 <div className="d-flex margin-top container1Mobile ">
                     <div className="custom"></div>
-                    <div className="d-flex flex-column container2 align-items-center text-align ">
+                    <div className="d-flex flex-column container2 align-items-center  ">
                     <p>
                        <span> Blockchain et <br /> contrats intelligents :</span>
                         <br /><br />
@@ -56,7 +56,7 @@ export default function Home() {
                     <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" className="d-flex align-item-center justify-content-center"/>
                     </div>
                     <div className="custom"></div>
-                    <div className="d-flex flex-column container2 align-items-center text-align mt20 mb10">
+                    <div className="d-flex flex-column container2 align-items-center  mt20 mb10">
                     <p>
                         <span>Interopérabilité :</span>
                         <br /><br />
@@ -70,12 +70,12 @@ export default function Home() {
                     </div>
                 </div>
                 
-            </div>
-        </div>
-        <div className={`${styles.container}`}>
+            </article>
+        </section>
+        <section className={`${styles.container}`}>
             <h2>Les cas d'utilisations</h2>
             <br /><br />
-            <div className=""> 
+            <article className=""> 
                 <div className="d-flex justify-content-around align-items-center container3 container1Mobile mb20">
                     <p>
                         <span>  Finance décentralisée ( DEFI ) :</span>
@@ -113,17 +113,17 @@ export default function Home() {
                         <img style={{ width: "150px", height: "150px"}} src={anime7} alt="GIF animé" />
                     </div>  
                 </div>
-            </div>
+            </article>
             <div className="custom "></div>
-            <div className=" d-flex resume size container3 mb20">
+            <article className=" d-flex resume size container3 mb20">
                 <p className="">
                 En résumé, le Web 3.0 représente une nouvelle ère d'Internet qui met    l'accent sur la décentralisation, la sécurité 
                 des données et l'autonomie des utilisateurs. Avec l'utilisation de la blockchain, des contrats intelligents et d'autres
                 technologies émergentes, le Web 3.0 offre un potentiel énorme pour transformer de nombreux secteurs et façons 
                 d'interagir en ligne  
                 </p>
-            </div>
-        </div>
-        </>   
+            </article>
+        </section>
+        </main>   
     );
 }

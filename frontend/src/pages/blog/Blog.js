@@ -1,7 +1,7 @@
 import styles from "./Blog.module.scss"
 import Projet from "../../components/Projet/Projet"
-
-import React, { useState, useEffect } from "react"
+import {AuthContext} from "../../context";
+import React, {useContext, useState, useEffect } from "react"
 
 import { NavLink } from "react-router-dom";
 
@@ -10,12 +10,7 @@ import { NavLink } from "react-router-dom";
 export default function Blog() {
     const [filter, setFilter] = useState("")
     const [allTheProjet, setAllTheProjet] = useState([])
-     // Bonus
-  // const sorteData = allTheProjet.sort((a, b) => {
-  //   const dateA = a.dateOfRelease.split("-")[0];
-  //   const dateB = b.dateOfRelease.split("-")[0];
-  //   return dateB.localeCompare(dateA)
-  // })
+    const {user, setUser} = useContext(AuthContext)
 
   // page en cours
   const [currentPage, setCurrentPage] = useState(1); 
@@ -92,11 +87,11 @@ export default function Blog() {
       
       console.log(allTheProjet);
     return(
-        <>
+        <main>
         
-        <div className="flex-fill container">
+        <section className="flex-fill container">
             <h1 className="my mb20 30">Bienvenue sur notre blog!</h1>
-                <div className={`${styles.card} p20 d-flex flex-column mt20 `}>
+                <article className={`${styles.card} p20 d-flex flex-column mt20 `}>
                     <div className={`d-flex justify-content-center align-items-center my30 ${styles.search}`}>
                         <i className="fas fa-magnifying-glass mr10"></i>
                         <input onInput={handleInput} className="flex-fill p20" type="text" placeholder="Rechercher" />
@@ -108,10 +103,10 @@ export default function Blog() {
                             <Projet key={projet.idProjet} projet={projet} />
                         ))}
                     </div>
-                </div>
-        </div>
+                </article>
+        </section>
         <nav className={`d-flex justify-content-center ${styles.pagination}`}>
-        <ul className='pagination d-flex justify-content-center'>
+        <ul className='pagination d-flex justify-content-center p20'>
           <li className='page-item'>
             <a href="#" onClick={previousPage} className='page-link'>Prev</a>
           </li>
@@ -136,11 +131,14 @@ export default function Blog() {
 
         </ul>
       </nav>
+      {!user && 
         <div className="d-flex flex-column justify-content-center align-items-center m20">
             <h2>Vous voulez contribuer au Blog ?</h2>
             <br />
             <li><NavLink to="/inscription" className={`${styles.li}`}>Inscrivez-vous !</NavLink></li>
         </div>
-        </>
+        }
+        
+        </main>
     )
 }

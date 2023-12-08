@@ -8,10 +8,10 @@ import anime5 from "../../img/anime.blockchain5.gif"
 export default function blockchain() {
     return(
         <>
-        <div>
+        <main>
             <h1>BLOCKCHAIN</h1>
-                <div className={` ${styles.container}`}>
-                    <div className="d-flex justify-content-around align-items-center container1Mobile container2Mobile mb20">
+                <section className={` ${styles.container}`}>
+                    <article className="d-flex justify-content-around align-items-center container1Mobile container2Mobile mb20">
                         <h2> Introduction à <br /><br /> la Technologie</h2>
                             <p>
                                 La blockchain est une avancée majeure dans le domaine de la technologie qui a vu le jour avec l'avènement 
@@ -22,12 +22,11 @@ export default function blockchain() {
                                 d'intermédiaires de confiance, révolutionnant ainsi la manière dont nous traitons les échanges de valeur.
                             </p>
                         <img style={{ width: "150px", height: "150px"}} src={anime1} alt="GIF animé" />
-                    </div>
-                </div>
-                <div className={`${styles.container}`}>
+                    </article>
+                </section>
+                <section className={`${styles.container}`}>
                     <h2>Principes de Base de la Technologie</h2>
-                    <div className="">
-                        <div className="d-flex justify-content-around align-items-center container3 container3Mobile mb20">
+                        <article className="d-flex justify-content-around align-items-center container3 container3Mobile mb20">
                         <img style={{ width: "150px", height: "150px"}} src={anime3} alt="GIF animé" />
                             <p>
                                 <span>La blockchain tire son nom <br /> de sa structure fondamentale :</span>
@@ -39,9 +38,9 @@ export default function blockchain() {
                                 seul bloc nécessiterait la modification de tous les blocs ultérieurs, ce qui est pratiquement impossible
                                 en raison de la puissance de calcul nécessaire.
                             </p>
-                        </div>
+                        </article>
                         <div className="custom"></div>
-                        <div className="d-flex justify-content-around align-items-center container3 container1Mobile mb20">
+                        <article className="d-flex justify-content-around align-items-center container3 container1Mobile mb20">
                             <p>
                             <span>Le mecanisme de consensus:</span>
                                 <br /><br />
@@ -53,42 +52,41 @@ export default function blockchain() {
                                 de la validité des transactions.
                             </p>
                             <img style={{ width: "150px", height: "150px"}} src={anime4} alt="GIF animé" />
-                        </div>
-                    </div>
-                </div>
-                <div className={`${styles.container}`}>
+                        </article>
+                </section>
+                <section className={`${styles.container}`}>
                     <h2 className={`${styles.center}`}>Applications et Avantages de la Technologie</h2>
-                    <div className=" d-flex justify-content-around align-items-center container3 container3Mobile mb20">
+                    <article className=" d-flex justify-content-around align-items-center container3 container3Mobile mb20">
                         <p> 
                             <span>Le potentiel :</span>
                             <br /><br />
                             Au-delà des cryptomonnaies, la blockchain offre un potentiel considérable dans divers domaines. Dans le secteur 
                             de la chaîne d'approvisionnement, elle peut être utilisée pour suivre le parcours des produits depuis leur
                             fabrication jusqu'à leur livraison, offrant ainsi une transparence totale et permettant de détecter rapidement 
-                            les problèmes. Les registres fonciers basés sur la blockchain peuvent révolutionner la gestion de la propriété
+                            les problèmes.<br/><br/> Les registres fonciers basés sur la blockchain peuvent révolutionner la gestion de la propriété
                             en garantissant l'intégrité des enregistrements et en éliminant les litiges.
                             Les systèmes de vote électronique basés sur la blockchain peuvent améliorer la sécurité et
                             la fiabilité des élections en évitant la fraude.
                         </p>
                         <img style={{ width: "150px", height: "150px"}} src={anime2} alt="GIF animé" />
-                        </div>
+                    </article>
                         <div className="custom"></div>
                         <br />
-                        <div className=" d-flex justify-content-around align-items-center container3 container1Mobile mb20">
+                    <article className=" d-flex justify-content-around align-items-center container3 container1Mobile mb20">
                         <img style={{ width: "150px", height: "150px"}} src={anime5} alt="GIF animé" />
                         <p> 
                             <span>Les avantages :</span>
                             <br /><br />
                             Les avantages de la blockchain sont nombreux. La sécurité est renforcée grâce à la cryptographie avancée, 
                             rendant les transactions quasi impossibles à altérer. La décentralisation élimine le besoin d'intermédiaires
-                            coûteux et réduit les risques de défaillance d'une entité centrale. La transparence inhérente de la blockchain
+                            coûteux et réduit les risques de défaillance d'une entité centrale.<br/><br/> La transparence inhérente de la blockchain
                             permet à tous les participants de vérifier les transactions, renforçant la confiance. Enfin, l'immuabilité 
                             de la blockchain empêche la manipulation des données historiques, ce qui peut être essentiel dans des domaines 
                             tels que l'historique médical ou les contrats intelligents.
                         </p>                                 
-                        </div>
-                </div>
-        </div>
+                    </article>
+                </section>
+        </main>
         </>
     )
 }

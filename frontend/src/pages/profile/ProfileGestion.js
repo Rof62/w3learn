@@ -5,11 +5,14 @@ import AddProjet from "../../components/AddProjet/AddProjet";
 import image1 from "../../img/utopia1.png";
 import styles from "../profile/ProfileGestion.module.scss"
 import Contributeur from "../../components/Contributeur/Contributeur";
-import {useState, useContext} from "react"
-import {AuthContext} from "../../context"
+import {useState, useContext} from "react";
+import {AuthContext} from "../../context";
+import {useNavigate} from "react-router-dom";
+
 
 export default function ProfileGestion({ }) {
 
+  const navigate = useNavigate();
   const {user, setUser} = useContext(AuthContext)
 
     console.log(user);
@@ -18,6 +21,8 @@ export default function ProfileGestion({ }) {
     const [ isEditUsername, setIsEditUsername ] = useState(false);
     const [ isEditEmail, setIsEditEmail ] = useState(false);
     const [ candidat, setCandidat ] = useState(user);
+
+   
     
 
     const modifyUsername = async (newUsername) => {
@@ -106,6 +111,24 @@ export default function ProfileGestion({ }) {
       modifyEmail(candidat.email)
       setIsEditEmail(false);
     };
+
+    async function deleteUserAccount() {
+      try {
+        const response = await fetch("http://localhost:8003/api/gestionProfile/deleteUserAccount", {
+          method: "DELETE",
+          body: JSON.stringify({ idUsers: user.idUsers }),
+          headers: { "Content-Type": "application/json" },
+        });
+        if (response.ok) {
+          // Rediriger vers la page du blog après suppression du compte
+          setUser(null)
+          navigate('/blog');
+          // Assurez-vous d'adapter l'URL à laquelle vous voulez rediriger
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
     
     console.log(user);
     return(
@@ -167,7 +190,7 @@ export default function ProfileGestion({ }) {
               <div className="custom2"></div>
               <div className={`d-flex justify-content-center mb20 ${styles.delete}`}>
                 <h3>Supprimer mon compte</h3>
-                <button className="btn btn-primary ml20 button">Supprimer</button>
+                <button onClick={deleteUserAccount} className="btn btn-primary ml20 button">Supprimer</button>
               </div>
             </> 
             </div>   

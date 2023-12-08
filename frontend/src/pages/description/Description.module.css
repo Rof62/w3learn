@@ -39,6 +39,9 @@
 .test {
   width: 100%;
 }
+.test p {
+  width: 80%;
+}
 
 .test2 {
   font-size: 25px;

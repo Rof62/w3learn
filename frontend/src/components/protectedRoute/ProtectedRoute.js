@@ -4,7 +4,11 @@ import {Navigate} from "react-router-dom"
 
 export  function ProtectedRoute({ children}) {
     const {user} = useContext(AuthContext);
-    return user ? children : <Navigate to="/login"/>
+    return user ? children : <Navigate to="/connexion"/>
+}
+export  function ProtectedRouteform({ children}) {
+    const {user} = useContext(AuthContext);
+    return !user ? children : <Navigate to="/profileGestion"/>
 }
 
 export  function ProtectedRouteAdmin ({ children}) {

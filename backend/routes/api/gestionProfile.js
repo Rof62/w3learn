@@ -87,4 +87,19 @@ router.patch("/updateUsername", (req, res) => {
     });
   });
 
+  router.delete("/deleteUserAccount", (req, res) => {
+    const { idUsers } = req.body;
+    res.clearCookie("token")
+    const deleteQuery = 'DELETE FROM users WHERE idUsers = ?';
+    connection.query(deleteQuery, [idUsers], (err, result) => {
+      if (err) {
+        console.error('Erreur lors de la suppression du compte utilisateur :', err);
+        res.status(500).json({ error: 'Une erreur s\'est produite lors de la suppression du compte utilisateur.' });
+      } else {
+        // Suppression réussie, renvoyer une confirmation
+        res.json({ success: true, message: 'Compte utilisateur supprimé avec succès.' });
+      }
+    });
+  });
+
   module.exports = router;

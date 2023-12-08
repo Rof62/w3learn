@@ -1,0 +1,12 @@
+@use "../../sass/mixin" as mixin;
+
+.card {
+    border-radius: 20px;
+    background-color: var(--light-grey);
+    width: 80%;
+    margin: 50px auto;
+}
+
+.article{
+    padding-top: 20px;
+}

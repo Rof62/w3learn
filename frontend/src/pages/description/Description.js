@@ -44,9 +44,10 @@ export default function Description() {
   }
     console.log(projet);
     return(
-        <div className={`cards ${styles.description}`}>
+      <main>
+        <section className={`cards ${styles.description}`}>
            {projet.map((p) =>(
-            <div >
+            <article >
                 <div className={`d-flex justify-content-center mt20 mb20 ${styles.test2}`}>
                     <h4 >{p.name}</h4>
                 </div>
@@ -56,7 +57,7 @@ export default function Description() {
                           <img src={p.image} alt="" /> 
                           <p className=''>Année de creation : {p.year} </p>
                         </div> 
-                        <div className={`d-flex justify-content-center ${styles.test}`}>
+                        <div className={`d-flex justify-content-center text-align ${styles.test}`}>
                           <p>{p.description}</p>
                           
                         </div>     
@@ -70,8 +71,9 @@ export default function Description() {
                             </div>
                         </div>
                     </div>
-                </div>
+              </article>
             ))}
-        </div>
+        </section>
+      </main>
         )
     }

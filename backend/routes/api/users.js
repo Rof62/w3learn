@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
   }
 })
 
-const connection = require("../../database/index") ;
+const connection = require("../../database/index");
 
 router.post("/login", (req,res) => {
     
@@ -45,13 +45,12 @@ router.post("/login", (req,res) => {
 router.post("/addUser", (req, res) => {
   const { email, password, username } = req.body;
 
-  const token = jsonwebtoken.sign({}, key, {
-    subject: email, // Utiliser le mail comme sujet
+  const token = jsonwebtoken.sign({ email, username, password }, key, {
     expiresIn: '24h',
-    algorithm: "RS256", // Utiliser le même algorithme que pour la connexion
+    algorithm: "RS256",
   });
 
-  const verifyMailSql = "Select * FROM users WHERE email = ?";
+  const verifyMailSql = "SELECT * FROM users WHERE email = ?";
   connection.query(verifyMailSql, [email], async (err, result) => {
     try {
       if (result.length === 0) {
@@ -64,7 +63,7 @@ router.post("/addUser", (req, res) => {
             from: 'w3learn.w3@gmail.com',
             to: email,
             subject: 'Confirmez votre inscription',
-            text: `Cliquez sur ce lien pour confirmer votre inscription : http://localhost:3000/connexion`,
+            text: `Cliquez sur ce lien pour confirmer votre inscription : http://localhost:3000/confirmRegistration/${token}`,
           };
 
           transporter.sendMail(mailOptions, (emailErr, info) => {
@@ -75,16 +74,17 @@ router.post("/addUser", (req, res) => {
               res.status(201).json("Inscription réussie. Vérifiez votre e-mail pour confirmer votre inscription.");
             }
           });
-        })
+        });
       } else {
         res.status(400).json("Le mail existe");
       }
     } catch (error) {
-      res.status(500).end("Une erreur interne s'est produite");
+      res.status(500).json({ error: "Une erreur interne s'est produite." });
     }
   });
 });
 
+// La nouvelle route pour la confirmation d'inscription
 
 
 router.get("/userConnected", (req,res) => {

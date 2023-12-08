@@ -25,7 +25,7 @@ export default function Navbar({ }) {
     }
 
     return(
-        <div className={`d-flex justify-content-around align-items-center   ${styles.navbar}`}>      
+        <header className={`d-flex justify-content-around align-items-center   ${styles.navbar}`}>      
                  
             
             <ul className={`d-flex align-items-center justify-content-between ${styles.neon}`}>
@@ -67,7 +67,7 @@ export default function Navbar({ }) {
             )}
         </>
            
-        </div>
+        </header>
        
     );
 }

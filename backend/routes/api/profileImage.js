@@ -16,7 +16,7 @@ router.get("/getAvatarFromUser", (req, res) => {
 
 
   router.get('/getDefaultImage', (req, res) => {
-    const sql = " SELECT blobby FROM image LIMIT 1";
+    const sql = " SELECT blobby FROM users WHERE idUsers = 47";
     connection.query(sql, (err, result) => {
       if(err) throw err;
       res.send(result[0]);

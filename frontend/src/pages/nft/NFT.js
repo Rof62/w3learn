@@ -6,10 +6,10 @@ import Carrousel from "../../components/Carrousel/Carrousel"
 
 export default function Nft() {
     return(
-        <div>
+        <main>
             <h1>NFT</h1>
-                <div className={` ${styles.container}`}>
-                    <div className="d-flex justify-content-around align-items-center container1Mobile container2Mobile mb20">
+                <section className={` ${styles.container}`}>
+                    <article className="d-flex justify-content-around align-items-center container1Mobile container2Mobile mb20">
                         <h2>Introduction aux NFT <br /><br />(Tokens Non-Fongibles)</h2>    
                             <p>
                                 Les NFT, ou Tokens Non-Fongibles, sont une innovation majeure dans le monde de la technologie blockchain.
@@ -26,11 +26,11 @@ export default function Nft() {
                                         <li ><a href="https://polychainmonsters.com/" target="-blank" >Polychain Monsters</a></li>
                                     </div> 
                             </div>   
-                    </div>
-                </div>
-                <div className={` ${styles.container}`}>
+                    </article>
+                </section>
+                <section className={` ${styles.container}`}>
                     <h2>Fonctionnement des NFT</h2>
-                        <div className="d-flex justify-content-around align-items-center container3 container3Mobile m20">
+                        <article className="d-flex justify-content-around align-items-center container3 container3Mobile m20">
                             <p>
                                 Les NFT reposent sur la technologie blockchain, où chaque NFT est enregistré comme un jeton unique 
                                 dans un contrat intelligent. Chaque NFT a son propre identifiant unique, ce qui garantit qu'il ne peut
@@ -40,17 +40,17 @@ export default function Nft() {
                                 les NFT en raison de sa compatibilité avec les contrats intelligents.
                             </p>
                                 <img style={{ width: "150px", height: "150px", margin: '0 auto',display: "block"}} src={anime} alt="GIF animé" />
-                        </div>
+                        </article>
                         <div className="m20" >                     
                             <Carrousel />                            
                         </div>
                         <div className="container3 d-flex justify-content-around align-items-center styleNone mb20">
                         <li ><a href="https://www.uavatars.io/" target="-blank" >Utopia Avatars</a></li>
                         </div> 
-                </div>
-                <div className={` ${styles.container}`}>
+                </section>
+                <section className={` ${styles.container}`}>
                     <h2>Exemple de Collection</h2>
-                        <div className="d-flex justify-content-around align-items-center container3 container3Mobile m20">
+                        <article className="d-flex justify-content-around align-items-center container3 container3Mobile m20">
                             <p>
                                 L'un des exemples les plus célèbres de collections NFT est "CryptoKitties". Lancé en 2017 sur la
                                 blockchain Ethereum, CryptoKitties a créé un engouement pour les NFT et a popularisé le concept 
@@ -67,9 +67,9 @@ export default function Nft() {
                                     </div>   
                             </div>
                             
-                        </div>
+                        </article>
                         <div className="custom"></div>
-                        <div className="d-flex justify-content-around align-items-center container3 container3Mobile m20">
+                        <article className="d-flex justify-content-around align-items-center container3 container3Mobile m20">
                             <div>
                                 <img style={{ width: "300px", height: "200px"}} src={image2} alt="nft de Beeple" />
                                     <div className="container3 d-flex justify-content-around align-items-center styleNone mb20">
@@ -82,8 +82,8 @@ export default function Nft() {
                                 de dollars. Cette vente a marqué un tournant majeur dans la reconnaissance de la valeur des NFT dans le
                                 monde de l'art..
                             </p>
-                        </div>
-                </div>
-        </div>
+                        </article>
+                </section>
+        </main>
     )
 }

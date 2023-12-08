@@ -5,6 +5,8 @@ import {AuthContext} from "../../context"
 
 export default function Admin() {
 
+    const [editingDescription, setEditingDescription] = useState(""); // État pour la description en cours d'édition
+    const [editProjectId, setEditProjectId] = useState(null); // État pour suivre l'ID du projet en cours d'édition
     const [allTheProjet, setAllTheProjet] = useState([]);
     const {user} = useContext(AuthContext)
 
@@ -85,6 +87,47 @@ export default function Admin() {
             // Gérer les erreurs ici selon vos besoins
           });
       }
+
+      function handleEditDescription(idProjet, description) {
+        // Mettre à jour l'état pour afficher le champ de saisie avec la description actuelle du projet
+        setEditingDescription(description);
+        setEditProjectId(idProjet);
+      }
+      
+      function handleDescriptionChange(event) {
+        // Mettre à jour l'état local lorsqu'il y a des modifications dans le champ de saisie
+        setEditingDescription(event.target.value);
+      }
+
+      async function handleDescriptionUpdate(idProjet) {
+        const { email } = user;
+        try {
+          // Envoyer une requête PATCH au backend pour mettre à jour la description du projet
+          const response = await fetch(`http://localhost:8003/api/admin/updateProjectDescription/${idProjet}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ description: editingDescription, email }),
+          });
+          if (response.ok) {
+            // Mettre à jour localement la description du projet après la modification réussie
+            setAllTheProjet(allTheProjet.map(projet => {
+              if (projet.idProjet === idProjet) {
+                return { ...projet, description: editingDescription };
+              }
+              return projet;
+            }));
+            // Remettre à zéro les états d'édition
+            setEditingDescription("");
+            setEditProjectId(null);
+          }
+        } catch (error) {
+          console.error('Erreur lors de la mise à jour de la description du projet :', error);
+          // Gérer les erreurs ici selon vos besoins
+        }
+      }
+
 console.log(allTheProjet);
     return(
         <div>
@@ -111,7 +154,27 @@ console.log(allTheProjet);
             <tr key={projet.idProjet}>
                 <td className="d-flex justify-content-center align-items-center"><img style={{ width: "150px", height: "150px",display: "block"}} src={projet.image} alt="" /></td>
               <td>{projet.name}</td>
-              <td>{projet.description}</td>
+              <td>
+                <div>
+                {editProjectId === projet.idProjet ? (
+        // Afficher un champ de saisie pour la modification si c'est le projet en cours d'édition
+        <div>
+          <input
+            type="text"
+            value={editingDescription}
+            onChange={handleDescriptionChange}
+          />
+          <button className="btn btn-primary mr20 button" onClick={() => handleDescriptionUpdate(projet.idProjet)}>Valider</button>
+        </div>
+      ) : (
+        // Sinon, afficher la description normalement avec un bouton de modification
+        <div>
+          {projet.description}
+          <button className="btn btn-primary mr20 button" onClick={() => handleEditDescription(projet.idProjet, projet.description)}>Modifier</button>
+        </div>
+      )}
+                </div>
+              </td>
               <td>{projet.year}</td>
               <td>{projet.link}</td>
               <td>
@@ -126,6 +189,7 @@ console.log(allTheProjet);
                   onChange={(e) => handleValidation(projet.idProjet, e.target.checked)}
                 />
                 </div>
+                
               </td>
             </tr>
           ))}

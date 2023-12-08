@@ -2,7 +2,8 @@ import { createBrowserRouter} from "react-router-dom";
 import App from "./App"
 import { lazy } from "react"
 import { userLoader } from "./Loaders/userLoader";
-import {ProtectedRoute, ProtectedRouteAdmin} from "./components/protectedRoute/ProtectedRoute";
+import {ProtectedRoute, ProtectedRouteAdmin, ProtectedRouteform} from "./components/protectedRoute/ProtectedRoute";
+
 
 
 
@@ -35,11 +36,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: "inscription",
-                element: <Register />
+                element: <ProtectedRouteform><Register /></ProtectedRouteform> 
             },
             {
                 path: "connexion",
-                element: <Login />
+                element: <ProtectedRouteform><Login /></ProtectedRouteform> 
             },
             {
                 path: "blockchain",

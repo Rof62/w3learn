@@ -95,4 +95,21 @@ router.delete('/deleteProject/:id', (req, res) => {
   });
 });
 
+router.patch('/updateProjectDescription/:id', (req, res) => {
+    const { id } = req.params;
+    const { description, email } = req.body;
+  
+    const updateQuery = 'UPDATE projet SET description = ? WHERE idProjet = ?';
+    connection.query(updateQuery, [description, id], (err, result) => {
+      if (err) {
+        console.error('Erreur lors de la mise à jour de la description du projet :', err);
+        res.status(500).json({ success: false, error: 'Une erreur s\'est produite lors de la mise à jour de la description du projet.' });
+      } else {
+        // Vous pouvez également inclure ici des vérifications de sécurité ou d'autres opérations nécessaires
+        
+        res.json({ success: true, message: 'Description du projet mise à jour avec succès.' });
+      }
+    });
+  });
+
 module.exports = router;
