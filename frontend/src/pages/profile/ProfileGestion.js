@@ -30,7 +30,7 @@ export default function ProfileGestion({ }) {
       try {
       console.log("TEST STOP PROPAGATION");
 
-        const response = await fetch("http://localhost:8003/api/gestionProfile/updateUsername", {
+        const response = await fetch("https://w3learnback-production.up.railway.app/api/gestionProfile/updateUsername", {
           method: "PATCH",
           body: JSON.stringify( {username: newUsername, idUsers: user.idUsers}),
           headers: { "Content-Type": "application/json" },

@@ -15,11 +15,11 @@ console.log({user});
       let response;
       if (user.blobby ) {
         response = await fetch(
-          `http://localhost:8003/api/profileImage/getAvatarFromUser?id=${user.idUsers}`
+          `https://w3learnback-production.up.railway.app/api/profileImage/getAvatarFromUser?id=${user.idUsers}`
         );
       } else {
         response = await fetch(
-          `http://localhost:8003/api/profileImage/getDefaultImage`
+          `https://w3learnback-production.up.railway.app/api/profileImage/getDefaultImage`
         );
       }
       console.log(user);

@@ -114,7 +114,7 @@ const defaultValues = {
       formData.append("idUsers", user.idUsers);
       
       console.log(values);
-      const response = await fetch("http://localhost:8003/api/profileImage/addProjet", {
+      const response = await fetch("https://w3learnback-production.up.railway.app/api/profileImage/addProjet", {
         method: "POST",
         body: formData,
       });
@@ -267,7 +267,7 @@ const defaultValues = {
           <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
         )}
         <button className={`btn btn-primary `} >
-          Submit
+          Soumettre votre projet
         </button>
         </fieldset>
       </form>

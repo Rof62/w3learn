@@ -25,7 +25,7 @@ export default function Footer() {
                             <li><a className={styles.a} href="mailto:W3learn.w3@gmail.com" target="_blank">W3learn.w3@gmail.com</a></li>
                         </ul>
                         <ul className={styles.ul}>
-                            <li className="mb20">Mention légal</li>
+                            <li className="mb20">Mentions légales</li>
                             <li><NavLink to="/termes" className={styles.a}>Termes et Conditions</NavLink></li>
                             <li><NavLink to="/termes" className={styles.a}>Politique de confidentialité</NavLink></li>
                             <li><NavLink to="/termes" className={styles.a}>Politique en matière de cookies</NavLink></li>

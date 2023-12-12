@@ -1,5 +1,6 @@
 const express = require("express");
 const cookie = require("cookie-parser");
+require("dotenv").config();
 // const cors = require("cors");
 
 const bodyParser = require("body-parser");
@@ -13,7 +14,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 // app.use(cors());
 
-const port = 8003;
+const port = process.env.PORT || 8003;
 
 require("./database");
 
@@ -33,6 +34,6 @@ app.use("*", (req, res) => {
   res.status(404).end();
 });
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`serveur Node écoutant sur le port ${port}`);
 });

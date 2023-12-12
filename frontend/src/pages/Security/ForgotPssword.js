@@ -41,7 +41,7 @@ function ForgotPassword() {
       async function submit(values) {
         console.log(values);
         try {
-            await fetch(`http://localhost:8003/api/users/resetPassword/${values.email}`)
+            await fetch(`https://w3learnback-production.up.railway.app/api/users/resetPassword/${values.email}`)
         } catch (error) {
             console.error(error)
         }
