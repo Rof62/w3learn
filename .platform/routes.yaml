@@ -1,0 +1,8 @@
+# Each route describes how an incoming URL is going to be processed by Platform.sh.
+"https://www.w3learn.fr/":
+    type: upstream
+    upstream: "app:http"
+
+"https://w3learn.fr/":
+    type: redirect
+    to: "https://www.w3learn.fr/"

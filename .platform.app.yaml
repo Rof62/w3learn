@@ -1,0 +1,42 @@
+# .platform.app.yaml
+
+# Le nom de cette application, qui doit être unique dans un projet.
+name: 'backend-w3learn'
+
+# La clé "type" spécifie le langage et la version pour votre application.
+type: 'nodejs:14'
+
+# Les dépendances de l'application, telles que les modules npm à installer.
+dependencies:
+    nodejs:
+        npm: 'package.json'
+
+# Les relations de l'application avec les services ou autres applications.
+# Le côté gauche est le nom de la relation tel qu'il sera exposé
+# à l'application dans la variable PLATFORM_RELATIONSHIPS.
+# Le côté droit est sous la forme `<nom du service>:<nom du point de terminaison>`.
+relationships:
+    database: 'mysqldb:mysql'
+
+# Les hooks qui seront déclenchés lors du déploiement du package.
+hooks:
+    # Les hooks de build peuvent modifier les fichiers de l'application sur le disque mais n'accèdent à aucun service comme les bases de données.
+    build: |
+        npm install
+    # Les hooks de déploiement peuvent accéder aux services mais le système de fichiers est maintenant en lecture seule.
+    deploy: |
+        npm run build
+
+# La taille du disque persistant de l'application (en Mo).
+disk: 2048
+
+# La configuration de l'application lorsqu'elle est exposée sur le web.
+web:
+    # Les emplacements où les demandes peuvent être acheminées.
+    locations:
+        '/':
+            # Le répertoire public de l'application par rapport à sa racine.
+            root: 'public'
+            # Le script front-controller qui détermine où envoyer
+            # les requêtes non statiques.
+            passthru: 'index.js'
