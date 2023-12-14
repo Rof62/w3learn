@@ -5,7 +5,7 @@ db:
     # (https://docs.platform.sh/add-services/mysql.html#supported-versions)
     # lors du choix d'une version. Si vous spécifiez un numéro de version qui n'est pas disponible,
     # la CLI renverra une erreur.
-    type: mysql:8.0
+    type: mysql:10.0
     # L'attribut disk représente la taille du disque persistant (en Mo) alloué au service.
     disk: 2048
 
