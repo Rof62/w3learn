@@ -1,11 +1,8 @@
-# Le nom donné au service MariaDB/MySQL (uniquement des caractères alphanumériques en minuscules).
-db:
-    # Le type de votre service (mariadb), qui utilise le format
-    # 'type:version'. Assurez-vous de consulter la documentation de MariaDB/MySQL
-    # (https://docs.platform.sh/add-services/mysql.html#supported-versions)
-    # lors du choix d'une version. Si vous spécifiez un numéro de version qui n'est pas disponible,
-    # la CLI renverra une erreur.
-    type: mysql:10.0
-    # L'attribut disk représente la taille du disque persistant (en Mo) alloué au service.
-    disk: 2048
+database1:
+  type: mysql:10.1
+  disk: 2048
+
+database2:
+  type: postgresql:9.6
+  disk: 1024
 
