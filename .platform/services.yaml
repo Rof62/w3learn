@@ -1,5 +1,3 @@
-database:
-  type: mariadb:10.11
-  disk: 2048
+
 
 
