@@ -1,18 +1,11 @@
-version: '3.8'
+# Le nom donné au service MariaDB/MySQL (uniquement des caractères alphanumériques en minuscules).
+db:
+    # Le type de votre service (mariadb), qui utilise le format
+    # 'type:version'. Assurez-vous de consulter la documentation de MariaDB/MySQL
+    # (https://docs.platform.sh/add-services/mysql.html#supported-versions)
+    # lors du choix d'une version. Si vous spécifiez un numéro de version qui n'est pas disponible,
+    # la CLI renverra une erreur.
+    type: mysql:8.0
+    # L'attribut disk représente la taille du disque persistant (en Mo) alloué au service.
+    disk: 2048
 
-services:
-  db:
-    image: mysql:latest
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: your_root_password
-      MYSQL_DATABASE: your_database_name
-      MYSQL_USER: your_username
-      MYSQL_PASSWORD: your_password
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-
-volumes:
-  db_data:

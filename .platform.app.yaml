@@ -1,42 +1,35 @@
-# .platform.app.yaml
+# Le nom de cette application. Doit être unique au sein d'un projet.
+name: w3learn
 
-# Le nom de cette application, qui doit être unique dans un projet.
-name: 'backend-w3learn'
+# L'environnement d'exécution utilisé par l'application. La clé 'type' définit l'image
+# de conteneur de base qui sera utilisée pour exécuter l'application. Il existe une image
+# de conteneur de base distincte pour chaque langage principal de l'application,
+# dans plusieurs versions. Consultez la documentation JavaScript/Node.js
+# (https://docs.platform.sh/languages/nodejs.html#supported-versions)
+# pour trouver les versions prises en charge pour le type 'nodejs'.
+type: 'nodejs:18'
 
-# La clé "type" spécifie le langage et la version pour votre application.
-type: 'nodejs:14'
-
-# Les dépendances de l'application, telles que les modules npm à installer.
-dependencies:
-    nodejs:
-        npm: 'package.json'
-
-# Les relations de l'application avec les services ou autres applications.
-# Le côté gauche est le nom de la relation tel qu'il sera exposé
-# à l'application dans la variable PLATFORM_RELATIONSHIPS.
-# Le côté droit est sous la forme `<nom du service>:<nom du point de terminaison>`.
-relationships:
-    database: 'mysqldb:mysql'
-
-# Les hooks qui seront déclenchés lors du déploiement du package.
-hooks:
-    # Les hooks de build peuvent modifier les fichiers de l'application sur le disque mais n'accèdent à aucun service comme les bases de données.
-    build: |
-        npm install
-    # Les hooks de déploiement peuvent accéder aux services mais le système de fichiers est maintenant en lecture seule.
-    deploy: |
-        npm run build
+# Le bloc suivant définit un unique répertoire inscriptible, 'web/uploads'.
+# La 'source' spécifie où se trouve le point de montage inscriptible. La source 'local'
+# indique que le point de montage pointera vers un répertoire local sur le
+# conteneur de l'application. 'source_path' spécifie le sous-répertoire
+# depuis la source vers lequel le point de montage doit pointer.
+mounts:
+  'web/uploads':
+    source: local
+    source_path: uploads
 
 # La taille du disque persistant de l'application (en Mo).
 disk: 2048
 
-# La configuration de l'application lorsqu'elle est exposée sur le web.
+# Les relations de l'application avec des services ou d'autres applications.
+#
+# Le côté gauche est le nom de la relation tel qu'il sera exposé
+# à l'application dans la variable PLATFORM_RELATIONSHIPS. Le côté droit
+# est sous la forme '<nom du service>:<nom du point de terminaison>'.
+relationships:
+    database: 'db:mysql'
+
 web:
-    # Les emplacements où les demandes peuvent être acheminées.
-    locations:
-        '/':
-            # Le répertoire public de l'application par rapport à sa racine.
-            root: 'public'
-            # Le script front-controller qui détermine où envoyer
-            # les requêtes non statiques.
-            passthru: 'index.js'
+  commands: 
+    start: "node index.js"
