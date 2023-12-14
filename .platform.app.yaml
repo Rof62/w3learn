@@ -1,5 +1,5 @@
 # Le nom de cette application. Doit être unique au sein d'un projet.
-name: backend-w3learn
+name: w3learn
 
 # L'environnement d'exécution utilisé par l'application. La clé 'type' définit l'image
 # de conteneur de base qui sera utilisée pour exécuter l'application. Il existe une image
