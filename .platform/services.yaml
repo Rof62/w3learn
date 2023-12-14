@@ -1,3 +1,5 @@
-
+db:
+    type: mysql:8.0
+    disk: 2048
 
 
