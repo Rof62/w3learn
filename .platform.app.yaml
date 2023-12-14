@@ -28,7 +28,7 @@ disk: 2048
 # à l'application dans la variable PLATFORM_RELATIONSHIPS. Le côté droit
 # est sous la forme '<nom du service>:<nom du point de terminaison>'.
 relationships:
-    database: 'mysql:8.0'
+    database: 'oracle-mysql:8.0'
 
 web:
   commands: 

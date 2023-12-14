@@ -1,5 +1,5 @@
 mysql:
-  type: mysql:8.0
+  type: oracle-mysql:8.0
   disk: 2048
 
 
