@@ -1,8 +1,8 @@
 # Each route describes how an incoming URL is going to be processed by Platform.sh.
-"https://www.w3learn.fr/":
+"https://{default}/":
     type: upstream
     upstream: "app:http"
 
-"https://w3learn.fr/":
+"https://www.{default}/":
     type: redirect
-    to: "https://www.w3learn.fr/"
+    to: "https://{default}/"
