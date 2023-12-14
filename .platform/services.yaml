@@ -1,5 +1,5 @@
 mysql:
-  type: mysql:8.0
+  type: mariadb:10.11
   disk: 2048
 
 
