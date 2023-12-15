@@ -16,7 +16,7 @@ export default function AddProjet({user}) {
   useEffect(() => {
     async function getGenres() {
       try {
-        const response = await fetch("http://localhost:8003/api/profileImage/getGenres");
+        const response = await fetch("https://wlearnjw3learn.mysql.db/api/profileImage/getGenres");
         if (response.ok) {
           const genres = await response.json();
           console.log(genres);
@@ -172,7 +172,7 @@ const defaultValues = {
           <label htmlFor="name" className="mb10 ml20">
             Nom du projet
           </label>
-          <input placeholder="Nom du projet" className="p10" type="text" id="name" {...register("name")} />
+          <input placeholder="Nom du projet" title="indiquer un nom pour le projet" className="p10" type="text" id="name" {...register("name")} />
           {errors?.name && (
             <p className={`${styles.feedback}`}>{errors.name.message}</p>
           )}
@@ -184,6 +184,7 @@ const defaultValues = {
               onClick={addGenres}
               type="button"
               className="btn btn-primary-reverse"
+              title="cliqué pour ajouté un genre"
             >
               +
             </button>
@@ -204,6 +205,7 @@ const defaultValues = {
                 <button
                   onClick={() => deleteGenres(index)}
                   className="btn btn-primary"
+                  title="cliquer pour enlever un genre"
                 >
                   -
                 </button>
@@ -227,6 +229,7 @@ const defaultValues = {
               className="p10"
               type="number"
               id="year"
+              title="ajouter l'année de création de votre projet"
               {...field}
             />
               )}
@@ -240,7 +243,7 @@ const defaultValues = {
           <label htmlFor="description" className="mb10 ml10">
             Description du projet
           </label>
-          <textarea placeholder="Description" className="p10" type="textarea" id="description" rows="10"  {...register("description")} />
+          <textarea placeholder="Description" title="ajouté une description de votre projet" className="p10" type="textarea" id="description" rows="10"  {...register("description")} />
           {errors?.description && (
             <p className={`${styles.feedback}`}>{errors.description.message}</p>
           )}
@@ -249,7 +252,7 @@ const defaultValues = {
           <label htmlFor="link" className="mb10 ml20">
             Lien du projet
           </label>
-          <input placeholder="Link" className="p10" type="text" id="link" {...register("link")} />
+          <input placeholder="Link" className="p10" title="ajouté un lien vers votre projet" type="text" id="link" {...register("link")} />
           {errors?.link && (
             <p className={`${styles.feedback}`}>{errors.link.message}</p>
           )}
@@ -257,7 +260,7 @@ const defaultValues = {
 
         <div className="d-flex flex-column mb10">
           <p className="ml20">Télécharger une image du projet</p>
-            <input type="file" className="p10" name="image" accept="image/*" id="image"  {...register("image")} />
+            <input type="file" title="ajouté une image de votre projet" className="p10" name="image" accept="image/*" id="image"  {...register("image")} />
           {errors?.image && (
             <p className={`${styles.feedback}`}>{errors.image.message}</p>
           )}
@@ -266,7 +269,7 @@ const defaultValues = {
         {feedbackGood && (
           <p className={`${styles.feedbackGood} mb20`}>{feedbackGood}</p>
         )}
-        <button className={`btn btn-primary `} >
+        <button title="soumettez votre projet" className={`btn btn-primary `} >
           Soumettre votre projet
         </button>
         </fieldset>

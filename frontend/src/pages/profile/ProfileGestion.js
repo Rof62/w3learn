@@ -30,7 +30,7 @@ export default function ProfileGestion({ }) {
       try {
       console.log("TEST STOP PROPAGATION");
 
-        const response = await fetch("https://w3learnback-production.up.railway.app/api/gestionProfile/updateUsername", {
+        const response = await fetch("https://wlearnjw3learn.mysql.db/api/gestionProfile/updateUsername", {
           method: "PATCH",
           body: JSON.stringify( {username: newUsername, idUsers: user.idUsers}),
           headers: { "Content-Type": "application/json" },
@@ -47,7 +47,7 @@ export default function ProfileGestion({ }) {
 
     async function modifyEmail(newEmail) {
       try {
-        const response = await fetch("http://localhost:8003/api/gestionProfile/updateEmail", {
+        const response = await fetch("https://wlearnjw3learn.mysql.db/api/gestionProfile/updateEmail", {
           method: "PATCH",
           body: JSON.stringify({email: newEmail, idUsers: user.idUsers}),
           headers: { "Content-Type": "application/json" },
@@ -114,7 +114,7 @@ export default function ProfileGestion({ }) {
 
     async function deleteUserAccount() {
       try {
-        const response = await fetch("http://localhost:8003/api/gestionProfile/deleteUserAccount", {
+        const response = await fetch("https://wlearnjw3learn.mysql.db/api/gestionProfile/deleteUserAccount", {
           method: "DELETE",
           body: JSON.stringify({ idUsers: user.idUsers }),
           headers: { "Content-Type": "application/json" },
@@ -145,14 +145,14 @@ export default function ProfileGestion({ }) {
               <>
               { isEditEmail ? (
               <div className={`d-flex align-items-center justify-content-center mb20 ${styles.column}`} >
-                <input onChange={ updateEmail } className="ml20 mb10" value={ candidat.email } />
-                <button onClick={ saveNewEmail } className="ml20 btn btn-primary ">Sauvegarder</button>
-                <button onClick={ cancelEditingEmail } className="ml20 btn btn-primary ">Annuler</button>
+                <input title="modifier votre email" onChange={ updateEmail } className="ml20 mb10" value={ candidat.email } />
+                <button title="sauvegarder votre email" onClick={ saveNewEmail } className="ml20 btn btn-primary ">Sauvegarder</button>
+                <button title="annuler la modification de l'email" onClick={ cancelEditingEmail } className="ml20 btn btn-primary ">Annuler</button>
               </div >
                ) : (
               <div className={`d-flex align-items-center justify-content-center mb20 ${styles.column}`}>
                 <h5 className="ml20 mb10">Email : { user.email }</h5>
-                <button onClick={ editingEmail } className="ml20 btn btn-primary">Modifier</button>
+                <button title="modifier votre email" onClick={ editingEmail } className="ml20 btn btn-primary">Modifier</button>
               </div >
                )
               }
@@ -160,14 +160,14 @@ export default function ProfileGestion({ }) {
             <>
              { isEditUsername ? (
               <div className={`d-flex align-items-center justify-content-center mb20 ${styles.column}`} >
-                <input onChange={ updateUsername } className="ml20 mb10" value={ candidat.username } />
-                <button onClick={ saveNewUsername } className="ml20 btn btn-primary">Sauvegarder</button>
-                <button onClick={ cancelEditingUsername } className="ml20 btn btn-primary ">Annuler</button>
+                <input title="modifier votre pseudo" onChange={ updateUsername } className="ml20 mb10" value={ candidat.username } />
+                <button title="sauvegarder votre pseudo" onClick={ saveNewUsername } className="ml20 btn btn-primary">Sauvegarder</button>
+                <button title="annuler la modification de votre pseudo" onClick={ cancelEditingUsername } className="ml20 btn btn-primary ">Annuler</button>
               </div >
               ) : (
               <div className={`d-flex align-items-center justify-content-center mb20 ${styles.column}`} >
                 <h5 className="ml20 mb10">username : { user.username }</h5>
-                <button onClick={ editingUsername } className="ml20 btn btn-primary">Modifier</button>
+                <button title="modifier votre pseudo" onClick={ editingUsername } className="ml20 btn btn-primary">Modifier</button>
               </div >
               )
               } 
@@ -190,7 +190,7 @@ export default function ProfileGestion({ }) {
               <div className="custom2"></div>
               <div className={`d-flex justify-content-center mb20 ${styles.delete}`}>
                 <h3>Supprimer mon compte</h3>
-                <button onClick={deleteUserAccount} className="btn btn-primary ml20 button">Supprimer</button>
+                <button title="supprimer votre compte utilisateur" onClick={deleteUserAccount} className="btn btn-primary ml20 button">Supprimer</button>
               </div>
             </> 
             </div>   

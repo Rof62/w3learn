@@ -61,7 +61,7 @@ export default function Metaverse() {
                             <div>
                                 <img style={{ width: "300px", height: "200px"}}  src={img1} alt=" Decentraland" />
                                     <div className="container3 d-flex justify-content-around align-items-center styleNone mb20">
-                                        <li ><a href="https://decentraland.org/" target="-blank" >Decentraland</a></li>
+                                        <li ><a title="liens vers decentraland" href="https://decentraland.org/" target="-blank" >Decentraland</a></li>
                                     </div>
                                 </div> 
                         </article>
@@ -70,7 +70,7 @@ export default function Metaverse() {
                             <div>
                                 <img style={{ width: "300px", height: "200px"}}  src={img2} alt=" Sandbox" />
                                     <div className="container3 d-flex justify-content-around align-items-center styleNone mb20">
-                                        <li ><a href="https://www.sandbox.game/en/" target="-blank" >The Sandbox</a></li>
+                                        <li ><a title="lien vers sandbox" href="https://www.sandbox.game/en/" target="-blank" >The Sandbox</a></li>
                                     </div>
                                 </div>
                             <p>

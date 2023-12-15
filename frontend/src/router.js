@@ -4,10 +4,6 @@ import { lazy } from "react"
 import { userLoader } from "./Loaders/userLoader";
 import {ProtectedRoute, ProtectedRouteAdmin, ProtectedRouteform} from "./components/protectedRoute/ProtectedRoute";
 
-
-
-
-
 const Homepage = lazy(() => import("./pages/homepage/Home"));
 const Register = lazy(() => import("./pages/register/Inscription"));
 const Login = lazy(() => import("./pages/login/Connexion"));

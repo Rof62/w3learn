@@ -15,11 +15,11 @@ console.log({user});
       let response;
       if (user.blobby ) {
         response = await fetch(
-          `https://w3learnback-production.up.railway.app/api/profileImage/getAvatarFromUser?id=${user.idUsers}`
+          `https://wlearnjw3learn.mysql.db/api/profileImage/getAvatarFromUser?id=${user.idUsers}`
         );
       } else {
         response = await fetch(
-          `https://w3learnback-production.up.railway.app/api/profileImage/getDefaultImage`
+          `https://wlearnjw3learn.mysql.db/api/profileImage/getDefaultImage`
         );
       }
       console.log(user);
@@ -100,7 +100,7 @@ console.log({user});
 
       // fetch
       const response = await fetch(
-        "http://localhost:8003/api/profileImage/insertImage",
+        "https://wlearnjw3learn.mysql.db/api/profileImage/insertImage",
         {
           method: "PATCH",
           body: JSON.stringify(obj),
@@ -143,10 +143,10 @@ console.log({user});
       >
         <div >
         <label className="d-flex justify-content-center align-items-center"> 
-          <input className=" " type="file" onChange={handleChange} />
+          <input className=" " title="choisir votre image de profil" type="file" onChange={handleChange} />
         </label>
         <div className="d-flex justify-content-center ">
-          <button className="btn btn-primary ">Sauvegarder</button>
+          <button title="sauvegarder votre image de profil" className="btn btn-primary ">Sauvegarder</button>
           </div>
         </div>
       </form>

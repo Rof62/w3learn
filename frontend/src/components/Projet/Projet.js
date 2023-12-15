@@ -15,7 +15,7 @@ export default function Projet({ projet}) {
         <div className={`${styles.projet}`} >
             <NavLink to={`/description/${idProjet}`}>
             <div className={`${styles.imgContainer}`}>
-               <img   src={projet.image} alt="" /> 
+               <img src={projet.image} alt="" /> 
             </div>
             </NavLink>  
             <div className={`${styles.title}  `}>

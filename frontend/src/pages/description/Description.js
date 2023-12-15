@@ -4,6 +4,7 @@ import styles from "./Description.module.scss"
 
 export default function Description() {
     const { idProjet } = useParams();
+    console.log(idProjet);
   const [projet, setProjet] = useState(null);
 
 
@@ -12,9 +13,10 @@ export default function Description() {
     // Par exemple :
     async function fetchProjet() {
       try {
-        const response = await fetch(`https://w3learnback-production.up.railway.app/api/profileImage/projet/${idProjet}`);
+        const response = await fetch(`https://wlearnjw3learn.mysql.db/api/profileImage/projet/${idProjet}`);
         if (response.ok) {
           const data = await response.json();
+          console.log(data);
           const modifiedDataBack = data
           const newModifiedDatas = await Promise.all(
             modifiedDataBack.map(async (s) => {
@@ -38,13 +40,14 @@ export default function Description() {
     fetchProjet();
   }, [idProjet]);
   
+  console.log(projet);
 
   if (!projet) {
     return <div>Chargement en cours...</div>;
   }
-    console.log(projet);
     return(
       <main>
+        {/* {!projet && <div>Chargement en cours...</div>} */}
         <section className={`cards ${styles.description}`}>
            {projet.map((p) =>(
             <article >

@@ -23,7 +23,7 @@ export default function Nft() {
                             <div>
                                 <img className="mb20" style={{ width: "150px", height: "150px",display: "block"}} src="https://drive.polychainmonsters.com/ipfs/QmdyaxKLgSxBXtHThqxekwSNYGWdPuTGXeQXSxQm4A6BiS" alt="" />
                                     <div className="container3 d-flex justify-content-around align-items-center styleNone ">
-                                        <li ><a href="https://polychainmonsters.com/" target="-blank" >Polychain Monsters</a></li>
+                                        <li ><a title="lien vers polychainmonster" href="https://polychainmonsters.com/" target="-blank" >Polychain Monsters</a></li>
                                     </div> 
                             </div>   
                     </article>
@@ -45,7 +45,7 @@ export default function Nft() {
                             <Carrousel />                            
                         </div>
                         <div className="container3 d-flex justify-content-around align-items-center styleNone mb20">
-                        <li ><a href="https://www.uavatars.io/" target="-blank" >Utopia Avatars</a></li>
+                        <li ><a title="lien vers utopiaAvatars" href="https://www.uavatars.io/" target="-blank" >Utopia Avatars</a></li>
                         </div> 
                 </section>
                 <section className={` ${styles.container}`}>
@@ -63,7 +63,7 @@ export default function Nft() {
                             <div>
                                 <img style={{ width: "150px", height: "150px"}} src={image1} alt="nft de cryptoKiitties" />
                                     <div className="container3 d-flex justify-content-around align-items-center styleNone mb20">
-                                        <li ><a href="https://www.cryptokitties.co/" target="-blank" >CryptoKitties</a></li>
+                                        <li ><a title="lien vers cryptokitties" href="https://www.cryptokitties.co/" target="-blank" >CryptoKitties</a></li>
                                     </div>   
                             </div>
                             
@@ -73,7 +73,7 @@ export default function Nft() {
                             <div>
                                 <img style={{ width: "300px", height: "200px"}} src={image2} alt="nft de Beeple" />
                                     <div className="container3 d-flex justify-content-around align-items-center styleNone mb20">
-                                        <li ><a href="https://www.beeple-crap.com/" target="-blank" >BEEPLE</a></li>
+                                        <li ><a title="lien vers beeple" href="https://www.beeple-crap.com/" target="-blank" >BEEPLE</a></li>
                                     </div>
                             </div>    
                             <p>

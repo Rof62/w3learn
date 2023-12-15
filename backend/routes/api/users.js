@@ -79,7 +79,7 @@ router.post("/addUser", (req, res) => {
         res.status(400).json("Le mail existe");
       }
     } catch (error) {
-      res.status(500).json({ error: "Une erreur interne s'est produite." });
+      res.status(500).json({ error: "Une erreur interne s'est produite." }) ;
     }
   });
 });
@@ -151,13 +151,6 @@ router.get("/logout", (req, res) => {
   
         })
       }
-    })
-  })
-
-  router.get("/getUsers", (req,res) => {
-    connection.query("SELECT * FROM users", (err, data) => {
-      if (err) throw err;
-      res.status(200).json({data})
     })
   })
 

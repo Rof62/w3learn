@@ -29,12 +29,12 @@ export default function Navbar({ }) {
                  
             
             <ul className={`d-flex align-items-center justify-content-between ${styles.neon}`}>
-            <NavLink to="/" ><img src={logo} alt="" className={`${styles.logo}`} /></NavLink>  
-                <li><NavLink to="/blockchain" className={`${styles.none}`}>BLOCKCHAIN</NavLink></li>
-                <li><NavLink to="/crypto" className={`${styles.none}`}>CRYPTO</NavLink></li>
-                <li><NavLink to="/nft" className={`${styles.none}`}>NFT</NavLink></li>
-                <li><NavLink to="/metaverse" className={`${styles.none}`}>METAVERSE</NavLink></li>
-                <li><NavLink to="/blog" className={`${styles.none}`}>BLOG</NavLink></li>
+            <NavLink to="/" ><img title="lien vers la page d'accueil" src={logo} alt="logo du site" className={`${styles.logo}`} /></NavLink>  
+                <li><NavLink title="lien vers la page blockchain" to="/blockchain" className={`${styles.none}`}>BLOCKCHAIN</NavLink></li>
+                <li><NavLink title="lien vers la page crypto" to="/crypto" className={`${styles.none}`}>CRYPTO</NavLink></li>
+                <li><NavLink title="lien vers la page nft" to="/nft" className={`${styles.none}`}>NFT</NavLink></li>
+                <li><NavLink title="lien vers la page metaverse" to="/metaverse" className={`${styles.none}`}>METAVERSE</NavLink></li>
+                <li><NavLink title="lien vers la page du blog" to="/blog" className={`${styles.none}`}>BLOG</NavLink></li>
             </ul>
             <div>
                 { user ? (
@@ -47,13 +47,13 @@ export default function Navbar({ }) {
                         </NavLink>
                     )}
                     </div>
-                    <NavLink to="/profileGestion" ><img src={logo2} alt="" className={`${styles.logo2}`} /></NavLink> 
-                    <button onClick={deconnexion} className={` btn btn-primary-reverse m5 ${styles.button2}`}><NavLink to="/" className={`${styles.button}`}>Deconnexion</NavLink></button>
+                    <NavLink title="lien vers votre profil" to="/profileGestion" ><img src={logo2} alt="" className={`${styles.logo2}`} /></NavLink> 
+                    <button title="button pour vous deconnecter" onClick={deconnexion} className={` btn btn-primary-reverse m5 ${styles.button2}`}><NavLink to="/" className={`${styles.button}`}>Deconnexion</NavLink></button>
                     </>
                 ) : (
                     <>
-                    <button className={` btn btn-primary-reverse m5 ${styles.button}`}><NavLink to="/inscription" className={`${styles.button}`}>Inscription</NavLink></button>
-                    <button className={` btn btn-primary-reverse m5 ${styles.button}`}><NavLink to="/connexion" className={`${styles.button}`}>connexion</NavLink></button></>
+                    <button title="button pour vous inscrire" className={` btn btn-primary-reverse m5 ${styles.button}`}><NavLink to="/inscription" className={`${styles.button}`}>Inscription</NavLink></button>
+                    <button title="button pour vous connecter" className={` btn btn-primary-reverse m5 ${styles.button}`}><NavLink to="/connexion" className={`${styles.button}`}>connexion</NavLink></button></>
                 ) }
             
             </div>

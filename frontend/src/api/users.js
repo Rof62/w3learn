@@ -1,7 +1,7 @@
 
 
-// const API_USERS = "https://w3learnback-production.up.railway.app/api/users";
-const API_USERS = "http://localhost:8003/api/users";
+const API_USERS = "https://wlearnjw3learn.mysql.db/api/users";
+// const API_USERS = "api/users";
 
 
 export async function createUser(newUser) {

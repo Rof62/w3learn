@@ -25,7 +25,7 @@ export default function ResetPassword() {
       try {
         const email = new URLSearchParams(window.location.search).get("email");
   
-        const response = await fetch("https://w3learnback-production.up.railway.app/api/gestionProfile/updatePassword", {
+        const response = await fetch("https://wlearnjw3learn.mysql.db/api/gestionProfile/updatePassword", {
           method: "PATCH",
           body: JSON.stringify({ email, password: data.password }),
           headers: { "Content-Type": "application/json" },

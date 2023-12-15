@@ -58,7 +58,7 @@ export default function Blog() {
     useEffect(() => {
         async function getProjet() {
           try {
-            const response = await fetch(`https://w3learnback-production.up.railway.app/api/profileImage/getProjetValidate`);
+            const response = await fetch(`https://wlearnjw3learn.mysql.db/api/profileImage/getProjetValidate`);
             if (response.ok) {
               const projet = await response.json();
               const modifiedDataBack = projet.map((s) =>

@@ -12,24 +12,24 @@ export default function Footer() {
         <footer className={`${styles.footer}`}>
             <div className={styles.topFooter}>
                 <div className="d-flex flex-column align-items-center">
-                    <NavLink className={styles.ul} to="/" ><img src={logo} alt="" className={`${styles.logo}`} /></NavLink> 
+                    <NavLink className={styles.ul} title="lien pour aller sur la page d'accueil" to="/" ><img src={logo} alt="logo du site" className={`${styles.logo}`} /></NavLink> 
                     <div className={`d-flex ${styles.reseau}`}>
-                        <a href=""><img src={logo2} alt="" /></a>
-                        <a href=""><img src={logo3} alt="" /></a>
-                        <a href=""><img src={logo4} alt="" /></a>
-                        <a href=""><img src={logo5} alt="" /></a>
+                        <a href=""><img src={logo2} alt="lien pour aller sur facebook" /></a>
+                        <a href=""><img src={logo3} alt="lien pour aller sur instagram" /></a>
+                        <a href=""><img src={logo4} alt="lien pour aller sur reddit" /></a>
+                        <a href=""><img src={logo5} alt="lien pour aller sur twitter" /></a>
                     </div>
                 </div>
                          <ul className={styles.ul}>
                             <li className="mb20">Contact</li>
-                            <li><a className={styles.a} href="mailto:W3learn.w3@gmail.com" target="_blank">W3learn.w3@gmail.com</a></li>
+                            <li><a title="lien vers votre boite email pour nous contacter" className={styles.a} href="mailto:W3learn.w3@gmail.com" target="_blank">W3learn.w3@gmail.com</a></li>
                         </ul>
                         <ul className={styles.ul}>
                             <li className="mb20">Mentions légales</li>
-                            <li><NavLink to="/termes" className={styles.a}>Termes et Conditions</NavLink></li>
-                            <li><NavLink to="/termes" className={styles.a}>Politique de confidentialité</NavLink></li>
-                            <li><NavLink to="/termes" className={styles.a}>Politique en matière de cookies</NavLink></li>
-                            <li><NavLink to="/termes" className={styles.a}>Démenti</NavLink></li>
+                            <li><NavLink to="/termes" title="lien vers les termes et conditions" className={styles.a}>Termes et Conditions</NavLink></li>
+                            <li><NavLink to="/termes" title="lien vers les politiques de confidentialité" className={styles.a}>Politique de confidentialité</NavLink></li>
+                            <li><NavLink to="/termes" title="lien vers Conformité RGPD" className={styles.a}>Conformité RGPD</NavLink></li>
+                            <li><NavLink to="/termes" title="lien vers le démenti" className={styles.a}>Démenti</NavLink></li>
                         </ul>
             </div>
                 <div className={styles.bottomFooter}>

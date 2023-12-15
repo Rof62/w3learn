@@ -59,6 +59,7 @@ router.get("/getAvatarFromUser", (req, res) => {
   });
 
   router.get("/projet/:idProjet", (req, res) => {
+    console.log(req.params.idProjet);
     const {idProjet} = req.params
     console.log(idProjet);
     const sql = "SELECT * FROM projet WHERE idProjet = ?";
