@@ -1,7 +1,7 @@
 
 
-const API_USERS = "https://wlearnjw3learn.mysql.db/api/users";
-// const API_USERS = "api/users";
+// const API_USERS = "https://wlearnjw3learn.mysql.db/api/users";
+const API_USERS = "api/users";
 
 
 export async function createUser(newUser) {

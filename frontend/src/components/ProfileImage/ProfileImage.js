@@ -15,11 +15,11 @@ console.log({user});
       let response;
       if (user.blobby ) {
         response = await fetch(
-          `https://wlearnjw3learn.mysql.db/api/profileImage/getAvatarFromUser?id=${user.idUsers}`
+          `http://localhost:8003/api/profileImage/getAvatarFromUser?id=${user.idUsers}`
         );
       } else {
         response = await fetch(
-          `https://wlearnjw3learn.mysql.db/api/profileImage/getDefaultImage`
+          `http://localhost:8003/api/profileImage/getDefaultImage`
         );
       }
       console.log(user);
@@ -100,7 +100,7 @@ console.log({user});
 
       // fetch
       const response = await fetch(
-        "https://wlearnjw3learn.mysql.db/api/profileImage/insertImage",
+        "http://localhost:8003/api/profileImage/insertImage",
         {
           method: "PATCH",
           body: JSON.stringify(obj),

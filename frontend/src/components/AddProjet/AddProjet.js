@@ -16,7 +16,7 @@ export default function AddProjet({user}) {
   useEffect(() => {
     async function getGenres() {
       try {
-        const response = await fetch("https://wlearnjw3learn.mysql.db/api/profileImage/getGenres");
+        const response = await fetch("http://localhost:8003/api/profileImage/getGenres");
         if (response.ok) {
           const genres = await response.json();
           console.log(genres);
@@ -114,7 +114,7 @@ const defaultValues = {
       formData.append("idUsers", user.idUsers);
       
       console.log(values);
-      const response = await fetch("https://w3learnback-production.up.railway.app/api/profileImage/addProjet", {
+      const response = await fetch("http://localhost:8003/api/profileImage/addProjet", {
         method: "POST",
         body: formData,
       });

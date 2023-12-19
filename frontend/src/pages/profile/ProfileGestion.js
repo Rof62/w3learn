@@ -30,7 +30,7 @@ export default function ProfileGestion({ }) {
       try {
       console.log("TEST STOP PROPAGATION");
 
-        const response = await fetch("https://wlearnjw3learn.mysql.db/api/gestionProfile/updateUsername", {
+        const response = await fetch("http://localhost:8003/api/gestionProfile/updateUsername", {
           method: "PATCH",
           body: JSON.stringify( {username: newUsername, idUsers: user.idUsers}),
           headers: { "Content-Type": "application/json" },
@@ -47,7 +47,7 @@ export default function ProfileGestion({ }) {
 
     async function modifyEmail(newEmail) {
       try {
-        const response = await fetch("https://wlearnjw3learn.mysql.db/api/gestionProfile/updateEmail", {
+        const response = await fetch("http://localhost:8003/api/gestionProfile/updateEmail", {
           method: "PATCH",
           body: JSON.stringify({email: newEmail, idUsers: user.idUsers}),
           headers: { "Content-Type": "application/json" },
@@ -114,7 +114,7 @@ export default function ProfileGestion({ }) {
 
     async function deleteUserAccount() {
       try {
-        const response = await fetch("https://wlearnjw3learn.mysql.db/api/gestionProfile/deleteUserAccount", {
+        const response = await fetch("http://localhost:8003/api/gestionProfile/deleteUserAccount", {
           method: "DELETE",
           body: JSON.stringify({ idUsers: user.idUsers }),
           headers: { "Content-Type": "application/json" },

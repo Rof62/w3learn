@@ -9,7 +9,7 @@ export default function Contributeur({user}) {
     useEffect(() => {
         async function getProjet() {
           try {
-            const response = await fetch(`https://wlearnjw3learn.mysql.db/api/profileImage/getProjet/${idUsers}`);
+            const response = await fetch(`http://localhost:8003/api/profileImage/getProjet/${idUsers}`);
             if (response.ok) {
               const projet = await response.json();
               console.log(idUsers);

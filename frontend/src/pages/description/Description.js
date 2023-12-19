@@ -13,7 +13,7 @@ export default function Description() {
     // Par exemple :
     async function fetchProjet() {
       try {
-        const response = await fetch(`https://wlearnjw3learn.mysql.db/api/profileImage/projet/${idProjet}`);
+        const response = await fetch(`http://localhost:8003/api/profileImage/projet/${idProjet}`);
         if (response.ok) {
           const data = await response.json();
           console.log(data);

@@ -14,7 +14,7 @@ export default function Admin() {
     useEffect(() => {
         async function getProjet() {
           try {
-            const response = await fetch('https://wlearnjw3learn.mysql.db/api/admin/getProjetNoValidate');
+            const response = await fetch('http://localhost:8003/api/admin/getProjetNoValidate');
             if (response.ok) {
               const projet = await response.json();
               const modifiedDataBack = projet.map((s) =>
@@ -44,7 +44,7 @@ export default function Admin() {
 
         const { email } = user;
         // Envoyez une requête au backend pour mettre à jour l'état de validation
-        fetch(`https://wlearnjw3learn.mysql.db/api/admin/project/${idProjet}`, {
+        fetch(`http://localhost:8003/api/admin/project/${idProjet}`, {
           method: 'PATCH', // Vous pouvez utiliser la méthode appropriée
           headers: {
             'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ export default function Admin() {
 
         const { email } = user;
         // Envoyer une requête au backend pour supprimer le projet
-        fetch(`https://wlearnjw3learn.mysql.db/api/admin/deleteProject/${idProjet}`, {
+        fetch(`http://localhost:8003/api/admin/deleteProject/${idProjet}`, {
           method: 'DELETE', // Utilisez la méthode DELETE pour supprimer le projet
           headers: {
             'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ export default function Admin() {
         const { email } = user;
         try {
           // Envoyer une requête PATCH au backend pour mettre à jour la description du projet
-          const response = await fetch(`https://wlearnjw3learn.mysql.db/api/admin/updateProjectDescription/${idProjet}`, {
+          const response = await fetch(`http://localhost:8003/api/admin/updateProjectDescription/${idProjet}`, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
